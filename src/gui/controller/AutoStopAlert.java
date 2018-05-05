@@ -9,6 +9,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.time.LocalDateTime;
+
 public class AutoStopAlert {
 
     private int actualSeconds;
@@ -17,6 +19,7 @@ public class AutoStopAlert {
     public AutoStopAlert(int actuelSeconds, CTR_Project_Module prj_module) {
         this.actualSeconds = actuelSeconds;
         this.prj_module = prj_module;
+        LocalDateTime dateTimeinit = LocalDateTime.now();
 
         Stage autoStopStage = new Stage();
         VBox vbox = new VBox();
@@ -29,9 +32,8 @@ public class AutoStopAlert {
         Label message = new Label("Es wurde inaktivität nach feierabend festgestellt. Bist du noch da?");
         Button btn_yes = new Button("Ja, mach weiter");
         Button btn_no = new Button("Nein, Zeit korrigieren");
-        ComboBox hourBox = createHourBox();
-        ComboBox minBox = createMinBox();
         Button btn_saveCorrection = new Button("Korrektur speichern");
+        btn_saveCorrection.setVisible(false);
 
         btn_yes.setOnAction(event -> {
             prj_module.autoStopTimeline.play();
@@ -40,6 +42,23 @@ public class AutoStopAlert {
         });
 
         btn_no.setOnAction(event -> {
+            LocalDateTime dateTimeNow = LocalDateTime.now();
+            System.out.println(dateTimeNow.getHour());
+            if(dateTimeinit.getDayOfMonth() == dateTimeNow.getDayOfMonth()) {
+                ComboBox hourBox = createHourBox(dateTimeNow.getHour());
+                ComboBox minBox = createMinBox(dateTimeNow.getMinute());
+                hbox_Time.getChildren().addAll(hourBox, minBox);
+            } else {
+                ComboBox hourBox = createHourBox(24);
+                ComboBox minBox = createMinBox(60);
+                hbox_Time.getChildren().addAll(hourBox, minBox);
+            }
+            btn_saveCorrection.setVisible(true);
+            long period = java.time.Duration.between(dateTimeinit, dateTimeNow).getSeconds();
+
+        });
+
+        btn_saveCorrection.setOnAction(event -> {
 
         });
 
@@ -49,22 +68,25 @@ public class AutoStopAlert {
         hbox_Time.setSpacing(10);
 
         hbox.getChildren().addAll(btn_yes, btn_no);
-        hbox_Time.getChildren().addAll(hourBox, minBox);
+        hbox_Time.getChildren().addAll();
         vbox.getChildren().addAll(message, hbox, hbox_Time, btn_saveCorrection);
         autoStopStage.show();
     }
 
-    private ComboBox createHourBox() {
+    private ComboBox createHourBox(int hour) {
         ComboBox comboBox = new ComboBox();
-        comboBox.getItems().addAll("0", "1","2","3","4","5","6","7","8","9","10","11","12",
-                "13","14","15","16","17","18","19","20","21","22","23","24");
+        for(int i = 8; i < hour; i++) {
+            comboBox.getItems().add(i);
+        }
         comboBox.getSelectionModel().selectFirst();
         return comboBox;
     }
 
-    private ComboBox createMinBox() {
+    private ComboBox createMinBox(int minutes) {
         ComboBox comboBox = new ComboBox();
-        comboBox.getItems().addAll("0","5","10","15","20","25","30","35","40","45","50","55","60");
+        for(int i = 5; i < minutes; i += 5) {
+            comboBox.getItems().add(i);
+        }
         comboBox.getSelectionModel().selectFirst();
         return comboBox;
     }
