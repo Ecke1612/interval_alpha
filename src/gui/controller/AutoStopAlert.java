@@ -16,6 +16,9 @@ public class AutoStopAlert {
     private int actualSeconds;
     private CTR_Project_Module prj_module;
 
+    private ComboBox hourBox = new ComboBox();
+    private ComboBox minBox = new ComboBox();
+
     public AutoStopAlert(int actuelSeconds, CTR_Project_Module prj_module) {
         this.actualSeconds = actuelSeconds;
         this.prj_module = prj_module;
@@ -45,21 +48,28 @@ public class AutoStopAlert {
             LocalDateTime dateTimeNow = LocalDateTime.now();
             System.out.println(dateTimeNow.getHour());
             if(dateTimeinit.getDayOfMonth() == dateTimeNow.getDayOfMonth()) {
-                ComboBox hourBox = createHourBox(dateTimeNow.getHour());
-                ComboBox minBox = createMinBox(dateTimeNow.getMinute());
+                //hourBox = createHourBox(dateTimeNow.getHour());
+                //minBox = createMinBox(dateTimeNow.getMinute());
+
                 hbox_Time.getChildren().addAll(hourBox, minBox);
             } else {
-                ComboBox hourBox = createHourBox(24);
-                ComboBox minBox = createMinBox(60);
+                hourBox = createHourBox(24);
+                minBox = createMinBox(60);
                 hbox_Time.getChildren().addAll(hourBox, minBox);
             }
             btn_saveCorrection.setVisible(true);
-            long period = java.time.Duration.between(dateTimeinit, dateTimeNow).getSeconds();
+
 
         });
 
         btn_saveCorrection.setOnAction(event -> {
-
+            //Differenz ausrechnen von moment des klickens rückwirkend zu eingetstellter Zeit, denn bis hierhin sind die Sekunden ja weitergelaufen
+            int correctedSecongs = 0;
+            int hour = (int) hourBox.getSelectionModel().getSelectedItem();
+            LocalDateTime newDateTime = LocalDateTime.of(dateTimeinit.getYear(), dateTimeinit.getMonth(), dateTimeinit.getDayOfMonth(),
+                    (int) hourBox.getSelectionModel().getSelectedItem(),(int) minBox.getSelectionModel().getSelectedItem(), 0);
+            long difference = java.time.Duration.between(newDateTime, LocalDateTime.now()).getSeconds();
+            System.out.println("difference: " + difference);
         });
 
         vbox.setSpacing(10);
