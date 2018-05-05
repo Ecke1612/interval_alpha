@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TitledPane fx:id="titlepane" expanded="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <graphic>
+      <VBox>
+         <children>
+            <HBox fx:id="main_hbox" fillHeight="false" maxWidth="1115.0" minWidth="332.0" prefHeight="80.0" prefWidth="1115.0" styleClass="report">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="130.0" styleClass="note">
+                     <children>
+                        <Label fx:id="label_firstChar" styleClass="cap" text="P" />
+                        <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
+                        <VBox alignment="CENTER_LEFT" styleClass="inputs">
+                           <children>
+                              <Label fx:id="label_projName" styleClass="projectname" text="PROJEKTNAME" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="120.0" styleClass="client">
+                     <children>
+                        <Label fx:id="label_client" styleClass="name" text="Name des Kunden" textFill="#413f54" />
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="70.0" styleClass="time">
+                     <children>
+                        <Label text="heute" />
+                        <Label fx:id="label_time" styleClass="time" text="00:00">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="120.0" styleClass="time">
+                     <children>
+                        <Label text="insgesamt" />
+                        <Label fx:id="label_wholeTime" styleClass="time" text="00:00 / 00 Std">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
+                  <ProgressIndicator fx:id="progress" prefHeight="57.0" prefWidth="44.0" progress="0.0" />
+                  <HBox alignment="CENTER_RIGHT" minWidth="102.0" prefHeight="100.0" prefWidth="102.0" styleClass="actions">
+                     <children>
+                        <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <items>
+                              <MenuItem fx:id="menu_tracking" mnemonicParsing="false" text="Details" />
+                              <MenuItem fx:id="menu_reopen" mnemonicParsing="false" onAction="#reopen" text="wieder eröffnen" />
+                           </items>
+                           <styleClass>
+                              <String fx:value="btns" />
+                              <String fx:value="more" />
+                           </styleClass>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </graphic>
+   <content>
+      <VBox fx:id="vbox_detail" />
+   </content>
+</TitledPane>

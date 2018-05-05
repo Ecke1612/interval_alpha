@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxWidth="549.0" minWidth="148.0" prefWidth="549.0" styleClass="menu" stylesheets="@/css/ui_view.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Main_Menu">
+   <children>
+      <ImageView fitHeight="64.0" fitWidth="300.0" pickOnBounds="true" styleClass="logo">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <VBox.margin>
+            <Insets bottom="16.0" />
+         </VBox.margin>
+      </ImageView>
+      <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#newProject" text="NEUES PROJEKT STARTEN">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="action" />
+         </styleClass>
+         <VBox.margin>
+            <Insets bottom="8.0" />
+         </VBox.margin>
+         <graphic>
+            <Label graphicTextGap="0.0" styleClass="ico" text="">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ToggleButton fx:id="menu_dashboard" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#showDashboard" styleClass="btn" text="DASHBOARD">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <Label graphicTextGap="0.0" styleClass="ico" text="">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </graphic>
+         <VBox.margin>
+            <Insets bottom="8.0" />
+         </VBox.margin>
+         <toggleGroup>
+            <ToggleGroup fx:id="menuitems" />
+         </toggleGroup>
+      </ToggleButton>
+      <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#showClient" styleClass="btn" text="KUNDEN" toggleGroup="$menuitems">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <Label graphicTextGap="0.0" styleClass="ico" text="">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </graphic>
+         <VBox.margin>
+            <Insets bottom="8.0" />
+         </VBox.margin>
+      </ToggleButton>
+      <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#showReport" styleClass="btn" text="BERICHTE" toggleGroup="$menuitems">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <Label graphicTextGap="0.0" styleClass="ico" text="">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </graphic>
+      </ToggleButton>
+      <Separator prefWidth="200.0" styleClass="menudivider" visible="false">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Separator>
+      <Separator maxHeight="286.0" prefHeight="286.0" prefWidth="200.0" styleClass="menudividerbig" visible="false">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Separator>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="info">
+         <children>
+            <ToggleButton mnemonicParsing="false" styleClass="settings" text="EINSTELLUNGEN" onAction="#showConfig" toggleGroup="$menuitems">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ToggleButton>
+            <Label styleClass="version" text="/">
+               <HBox.margin>
+                  <Insets left="8.0" right="8.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="version" styleClass="version" text="VERSION 0.11" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </HBox>
+   </children>
+</VBox>

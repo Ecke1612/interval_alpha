@@ -1,0 +1,410 @@
+/* Icons
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@font-face {
+  font-family: "uiicons";
+  src: url("../font/uiicons.ttf") format('truetype');
+  font-weight normal;
+  font-style: normal;
+}
+
+
+
+/* Main menu
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.menu {
+    -fx-background-color: linear-gradient(to bottom right, rgba(71, 153, 221, 1) 8% , rgba(26, 84, 132, 1));
+    -fx-min-height: 640px;
+    -fx-pref-height: 640px;
+    -fx-padding: 0px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .menudivider {
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .menudividerbig {
+    -fx-min-height: 174px;
+    -fx-pref-height: 174px;
+    -fx-max-height: 174px;
+    -fx-padding: 0px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .info {
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0px 16px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+    -fx-background-color: rgba(0, 0, 0, 0.08);
+}
+
+.menu .info .version {
+    -fx-text-fill: rgba(0, 0, 0, 0.64);;
+    -fx-font-size: 12px;
+}
+
+.menu .logo {
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-fill: rgba(255, 255, 255, 1);
+    -fx-image: url('../images/logo.png');
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .settings {
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-padding: 0px;
+}
+
+.menu .btn {
+    -fx-alignment: baseline-left;
+    -fx-background-radius: 0px;
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-padding: 0px 16px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .action {
+    -fx-alignment: baseline-left;
+    -fx-background-color: rgba(120, 243, 130, 1);
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-padding: 0px 16px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .action:selected {
+    -fx-background-color: rgba(120, 243, 130, 1);
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-padding: 0px 16px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .btn:selected {
+    -fx-text-fill: rgba(120, 243, 130, 1);
+    -fx-border-color: rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(120, 243, 130, 1);
+    -fx-border-width: 0 0 0 4px;
+    -fx-padding: 0 0 0 12px;
+    -fx-background-color: rgba(0, 0, 0, 0.08);
+}
+
+.menu .action .ico {
+    -fx-font-family: 'uiicons';
+    -fx-font-size: 24px;
+    -fx-padding: 0px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-min-width: 40px;
+    -fx-pref-width: 40px;
+    -fx-max-width: 40px;
+}
+
+.menu .btn .ico {
+    -fx-font-family: 'uiicons';
+    -fx-font-size: 24px;
+    -fx-padding: 0px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-min-width: 40px;
+    -fx-pref-width: 40px;
+    -fx-max-width: 40px;
+}
+
+.menu .btn:selected .ico {
+    -fx-text-fill: rgba(120, 243, 130, 1);
+}
+
+
+
+/* Project module
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.project {
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-padding: 8px 16px;
+    -fx-min-width: 250px;
+    -fx-pref-width: 600px;
+    -fx-max-width: 916px;
+    -fx-min-height: 96px;
+    -fx-pref-height: 96px;
+    -fx-max-height: 96px;
+    -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244, 244, 244, 1) rgba(0, 0, 0, 0);
+    -fx-border-width: 0 0 1px 0;
+}
+
+.project .projectdivider {
+    -fx-min-width: 16px;
+    -fx-pref-width: 16px;
+    -fx-max-width: 16px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+}
+
+.project .note {
+    -fx-min-width: 100px;
+    -fx-pref-width: 220px;
+    -fx-max-width: 350px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .note .cap {
+    -fx-alignment: center;
+    -fx-font-size: 18px;
+    -fx-background-color: rgba(98, 124, 140, 1);
+    -fx-background-radius: 48px;
+    -fx-text-fill: rgba(244, 244, 244, 1);
+    -fx-min-width: 48px;
+    -fx-pref-width: 48px;
+    -fx-max-width: 48px;
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-padding: 0px;
+}
+
+.project .note .inputs {
+    -fx-min-width: 200px;
+    -fx-pref-width: 220px;
+    -fx-max-width: 300px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .note .input {
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-background-radius: 0px;
+    -fx-font-size: 12px;
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0px;
+}
+
+.project .note .projectname {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(98, 124, 140, 1);
+}
+
+.project .client {
+    -fx-alignment: center;
+    -fx-min-width: 50px;
+    -fx-pref-width: 160px;
+    -fx-max-width: 160px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .client .name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(0, 0, 0, 0.32);
+}
+
+.project .time {
+    -fx-alignment: center;
+    -fx-min-width: 112px;
+    -fx-pref-width: 112px;
+    -fx-max-width: 112px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .actions {
+    -fx-alignment: center;
+    -fx-min-width: 112px;
+    -fx-pref-width: 112px;
+    -fx-max-width: 112px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .actions .btns {
+    -fx-font-family: 'uiicons';
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-size: 24px;
+    -fx-mark-color: transparent;
+}
+
+.project .actions .timer {
+    -fx-text-fill: rgba(238, 99, 82, 1);
+}
+
+.project .actions .more {
+    -fx-opacity: 0.32;
+}
+
+.project .actions .more .context-menu {
+    -fx-font-size: 15px;
+}
+
+.project .actions .menu-button > .arrow-button {
+    -fx-padding: 0px;
+}
+
+.project .actions .menu-button > .arrow-button > .arrow {
+    -fx-padding: 0px;
+}
+
+/*
+.a > .i > .i,
+.a .i
+
+<a class="a">
+    <i class="i">
+        <i class="i"></i>
+    </i>
+</a>
+*/
+
+
+
+/*----Report----------------
+---------------------------------------------------*/
+/* Project module
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.report {
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-padding: 8px 16px;
+    -fx-min-width: 250px;
+    -fx-pref-width: 600px;
+    -fx-max-width: 916px;
+    -fx-min-height: 55px;
+    -fx-pref-height: 55px;
+    -fx-max-height: 55px;
+    -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244, 244, 244, 1) rgba(0, 0, 0, 0);
+    -fx-border-width: 0 0 1px 0;
+}
+
+.report .projectdivider {
+    -fx-min-width: 16px;
+    -fx-pref-width: 16px;
+    -fx-max-width: 16px;
+    -fx-min-height: 40px;
+    -fx-pref-height: 40px;
+    -fx-max-height: 40px;
+}
+
+.report .note {
+    -fx-min-width: 60px;
+    -fx-pref-width: 120px;
+    -fx-max-width: 250px;
+    -fx-padding: 0px;
+}
+
+.report .note .cap {
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-background-color: rgba(98, 124, 140, 1);
+    -fx-background-radius: 30px;
+    -fx-text-fill: rgba(244, 244, 244, 1);
+    -fx-min-width: 30px;
+    -fx-pref-width: 30px;
+    -fx-max-width: 30px;
+    -fx-min-height: 30px;
+    -fx-pref-height: 30px;
+    -fx-max-height: 30px;
+    -fx-padding: 0px;
+}
+
+.report .note .projectname {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(98, 124, 140, 1);
+}
+
+
+.report .client .name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(0, 0, 0, 0.32);
+}
+
+.report .time {
+    -fx-alignment: center;
+    -fx-min-width: 70px;
+    -fx-pref-width: 70px;
+    -fx-max-width: 70px;
+    -fx-padding: 0px;
+}
+
+.report .actions {
+    -fx-alignment: center;
+    -fx-min-width: 50px;
+    -fx-pref-width: 50px;
+    -fx-max-width: 50px;
+    -fx-padding: 0px;
+}
+
+.report .actions .btns {
+    -fx-font-family: 'uiicons';
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-size: 24px;
+    -fx-mark-color: transparent;
+}
+
+.report .actions .more {
+    -fx-opacity: 0.32;
+}
+
+.report .actions .more .context-menu {
+    -fx-font-size: 15px;
+}
+
+.report .actions .menu-button > .arrow-button {
+    -fx-padding: 0px;
+}
+
+.report .actions .menu-button > .arrow-button > .arrow {
+    -fx-padding: 0px;
+}

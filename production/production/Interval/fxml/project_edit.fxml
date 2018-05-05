@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="9.0" layoutY="6.0" text="Projekt bearbeiten" />
+      <TextField fx:id="textfield_name" focusTraversable="false" layoutX="8.0" layoutY="67.0" prefHeight="25.0" prefWidth="245.0" />
+      <TextField fx:id="textfield_hour" layoutX="8.0" layoutY="107.0" prefHeight="25.0" prefWidth="53.0" />
+      <TextField fx:id="textfield_min" layoutX="92.0" layoutY="107.0" prefHeight="25.0" prefWidth="53.0" />
+      <Label layoutX="65.0" layoutY="111.0" text="Std" />
+      <Label layoutX="150.0" layoutY="111.0" text="Min" />
+      <TextField fx:id="textfield_maxHour" layoutX="8.0" layoutY="177.0" prefHeight="25.0" prefWidth="53.0" />
+      <Label layoutX="66.0" layoutY="180.0" text="maximale Zeit in Stunden" />
+      <Button fx:id="btn_save" layoutX="253.0" layoutY="259.0" mnemonicParsing="false" onAction="#save" text="Speichern" />
+      <Button fx:id="btn_abort" layoutX="156.0" layoutY="259.0" mnemonicParsing="false" onAction="#abort" text="Abbrechen" />
+      <ChoiceBox fx:id="chb_client" layoutX="8.0" layoutY="32.0" prefWidth="150.0" />
+      <Label fx:id="label_fail" layoutX="8.0" layoutY="242.0" prefHeight="17.0" prefWidth="40.0" textFill="#9e1c1c" />
+      <TextField fx:id="textField_addMin" layoutX="8.0" layoutY="142.0" prefHeight="25.0" prefWidth="53.0" />
+      <Label layoutX="65.0" layoutY="146.0" text="Minuten hinzufügen / abziehen" />
+      <Button fx:id="btn_projPath" layoutX="9.0" layoutY="215.0" mnemonicParsing="false" onAction="#projPath" text="Projektpfad festlegen" />
+   </children>
+</AnchorPane>

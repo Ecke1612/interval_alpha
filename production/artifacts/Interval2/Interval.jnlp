@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Interval.jnlp">
+  <information>
+    <title>Interval2</title>
+    <vendor>Unknown</vendor>
+    <description>Interval2</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Interval.jar" size="3511584" download="eager" />
+    <jar href="lib\commons-lang3-3.7-bin\commons-lang3-3.7\commons-lang3-3.7-javadoc.jar" size="1277784" download="eager" />
+    <jar href="lib\commons-lang3-3.7-bin\commons-lang3-3.7\commons-lang3-3.7-sources.jar" size="550341" download="eager" />
+    <jar href="lib\commons-lang3-3.7-bin\commons-lang3-3.7\commons-lang3-3.7-test-sources.jar" size="450015" download="eager" />
+    <jar href="lib\commons-lang3-3.7-bin\commons-lang3-3.7\commons-lang3-3.7-tests.jar" size="842388" download="eager" />
+    <jar href="lib\commons-lang3-3.7-bin\commons-lang3-3.7\commons-lang3-3.7.jar" size="499634" download="eager" />
+    <jar href="lib\commons-net-3.6\commons-net-3.6-sources.jar" size="435798" download="eager" />
+    <jar href="lib\commons-net-3.6\commons-net-3.6.jar" size="307410" download="eager" />
+    <jar href="lib\commons-net-3.6\commons-net-examples-3.6.jar" size="84913" download="eager" />
+    <jar href="lib\opencsv-3.9.jar" size="80720" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="1005" height="720" main-class="main.launcher.Launcher"  name="Interval2" />
+  <update check="background"/>
+</jnlp>

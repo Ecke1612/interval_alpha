@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="vbox_header" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Config">
+   <children>
+      <Label text="Einstellungen">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <HBox fx:id="mainHBox">
+         <children>
+            <VBox fx:id="vbox_Text" prefWidth="400.0" spacing="10.0">
+               <children>
+                  <Label text="automatisch auf Uppdates überprüfen">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Mehrere Uhren gleichzeitig laufen lassen" />
+               </children>
+            </VBox>
+            <VBox fx:id="vbox_Control" spacing="10.0">
+               <children>
+                  <CheckBox fx:id="check_update" mnemonicParsing="false">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></CheckBox>
+                  <CheckBox fx:id="check_multiClock" mnemonicParsing="false" />
+                  <HBox>
+                     <children>
+                        <Button fx:id="btn_save" mnemonicParsing="false" onAction="#save" text="Speicher">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <Label fx:id="label_console" textFill="#797979">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
