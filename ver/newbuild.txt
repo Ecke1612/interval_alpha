@@ -1,4 +1,4 @@
-0.6
+0.61
 
 - Inaktivitaet kann nach 18 Uhr festgestellt werden und fuehrt zu einer Meldung
 	- Zeit kann auf beliebigen Zeitpunkt zurueckgesetzt werden

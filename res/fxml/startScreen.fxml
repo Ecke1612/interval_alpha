@@ -25,7 +25,7 @@
             </Label>
             <Label fx:id="author" text="Eike Dreyer" textFill="WHITE">
                <font>
-                  <Font size="26.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
             <Label fx:id="underline" text="laden..." textFill="WHITE">

@@ -50,9 +50,7 @@ public class Launcher extends Application {
                 primaryStage.close();
             }
         })).start();
-
     }
-
 
     public void update(Stage primaryStage) throws Exception {
         boolean update = updater.start(mainApp.getBuild());

@@ -27,7 +27,7 @@
          <children>
             <HBox>
                <children>
-                  <Label fx:id="label_build" />
+                  <Label fx:id="label_build" text="© Eike Dreyer" />
                </children>
                <VBox.margin>
                   <Insets />

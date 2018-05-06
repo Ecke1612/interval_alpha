@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Interval.jar" size="3515818" download="eager" />
+    <jar href="Interval.jar" size="3518784" download="eager" />
     <jar href="lib\commons-lang3-3.7-bin\commons-lang3-3.7\commons-lang3-3.7-javadoc.jar" size="1277784" download="eager" />
     <jar href="lib\commons-lang3-3.7-bin\commons-lang3-3.7\commons-lang3-3.7-sources.jar" size="550341" download="eager" />
     <jar href="lib\commons-lang3-3.7-bin\commons-lang3-3.7\commons-lang3-3.7-test-sources.jar" size="450015" download="eager" />
