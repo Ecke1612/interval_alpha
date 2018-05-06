@@ -1,6 +1,8 @@
 package gui.controller;
 
 import handling.File_Handler;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -18,6 +20,8 @@ public class CTR_Config {
     public CheckBox check_update;
     @FXML
     public CheckBox check_multiClock;
+    @FXML
+    public CheckBox check_autostop;
     @FXML
     Label label_console;
 
@@ -41,12 +45,36 @@ public class CTR_Config {
     public void initialize() {
         check_update.setSelected(configObject.isDoUpdate());
         check_multiClock.setSelected(configObject.isMultiClock());
+        check_autostop.setSelected(configObject.isAutostop());
+
+        check_autostop.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed(ObservableValue<? extends Boolean> ov,
+                                Boolean old_val, Boolean new_val) {
+                label_console.setText("Auto-Stop funktion geändert. Bitte Uhr einmal pausieren und wieder starten");
+            }
+        });
+
+        check_update.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed(ObservableValue<? extends Boolean> ov,
+                                Boolean old_val, Boolean new_val) {
+                label_console.setText("Update-Funktion geändert");
+            }
+        });
+
+        check_multiClock.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed(ObservableValue<? extends Boolean> ov,
+                                Boolean old_val, Boolean new_val) {
+                label_console.setText("Multiclock-Funktion geändert");
+            }
+        });
     }
 
     public void save() {
         configObject.setDoUpdate(check_update.isSelected());
         configObject.setMultiClock(check_multiClock.isSelected());
+        configObject.setAutostop(check_autostop.isSelected());
         File_Handler.writeObject(configObject, "ver/config.dat");
+        label_console.setText("Änderungen gespeichert!");
     }
 
     public ConfigObject getConfigObject() {
@@ -57,44 +85,4 @@ public class CTR_Config {
         this.configObject = configObject;
     }
 
-    /*
-    public void loadConfig() throws IOException {
-
-        configList.clear();
-        if(File_Handler.fileExist("ver/config.txt")) {
-            configList = File_Handler.fileLoader("ver/config.txt");
-            try {
-                if (configList.get(0).equals("0")) {
-                    doUpdate = false;
-                }
-                if (configList.get(1).equals("1")) {
-                    multiClock = true;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Config.txt vermutlich fehlerhaft");
-            }
-        }
-    }
-
-    public void save() {
-        doUpdate = check_update.isSelected();
-        multiClock = check_multiClock.isSelected();
-
-        configList.add(getBoolAsString(doUpdate));
-        configList.add(getBoolAsString(multiClock));
-        try {
-            File_Handler.fileWriter("ver/config.txt", configList);
-            label_console.setText("erfolgreich gespeichert");
-        } catch (IOException e) {
-            e.printStackTrace();
-            label_console.setText("speichern fehlgeschlagen!");
-        }
-    }
-
-    private String getBoolAsString(boolean bool) {
-        if(bool) return "1";
-        else return "0";
-    }
-    */
 }

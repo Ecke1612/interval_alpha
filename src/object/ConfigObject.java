@@ -9,6 +9,7 @@ public class ConfigObject implements Serializable {
 
     private boolean doUpdate = true;
     private boolean multiClock = false;
+    private boolean autostop = true;
 
     public boolean isDoUpdate() {
         return doUpdate;
@@ -24,5 +25,13 @@ public class ConfigObject implements Serializable {
 
     public void setMultiClock(boolean multiClock) {
         this.multiClock = multiClock;
+    }
+
+    public boolean isAutostop() {
+        return autostop;
+    }
+
+    public void setAutostop(boolean autostop) {
+        this.autostop = autostop;
     }
 }

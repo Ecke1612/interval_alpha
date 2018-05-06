@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.Main_Application;
 import object.ClientStorageObject;
+import object.ConfigObject;
 import object.StorageObject;
 
 import java.awt.*;
@@ -36,7 +37,7 @@ import java.util.Date;
 public class CTR_Project_Module {
 
     @FXML
-    Label label_time;
+    public Label label_time;
     @FXML
     Label label_projName;
     @FXML
@@ -62,7 +63,7 @@ public class CTR_Project_Module {
     private int timeToday = 0;
     private int newSec = 0;
     private int index;
-    private LocalDate date =LocalDate.now();
+    private LocalDate date = LocalDate.now();
     private int maxTimeHours = 0;
     private boolean running = false;
     private Timeline mainTime = new Timeline();
@@ -127,7 +128,6 @@ public class CTR_Project_Module {
         }
     }
 
-
     public void startClock() throws IOException {
         //Uhr wird gestoppt
         if(running) {
@@ -167,15 +167,15 @@ public class CTR_Project_Module {
             label_time.setStyle("-fx-text-fill: rgb(0, 0, 0);");
 
             //AutoDetectionStop---------------------------------------------------------------------------------
-
-            autoStopTimeline.setCycleCount(Timeline.INDEFINITE);
-            KeyFrame autoStopFrame = new KeyFrame(Duration.seconds(5), event -> {
-                System.out.println("AutoStop");
-                checkAutoStop();
-            });
-            autoStopTimeline.getKeyFrames().add(autoStopFrame);
-            autoStopTimeline.play();
-
+            if(CTR_Config.configObject.isAutostop()) {
+                autoStopTimeline.setCycleCount(Timeline.INDEFINITE);
+                KeyFrame autoStopFrame = new KeyFrame(Duration.seconds(5), event -> {
+                    System.out.println("AutoStop");
+                    checkAutoStop();
+                });
+                autoStopTimeline.getKeyFrames().add(autoStopFrame);
+                autoStopTimeline.play();
+            }
             //titledPane.setStyle("-fx-background-color: rgb(48, 148, 44);");
            // main_hbox.setStyle("-fx-background-color: rgba(140, 255, 152, 0.7);");
         }
@@ -185,6 +185,7 @@ public class CTR_Project_Module {
         mainTime.stop();
         running = false;
         mainTime.getKeyFrames().clear();
+        autoStopTimeline.getKeyFrames().clear();
         saveData();
         initTrackingData();
 
@@ -328,7 +329,6 @@ public class CTR_Project_Module {
         if((offset >= 10) && (LocalTime.now().isAfter(LocalTime.of(12,24)))) {
             autoStopTimeline.stop();
             AutoStopAlert autoStopAlert = new AutoStopAlert(newSec, this);
-            System.out.println("hm fraglich");
         }
 
     }
@@ -346,6 +346,10 @@ public class CTR_Project_Module {
     }
 
     public int getNewSec() { return newSec; }
+
+    public void setNewSec(int newSec) {
+        this.newSec = newSec;
+    }
 
     public int getIndex() {
         return index;

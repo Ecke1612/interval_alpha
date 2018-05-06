@@ -23,6 +23,7 @@
                      </VBox.margin>
                   </Label>
                   <Label text="Mehrere Uhren gleichzeitig laufen lassen" />
+                  <Label text="Auto-Stop einschalten" />
                </children>
             </VBox>
             <VBox fx:id="vbox_Control" spacing="10.0">
@@ -32,6 +33,7 @@
                         <Insets />
                      </VBox.margin></CheckBox>
                   <CheckBox fx:id="check_multiClock" mnemonicParsing="false" />
+                  <CheckBox fx:id="check_autostop" mnemonicParsing="false" />
                   <HBox>
                      <children>
                         <Button fx:id="btn_save" mnemonicParsing="false" onAction="#save" text="Speicher">

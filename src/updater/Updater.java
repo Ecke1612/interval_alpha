@@ -22,8 +22,8 @@ public class Updater {
 
     public boolean checkForUpdate() throws Exception {
         try {
-            ftp_handler = new FTP_Handler("ws.udag.de", "53081.webmaster", "timestamp.APP#2017");
-            ftp_handler.downloadFile("/timestamp.tobiasbormann.de/update/build.txt", "ver/newbuild.txt");
+            ftp_handler = new FTP_Handler("ecke1612.bplaced.net", "ecke1612_interval", "Interval#18");
+            ftp_handler.downloadFile("/interval/build.txt", "ver/newbuild.txt");
             System.out.println("build erfolgreich heruntergeladen");
             boolean doUpdate = checkVersion();
             if(doUpdate) {
@@ -75,7 +75,7 @@ public class Updater {
 
     private void update() throws IOException {
         System.out.println("newbuild: " + newBuild);
-        ftp_handler.downloadFile("/timestamp.tobiasbormann.de/update/" + Launcher.appName + "_" + newBuild + ".jar", Launcher.appName + ".jar");
+        ftp_handler.downloadFile("/interval/" + Launcher.appName + "_" + newBuild + ".jar", Launcher.appName + ".jar");
         System.out.println("heruntergeladen");
     }
 

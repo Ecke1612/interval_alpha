@@ -15,13 +15,18 @@
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="headline" text="TimeStamp" textFill="WHITE" BorderPane.alignment="CENTER">
+            <Label fx:id="headline" text="Interval" textFill="WHITE" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
                <BorderPane.margin>
                   <Insets top="40.0" />
                </BorderPane.margin>
+            </Label>
+            <Label fx:id="author" text="Eike Dreyer" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
             </Label>
             <Label fx:id="underline" text="laden..." textFill="WHITE">
                <font>
