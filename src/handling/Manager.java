@@ -57,6 +57,14 @@ public class Manager {
         }
     }
 
+    public static String getCSSPrompTextColorByBrightness(Color color) {
+        if(color.getBrightness() < 0.81) {
+            return ("-fx-prompt-text-fill: rgb(255,255,255)");
+        } else {
+            return ("-fx-prompt-text-fill: rgb(0,0,0)");
+        }
+    }
+
     public static String getHexColorString(Color c) {
         String hex = String.format( "#%02X%02X%02X",
                 (int)( c.getRed() * 255 ),

@@ -32,6 +32,7 @@ public class CTR_Client {
         VBox vbox = new VBox();
         HBox header = new HBox();
         Button btn_newClient = new Button("Neuer Kunde");
+        btn_newClient.getStyleClass().add("clientobject-newclient-btns");
 
         btn_newClient.setOnAction(event -> {
             NewClient newClient = new NewClient();
@@ -58,6 +59,7 @@ public class CTR_Client {
 
         //scrollPane.setContent(flowPane);
         //Main_Application.ctr_dashboard.borderpane.setCenter(null);
+        header.setSpacing(5);
         header.getChildren().addAll(btn_newClient);
         vbox.getChildren().addAll(header, flowPane);
         Main_Application.ctr_dashboard.borderpane.setCenter(vbox);

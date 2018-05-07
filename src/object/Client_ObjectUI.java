@@ -38,9 +38,21 @@ public class Client_ObjectUI {
         "-fx-padding: 20;");
         Label labelName = new Label();
         Label labelactiveProjects = new Label();
-        Button btn_rename = new Button("umb");
-        Button btn_delete = new Button("entf");
+
+        Button btn_rename = new Button("umbennen");
+        btn_rename.getStyleClass().add("clientobject-btns");
+        btn_rename.setStyle(Manager.getCSSTextColorByBrightness(color));
+
+        Button btn_delete = new Button(" entfernen ");
+        btn_delete.getStyleClass().add("clientobject-btns");
+        btn_delete.setStyle(Manager.getCSSTextColorByBrightness(color));
+
         ColorPicker colorPicker = new ColorPicker();
+        colorPicker.getStyleClass().add("clientobject-btns");
+        colorPicker.setStyle("-fx-prompt-text-fill: rgb(100,200,150);");
+
+        colorPicker.setMaxWidth(85);
+
 
         labelName.setText(name);
         labelName.setStyle("-fx-font-size: 18px;" +
@@ -72,6 +84,7 @@ public class Client_ObjectUI {
                 System.out.println("Fehler beim Farbe ändern");
             }
         });
+        mainVBox.setSpacing(5);
         mainVBox.getChildren().addAll(labelName, labelactiveProjects, btn_rename, btn_delete, colorPicker);
         return mainVBox;
     }
