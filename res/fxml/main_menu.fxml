@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" maxWidth="549.0" minWidth="148.0" prefWidth="549.0" styleClass="menu" stylesheets="@/css/ui_view.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Main_Menu">
+<VBox alignment="TOP_CENTER" maxWidth="549.0" minWidth="148.0" prefHeight="500.0" prefWidth="549.0" styleClass="menu" stylesheets="@../css/ui_view.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Main_Menu">
    <children>
       <ImageView fitHeight="64.0" fitWidth="300.0" pickOnBounds="true" styleClass="logo">
          <cursor>
@@ -91,26 +91,39 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Separator>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="info">
+      <VBox prefHeight="251.0" prefWidth="300.0" />
+      <VBox spacing="10.0">
          <children>
-            <ToggleButton mnemonicParsing="false" styleClass="settings" text="EINSTELLUNGEN" onAction="#showConfig" toggleGroup="$menuitems">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="info">
+               <children>
+                  <ToggleButton mnemonicParsing="false" onAction="#showConfig" styleClass="settings" text="EINSTELLUNGEN" toggleGroup="$menuitems">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ToggleButton>
+                  <Label styleClass="version" text="/">
+                     <HBox.margin>
+                        <Insets left="8.0" right="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="version" styleClass="version" text="VERSION 0.11" />
+               </children>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
-            </ToggleButton>
-            <Label styleClass="version" text="/">
-               <HBox.margin>
-                  <Insets left="8.0" right="8.0" />
-               </HBox.margin>
+            </HBox>
+            <Label text="© Eike Dreyer">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
             </Label>
-            <Label fx:id="version" styleClass="version" text="VERSION 0.11" />
          </children>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </HBox>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </VBox>
    </children>
 </VBox>

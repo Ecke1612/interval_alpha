@@ -25,11 +25,15 @@ public class NewClient {
         VBox vbox = new VBox();
         Scene scene = new Scene(vbox);
 
+        vbox.setSpacing(10);
+
         HBox hboxEntry = new HBox();
         HBox hboxButton = new HBox();
 
         hboxEntry.setPadding(new Insets(10));
         hboxButton.setPadding(new Insets(10));
+        hboxEntry.setSpacing(10);
+        hboxButton.setSpacing(10);
 
         Label title = new Label("Kunde anlegen");
         TextField nameField = new TextField();

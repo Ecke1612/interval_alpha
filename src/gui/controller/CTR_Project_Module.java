@@ -191,7 +191,7 @@ public class CTR_Project_Module {
 
         CSV_ProjectHandler.csvWriter();
         btn_timer.setText("\uF00F");
-        btn_timer.setStyle("-fx-text-fill: rgb(238, 99, 82)");
+        btn_timer.setStyle("-fx-text-fill: rgb(235,127,0)");
     }
 
     //Speichert die getrackted Zeit entsprechend in einem StorageObjekt
@@ -326,7 +326,7 @@ public class CTR_Project_Module {
         System.out.println("newSec: " + newSec + "; autostopoffset: " + autoStopOffset + " = " + offset);
 
         //Wenn Die Uhr mehr als ... Minuten läuft UND es nach 18 Uhr ist
-        if((offset >= 10) && (LocalTime.now().isAfter(LocalTime.of(12,24)))) {
+        if((offset >= 10) && (LocalTime.now().isAfter(LocalTime.of(12,0)))) {
             autoStopTimeline.stop();
             AutoStopAlert autoStopAlert = new AutoStopAlert(newSec, this);
         }

@@ -19,6 +19,12 @@ public class Manager {
 
     public static ArrayList<String> configList = new ArrayList<>();
 
+    public static Color darkblue = Color.rgb(34,83,120); //#225378
+    public static Color turkys = Color.rgb(22,149,163); //#1695a3
+    public static Color lightTurkys = Color.rgb(172,240,242); //#acf0f2
+    public static Color beige = Color.rgb(243,255,226); //#f3ffe2
+    public static Color orange = Color.rgb(235,127,0); //#eb7f00
+
     public static String printTime(int seconds) {
         int sec = seconds%60;
         int min = (seconds/60)%60;

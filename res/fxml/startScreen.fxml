@@ -10,10 +10,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-
-<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2374b6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1695a3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="headline" text="Interval" textFill="WHITE" BorderPane.alignment="CENTER">
                <font>
@@ -22,11 +21,9 @@
                <BorderPane.margin>
                   <Insets top="40.0" />
                </BorderPane.margin>
-            </Label>
-            <Label fx:id="author" text="Eike Dreyer" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
+               <padding>
+                  <Insets top="-15.0" />
+               </padding>
             </Label>
             <Label fx:id="underline" text="laden..." textFill="WHITE">
                <font>
@@ -46,4 +43,15 @@
          </BorderPane.margin>
       </VBox>
    </bottom>
+   <top>
+      <VBox alignment="BOTTOM_CENTER" prefHeight="120.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="author" text="Eike Dreyer" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
 </BorderPane>

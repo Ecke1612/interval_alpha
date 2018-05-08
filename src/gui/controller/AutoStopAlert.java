@@ -35,11 +35,16 @@ public class AutoStopAlert {
         VBox vbox = new VBox();
         HBox hbox = new HBox();
         HBox hbox_Time = new HBox();
-        Scene scene = new Scene(vbox,380,160);
+        Scene scene = new Scene(vbox,380,200);
         autoStopStage.setTitle("Noch da?");
         autoStopStage.setScene(scene);
 
         Label message = new Label("Es wurde inaktivität nach feierabend festgestellt. Bist du noch da?");
+        String zero = "";
+        if(dateTimeinit.getMinute() < 10){
+            zero = "0";
+        }
+        Label label_initTime = new Label("Festgestellt um: " + dateTimeinit.getHour() + ":" + zero +dateTimeinit.getMinute() + " Uhr!");
         Button btn_yes = new Button("Ja, mach weiter");
         Button btn_no = new Button("Nein, Zeit korrigieren");
         Label label_explanation = new Label("Stelle die Uhrzeit ein, bis wann die Uhr hätte laufen soll");
@@ -98,11 +103,13 @@ public class AutoStopAlert {
         vbox.setSpacing(10);
         vbox.setPadding(new Insets(10));
         hbox.setSpacing(10);
+        //hbox.setPadding(new Insets(10));
         hbox_Time.setSpacing(10);
+        //hbox_Time.setPadding(new Insets(10));
 
         hbox.getChildren().addAll(btn_yes, btn_no);
         hbox_Time.getChildren().addAll();
-        vbox.getChildren().addAll(message, hbox, label_explanation, hbox_Time, btn_saveCorrection);
+        vbox.getChildren().addAll(message, label_initTime, hbox, label_explanation, hbox_Time, btn_saveCorrection);
         autoStopStage.show();
     }
 
