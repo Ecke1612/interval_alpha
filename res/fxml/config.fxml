@@ -75,7 +75,7 @@
                   </ComboBox>
                   <HBox>
                      <children>
-                        <Button fx:id="btn_save" mnemonicParsing="false" onAction="#save" text="Speicher">
+                        <Button fx:id="btn_save" mnemonicParsing="false" onAction="#save" text="Speicher" visible="false">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

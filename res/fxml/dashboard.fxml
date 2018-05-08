@@ -25,10 +25,10 @@
             <fx:include fx:id="em_Menu" source="main_menu.fxml" />
             <ToggleButton fx:id="btn_switchMenu" mnemonicParsing="false" onAction="#switchMenu" styleClass="menuswitch-btns" text="&lt;" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <padding>
-                  <Insets bottom="-2.0" left="3.0" right="3.0" top="-5.0" />
+                  <Insets bottom="-5.0" left="-2.0" right="-2.0" top="-8.0" />
                </padding></ToggleButton>
 
          </children>

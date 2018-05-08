@@ -32,8 +32,6 @@ public class CTR_Config {
     @FXML
     public ComboBox cbox_rushHour;
 
-
-    private ArrayList<String> configList;
     public static ConfigObject configObject;
 
     public CTR_Config() {
@@ -77,6 +75,7 @@ public class CTR_Config {
             public void changed(ObservableValue<? extends Boolean> ov,
                                 Boolean old_val, Boolean new_val) {
                 label_console.setText("Auto-Stop funktion geändert. Bitte Uhr einmal pausieren und wieder starten");
+                save();
             }
         });
 
@@ -84,6 +83,7 @@ public class CTR_Config {
             public void changed(ObservableValue<? extends Boolean> ov,
                                 Boolean old_val, Boolean new_val) {
                 label_console.setText("Update-Funktion geändert");
+                save();
             }
         });
 
@@ -91,6 +91,31 @@ public class CTR_Config {
             public void changed(ObservableValue<? extends Boolean> ov,
                                 Boolean old_val, Boolean new_val) {
                 label_console.setText("Multiclock-Funktion geändert");
+                save();
+            }
+        });
+
+        cbox_interval.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                label_console.setText("Erweiterte Auto-Stop funktion geändert. Bitte Uhr einmal pausieren und wieder starten");
+                save();
+            }
+        });
+
+        cbox_minTime.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                label_console.setText("Erweiterte Auto-Stop funktion geändert. Bitte Uhr einmal pausieren und wieder starten");
+                save();
+            }
+        });
+
+        cbox_rushHour.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                label_console.setText("Erweiterte Auto-Stop funktion geändert. Bitte Uhr einmal pausieren und wieder starten");
+                save();
             }
         });
     }
@@ -116,7 +141,7 @@ public class CTR_Config {
         configObject.setAutostopMinTime((int) cbox_minTime.getSelectionModel().getSelectedItem());
         configObject.setAutostopRushHour((int) cbox_rushHour.getSelectionModel().getSelectedItem());
         File_Handler.writeObject(configObject, "ver/config.dat");
-        label_console.setText("Änderungen gespeichert!");
+        //label_console.setText("Änderungen gespeichert!");
     }
 
     public ConfigObject getConfigObject() {

@@ -1,3 +1,40 @@
+/* erdig
+darkred: rgb(112,48,48);
+darkbluegrey: rgb(47,52,59);
+greengray: rgb(126,130,122);
+beige: rgb(227,205,164);
+pink: rgb(199,121,102);
+*/
+
+/*
+Scheme2 :
+darkgreen:  84, 119, 123
+purple:     85, 36, 57
+pink:       193, 41, 66
+orange:     217, 91, 68
+yellow:     235, 208, 119
+*/
+
+/*
+Scheme3 green:
+white:      255, 255, 255
+Grey:       161, 161, 161
+darkGreen:  5, 106, 97
+lightgreen: 147, 239, 218
+greygreen:  146, 224, 207
+midgreen:   57, 166, 160
+*/
+
+/*
+Scheme4 blue:
+white:      255, 255, 255
+darkblue:   7, 38, 59
+blue:       31, 82, 109
+lighterblue:  54,112,157 
+turkies:    33, 135, 145
+red:        240, 78, 81
+*/
+
 /* Icons
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 @font-face {
@@ -12,7 +49,7 @@
 /* Main menu
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .menu {
-    -fx-background-color: linear-gradient(to bottom right, rgba(172,240,242, 1) 8% , rgba(22,149,163, 1));
+    -fx-background-color: linear-gradient(to bottom right, rgba(54,112,157, 1) 8%, rgba(31, 82, 109, 1) 100%);
     -fx-min-height: 640px;
     -fx-pref-height: 640px;
     -fx-padding: 0px;
@@ -90,7 +127,7 @@
 
 .menu .action {
     -fx-alignment: baseline-left;
-    -fx-background-color: rgba(235,127,0, 1);
+    -fx-background-color: rgba(240, 78, 81, 1);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
     -fx-min-height: 48px;
@@ -103,7 +140,7 @@
 }
 
 .menu .action:selected {
-    -fx-background-color: rgba(235,127,0, 1);
+    -fx-background-color: rgba(255, 255, 255, 1);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
     -fx-min-height: 48px;
@@ -116,8 +153,8 @@
 }
 
 .menu .btn:selected {
-    -fx-text-fill: rgba(235,127,0, 1);
-    -fx-border-color: rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(235,127,0, 1);
+    -fx-text-fill: rgba(255,255,255, 1);
+    -fx-border-color: rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(255, 255, 255, 1);
     -fx-border-width: 0 0 0 4px;
     -fx-padding: 0 0 0 12px;
     -fx-background-color: rgba(0, 0, 0, 0.08);
@@ -150,35 +187,33 @@
 }
 
 .menu .btn:selected .ico {
-    -fx-text-fill: rgba(235,127,0, 1);
+    -fx-text-fill: rgb(255, 255, 255);
 }
 
 
 /*DASHBOARD
 --------------------------------------------------------------------*/
 .dashboard {
-    /*-fx-background-color: linear-gradient(to bottom right, rgba(151, 230, 255, 1) 8% , rgba(106, 164, 212, 1));*/
-}
-
-.dashboard .head {
-    -fx-background-color: rgb(50,121,180);
+    /*-fx-background-color: rgb(161, 161, 161);*/
 }
 
 .dashboard .menuswitch-btns {
-    -fx-background-color: rgb(22,149,163);
+    -fx-background-color: rgb(5, 106, 97);
 }
 
 .dashboard .menuswitch-btns:hover {
-    -fx-background-color: rgb(235,127,0);
+    -fx-background-color: rgb(240, 78, 81);
 }
 
 .dashboard .vboxbg {
-    -fx-background-color: rgb(172,240,242);
+    -fx-background-color: rgb(255,255,255);
 }
 
 .scrollepane {
-    /*-fx-background: rgba(255,255,255,0);
-    -fx-border-color: rgba(255,255,255,0);*/
+    /*
+    -fx-background: rgba(255,255,255,0);
+    -fx-border-color: rgba(255,255,255,0);
+    */
 }
 
 
@@ -194,7 +229,7 @@
     -fx-min-height: 96px;
     -fx-pref-height: 96px;
     -fx-max-height: 96px;*/
-    -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244, 244, 244, 1) rgba(0, 0, 0, 0);
+    -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244,244,244, 1) rgba(0, 0, 0, 0);
     -fx-border-width: 0 0 1px 0;
 }
 
@@ -305,7 +340,7 @@
 }
 
 .project .actions .timer {
-    -fx-text-fill: rgba(235,127,0, 1);
+    -fx-text-fill: rgba(240, 78, 81, 1);
 }
 
 .project .actions .more {
@@ -470,11 +505,11 @@
 }
 
 .clientobject-newclient-btns {
-    -fx-background-color: rgb(172,240,242);
+    -fx-background-color: rgb(31, 82, 109);
         /*linear-gradient(#acf0f2 0%, #1695a3 100%);*/
     -fx-background-radius:5px;
     -fx-font-size: 18;
-    -fx-text-fill: #000000;
+    -fx-text-fill: rgb(255,255,255);
     -fx-border-insets: 5px;
     -fx-background-insets: 5px;
     /*-fx-border-color: #BEE1E8;*/
@@ -484,11 +519,11 @@
 }
 
 .clientobject-newclient-btns:hover {
-    -fx-background-color: #eb7f00;
+    -fx-background-color: rgb(240, 78, 81);
         /*linear-gradient(#9BC9D9 0%, #BEE1E8 25%, #DAE8F1 75%, #FFFFFF 100%);*/
     -fx-background-radius:5px;
     -fx-font-size: 18;
-    -fx-text-fill: #000000;
+    -fx-text-fill: rgb(255,255,255);
     -fx-border-insets: 5px;
     -fx-background-insets: 5px;
     /*-fx-border-color: #BEE1E8;*/
