@@ -111,6 +111,12 @@ public class AutoStopAlert {
         hbox_Time.getChildren().addAll();
         vbox.getChildren().addAll(message, label_initTime, hbox, label_explanation, hbox_Time, btn_saveCorrection);
         autoStopStage.show();
+
+        autoStopStage.setOnCloseRequest(event -> {
+            prj_module.autoStopTimeline.play();
+            prj_module.autoStopOffset = prj_module.getNewSec();
+            autoStopStage.close();
+        });
     }
 
     private ComboBox createHourBox(int hour) {

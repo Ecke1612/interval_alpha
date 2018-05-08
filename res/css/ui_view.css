@@ -172,6 +172,9 @@
     -fx-background-color: rgb(235,127,0);
 }
 
+.dashboard .vboxbg {
+    -fx-background-color: rgb(172,240,242);
+}
 
 .scrollepane {
     /*-fx-background: rgba(255,255,255,0);

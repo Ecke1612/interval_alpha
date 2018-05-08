@@ -5,6 +5,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import object.ConfigObject;
 
@@ -24,6 +25,12 @@ public class CTR_Config {
     public CheckBox check_autostop;
     @FXML
     Label label_console;
+    @FXML
+    public ComboBox cbox_interval;
+    @FXML
+    public ComboBox cbox_minTime;
+    @FXML
+    public ComboBox cbox_rushHour;
 
 
     private ArrayList<String> configList;
@@ -47,6 +54,25 @@ public class CTR_Config {
         check_multiClock.setSelected(configObject.isMultiClock());
         check_autostop.setSelected(configObject.isAutostop());
 
+        initCbox();
+        for(int i=0; i < cbox_interval.getItems().size(); i++) {
+            if(configObject.getAutostopinterval() == (int)cbox_interval.getItems().get(i)) {
+                cbox_interval.getSelectionModel().select(i);
+            }
+        }
+
+        for(int i=0; i < cbox_minTime.getItems().size(); i++) {
+            if(configObject.getAutostopMinTime() == (int)cbox_minTime.getItems().get(i)) {
+                cbox_minTime.getSelectionModel().select(i);
+            }
+        }
+
+        for(int i=0; i < cbox_rushHour.getItems().size(); i++) {
+            if(configObject.getAutostopRushHour() == (int)cbox_rushHour.getItems().get(i)) {
+                cbox_rushHour.getSelectionModel().select(i);
+            }
+        }
+
         check_autostop.selectedProperty().addListener(new ChangeListener<Boolean>() {
             public void changed(ObservableValue<? extends Boolean> ov,
                                 Boolean old_val, Boolean new_val) {
@@ -69,10 +95,26 @@ public class CTR_Config {
         });
     }
 
+    private void initCbox(){
+        for(int i = 5; i <= 60; i += 5) {
+            cbox_interval.getItems().add(i);
+        }
+        for(int i = 1; i < 6; i++) {
+            cbox_minTime.getItems().add(i);
+        }
+        for(int i = 8; i <= 24; i++) {
+            cbox_rushHour.getItems().add(i);
+
+        }
+    }
+
     public void save() {
         configObject.setDoUpdate(check_update.isSelected());
         configObject.setMultiClock(check_multiClock.isSelected());
         configObject.setAutostop(check_autostop.isSelected());
+        configObject.setAutostopinterval((int) cbox_interval.getSelectionModel().getSelectedItem());
+        configObject.setAutostopMinTime((int) cbox_minTime.getSelectionModel().getSelectedItem());
+        configObject.setAutostopRushHour((int) cbox_rushHour.getSelectionModel().getSelectedItem());
         File_Handler.writeObject(configObject, "ver/config.dat");
         label_console.setText("Änderungen gespeichert!");
     }

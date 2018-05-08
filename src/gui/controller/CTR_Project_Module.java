@@ -70,6 +70,7 @@ public class CTR_Project_Module {
     public Timeline autoStopTimeline = new Timeline();
     private String projectpath = "";
     public int autoStopOffset = 0;
+    //public int autostopInterval = 15*60;
 
     private ArrayList<StorageObject> storageObjects = new ArrayList<>();
 
@@ -114,6 +115,8 @@ public class CTR_Project_Module {
         if(projectpath.equals("")) {
             menu_goToDir.setDisable(true);
         }
+
+        //autostopInterval = CTR_Config.configObject.getAutostopinterval();
     }
 
 
@@ -169,7 +172,7 @@ public class CTR_Project_Module {
             //AutoDetectionStop---------------------------------------------------------------------------------
             if(CTR_Config.configObject.isAutostop()) {
                 autoStopTimeline.setCycleCount(Timeline.INDEFINITE);
-                KeyFrame autoStopFrame = new KeyFrame(Duration.seconds(5), event -> {
+                KeyFrame autoStopFrame = new KeyFrame(Duration.seconds(CTR_Config.configObject.getAutostopinterval()*60), event -> {
                     System.out.println("AutoStop");
                     checkAutoStop();
                 });
@@ -186,6 +189,7 @@ public class CTR_Project_Module {
         running = false;
         mainTime.getKeyFrames().clear();
         autoStopTimeline.getKeyFrames().clear();
+        autoStopOffset = 0;
         saveData();
         initTrackingData();
 
@@ -321,12 +325,13 @@ public class CTR_Project_Module {
     }
 
     private void checkAutoStop() {
-
+        int minTime = CTR_Config.configObject.getAutostopMinTime()*3600;
+        int rushhour = CTR_Config.configObject.getAutostopRushHour();
         int offset = newSec - autoStopOffset;
         System.out.println("newSec: " + newSec + "; autostopoffset: " + autoStopOffset + " = " + offset);
 
         //Wenn Die Uhr mehr als ... Minuten läuft UND es nach 18 Uhr ist
-        if((offset >= 10) && (LocalTime.now().isAfter(LocalTime.of(12,0)))) {
+        if((offset >= minTime) && (LocalTime.now().isAfter(LocalTime.of(rushhour,0)))) {
             autoStopTimeline.stop();
             AutoStopAlert autoStopAlert = new AutoStopAlert(newSec, this);
         }

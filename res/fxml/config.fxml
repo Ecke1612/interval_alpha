@@ -24,6 +24,30 @@
                   </Label>
                   <Label text="Mehrere Uhren gleichzeitig laufen lassen" />
                   <Label text="Auto-Stop einschalten" />
+                  <Label text="Abfrage-Interval (in Min)">
+                     <VBox.margin>
+                        <Insets left="60.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Projekt-Mindest-Laufzeit (in Std)">
+                     <VBox.margin>
+                        <Insets left="60.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Feierabend (hh)">
+                     <VBox.margin>
+                        <Insets left="60.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </Label>
                </children>
             </VBox>
             <VBox fx:id="vbox_Control" spacing="10.0">
@@ -34,6 +58,21 @@
                      </VBox.margin></CheckBox>
                   <CheckBox fx:id="check_multiClock" mnemonicParsing="false" />
                   <CheckBox fx:id="check_autostop" mnemonicParsing="false" />
+                  <ComboBox fx:id="cbox_interval" prefWidth="55.0">
+                     <padding>
+                        <Insets top="-3.0" />
+                     </padding>
+                  </ComboBox>
+                  <ComboBox fx:id="cbox_minTime" prefWidth="55.0">
+                     <padding>
+                        <Insets top="-3.0" />
+                     </padding>
+                  </ComboBox>
+                  <ComboBox fx:id="cbox_rushHour" prefWidth="55.0">
+                     <padding>
+                        <Insets top="-3.0" />
+                     </padding>
+                  </ComboBox>
                   <HBox>
                      <children>
                         <Button fx:id="btn_save" mnemonicParsing="false" onAction="#save" text="Speicher">
