@@ -1,6 +1,7 @@
 package main.launcher;
 
 import gui.controller.CTR_Config;
+import gui.controller.CTR_newProject;
 import handling.File_Handler;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -16,15 +17,22 @@ public class Launcher extends Application {
     private Main_Application mainApp = new Main_Application();
     private Updater_Main updater = new Updater_Main();
     public static final String appName = "Interval";
+    private static CTR_StartScreen ctr_startScreen;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent startScreen = FXMLLoader.load(getClass().getResource("/fxml/startScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/startScreen.fxml"));
+        ctr_startScreen = new CTR_StartScreen();
+        fxmlLoader.setController(ctr_startScreen);
+        Parent startScreen = fxmlLoader.load();
+
         Scene scene = new Scene(startScreen);
         primaryStage.setScene(scene);
         primaryStage.setTitle(appName +" laden...");
 
         primaryStage.show();
+        ctr_startScreen.updateConsole("lade Konfigurationsdatei");
 
         new Thread(() -> Platform.runLater(() -> {
             CTR_Config ctr_config = new CTR_Config();
@@ -50,15 +58,17 @@ public class Launcher extends Application {
                 primaryStage.close();
             }
         })).start();
+        ctr_startScreen.updateConsole("überprüfe auf updates");
     }
 
     public void update(Stage primaryStage) throws Exception {
-        boolean update = updater.start(mainApp.getBuild());
+        boolean update = updater.start(mainApp.getBuild(), ctr_startScreen);
         if(update) {
             Runtime runTime = Runtime.getRuntime();
             runTime.exec("java -jar " + appName + ".jar");
             primaryStage.close();
         } else {
+
             mainApp.start(new Stage());
             primaryStage.close();
         }

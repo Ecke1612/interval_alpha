@@ -134,7 +134,7 @@ public class CSV_ProjectHandler {
     }
     */
 
-    //Schritt 3: Die erstellten Projekte als FXML Element im Dashboard platzieren und mit dem enstprechenden Controller
+    //Schritt 3: Die erstellten Projekte als FXML Element im Dashboard platzieren und mit dem enstprechenden CTR_StartScreen
     // aus der Projektliste verbinden
     private void createProjects() throws IOException {
         Main_Application.ctr_dashboard.vbox_projList.getChildren().clear();

@@ -34,7 +34,7 @@ public class CTR_newProject {
     //private CSV_ClientHandler csv_clientHandler = new CSV_ClientHandler();
     //private CSV_ProjectHandler csv_projectHandler = new CSV_ProjectHandler();
 
-    // ggf. ausprobieren über static main auf Dashboard zuzugreifen und den Controller nicht über Java definieren
+    // ggf. ausprobieren über static main auf Dashboard zuzugreifen und den CTR_StartScreen nicht über Java definieren
     //CTR_Dashboard ctr_dashboard;
 
     public CTR_newProject() {

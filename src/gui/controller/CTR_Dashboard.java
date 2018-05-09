@@ -48,8 +48,8 @@ public class CTR_Dashboard implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //setze den Controller als statische Variable in main ein und setze den Dashboardbutton übern den
-        // inludierten Menu Controller auf selected
+        //setze den CTR_StartScreen als statische Variable in main ein und setze den Dashboardbutton übern den
+        // inludierten Menu CTR_StartScreen auf selected
         Main_Application.setdashboardController(this);
         em_MenuController.menu_dashboard.setSelected(true);
         //Clients laden

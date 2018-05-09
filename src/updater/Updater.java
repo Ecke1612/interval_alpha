@@ -2,6 +2,7 @@ package updater;
 
 import handling.File_Handler;
 import javafx.scene.control.Alert;
+import main.launcher.CTR_StartScreen;
 import main.launcher.Launcher;
 
 import java.io.BufferedReader;

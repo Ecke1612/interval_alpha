@@ -34,9 +34,9 @@
       </VBox>
    </center>
    <bottom>
-      <VBox prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox_bottom" prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="console" text="console" textFill="#c6c6c6" />
+            <Label fx:id="label_console" text="console" textFill="#c6c6c6" />
          </children>
          <BorderPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

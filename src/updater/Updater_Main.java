@@ -1,5 +1,7 @@
 package updater;
 
+import main.launcher.CTR_StartScreen;
+
 /**
  * Created by Eike on 17.06.2017.
  */
@@ -7,7 +9,7 @@ public class Updater_Main {
 
     public static String build = "0";
 
-    public boolean start(String version) throws Exception {
+    public boolean start(String version, CTR_StartScreen ctr_startScreen) throws Exception {
         Updater_Main.build = version;
 
         System.out.println("old build main: " + build);

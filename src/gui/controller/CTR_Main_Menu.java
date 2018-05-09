@@ -46,7 +46,7 @@ public class CTR_Main_Menu {
     }
 
     public void showConfig() throws IOException {
-        //Muss hier geladen werden, da CTR-Config auch der Controller ist und diese nicht die fxml laden sollte/kann
+        //Muss hier geladen werden, da CTR-Config auch der CTR_StartScreen ist und diese nicht die fxml laden sollte/kann
         Parent configUI = FXMLLoader.load(getClass().getResource("/fxml/config.fxml"));
         Main_Application.ctr_dashboard.borderpane.setCenter(configUI);
     }
