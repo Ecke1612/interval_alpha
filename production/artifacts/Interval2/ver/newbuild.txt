@@ -1,6 +1,11 @@
-0.61
+0.64
 
-- Inaktivitaet kann nach 18 Uhr festgestellt werden und fuehrt zu einer Meldung
+ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner ver die Datei config.dat GELÖSCHT werden. Diese ist veraltet und wird automatisch vom Programmn neu erstellt!
+
+- Inaktivitaet kann festgestellt werden und fuehrt zu einer Meldung
 	- Zeit kann auf beliebigen Zeitpunkt zurueckgesetzt werden
 	(Wenn vergessen wurde, die Uhr auszuschalten)
-- Designupdate
+
+- Optionsmenü um Einstellungen bezüglich der Auto-Stop-Funktion erweitert
+
+- Designupdates

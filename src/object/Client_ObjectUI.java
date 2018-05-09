@@ -24,6 +24,7 @@ public class Client_ObjectUI {
     private Color color;
     private int index;
     private CTR_Client ctr_client;
+    Label labelName = new Label();
 
     public Client_ObjectUI(String name, Color color, int index, CTR_Client ctr_client) {
         this.name = name;
@@ -36,7 +37,7 @@ public class Client_ObjectUI {
         mainVBox = new VBox();
         mainVBox.setStyle("-fx-background-color: " + Manager.getHexColorString(color) +";" +
         "-fx-padding: 20;");
-        Label labelName = new Label();
+
         Label labelactiveProjects = new Label();
 
         Button btn_rename = new Button("umbennen");
@@ -106,6 +107,8 @@ public class Client_ObjectUI {
             if(Manager.clients.get(i).getName().equals(name)){
                 Manager.clients.set(i, (new ClientStorageObject(newName, Manager.clients.get(i).getColor())));
             }
+            name = newName;
+            labelName.setText(newName);
         }
         CSV_ClientHandler.csvWriter();
         //Iteratte Projektliste und sucht nach Kundenname und ersetzt diesen mit neuem + setzt Clientlabel entsprechend

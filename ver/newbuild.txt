@@ -1,4 +1,4 @@
-0.63
+0.64
 
 ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner ver die Datei config.dat GELÖSCHT werden. Diese ist veraltet und wird automatisch vom Programmn neu erstellt!
 
