@@ -88,6 +88,9 @@ public class Manager {
             case 1:
                 path = "/css/ui_view_green.css";
                 break;
+            case 2:
+                path = "/css/ui_view_soft.css";
+                break;
         }
         return path;
     }

@@ -1,18 +1,13 @@
 package gui.controller;
 
-import handling.Alert_Windows;
 import handling.File_Handler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import object.ConfigObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Eike on 21.06.2017.
@@ -151,8 +146,7 @@ public class CTR_Config {
             cbox_rushHour.getItems().add(i);
         }
 
-        cbox_css.getItems().add("default");
-        cbox_css.getItems().add("green");
+        cbox_css.getItems().addAll("default", "green", "soft");
     }
 
     public void save() {

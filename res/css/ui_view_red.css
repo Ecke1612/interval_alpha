@@ -1,0 +1,533 @@
+/* erdig
+darkred: rgb(112,48,48);
+darkbluegrey: rgb(47,52,59);
+greengray: rgb(126,130,122);
+beige: rgb(227,205,164);
+pink: rgb(199,121,102);
+*/
+
+/*
+Scheme2 :
+darkgreen:  84, 119, 123
+purple:     85, 36, 57
+pink:       193, 41, 66
+orange:     217, 91, 68
+yellow:     235, 208, 119
+*/
+
+/*
+Scheme3 green:
+white:      255, 255, 255
+Grey:       161, 161, 161
+darkGreen:  5, 106, 97
+lightgreen: 147, 239, 218
+greygreen:  146, 224, 207
+midgreen:   57, 166, 160
+*/
+
+/*
+Scheme4 blue:
+white:      255, 255, 255
+darkblue:   7, 38, 59
+blue:       31, 82, 109
+lighterblue:  54,112,157 
+turkies:    33, 135, 145
+red:        240, 78, 81
+*/
+
+/* Icons
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@font-face {
+  font-family: "uiicons";
+  src: url("../font/uiicons.ttf") format('truetype');
+  font-weight normal;
+  font-style: normal;
+}
+
+
+
+/* Main menu
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.menu {
+    -fx-background-color: linear-gradient(to bottom right, rgba(54,112,157, 1) 8%, rgba(31, 82, 109, 1) 100%);
+    -fx-min-height: 640px;
+    -fx-pref-height: 640px;
+    -fx-padding: 0px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .menudivider {
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .menudividerbig {
+    -fx-min-height: 174px;
+    -fx-pref-height: 174px;
+    -fx-max-height: 174px;
+    -fx-padding: 0px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .info {
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0px 16px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+    -fx-background-color: rgba(0, 0, 0, 0.08);
+}
+
+.menu .info .version {
+    -fx-text-fill: rgba(0, 0, 0, 0.64);;
+    -fx-font-size: 12px;
+}
+
+.menu .logo {
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-fill: rgba(255, 255, 255, 1);
+    -fx-image: url('../images/logo.png');
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .settings {
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-padding: 0px;
+}
+
+.menu .btn {
+    -fx-alignment: baseline-left;
+    -fx-background-radius: 0px;
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-padding: 0px 16px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .action {
+    -fx-alignment: baseline-left;
+    -fx-background-color: rgba(240, 78, 81, 1);
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-padding: 0px 16px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .action:selected {
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-padding: 0px 16px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.menu .btn:selected {
+    -fx-text-fill: rgba(255,255,255, 1);
+    -fx-border-color: rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(255, 255, 255, 1);
+    -fx-border-width: 0 0 0 4px;
+    -fx-padding: 0 0 0 12px;
+    -fx-background-color: rgba(0, 0, 0, 0.08);
+}
+
+.menu .action .ico {
+    -fx-font-family: 'uiicons';
+    -fx-font-size: 24px;
+    -fx-padding: 0px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-min-width: 40px;
+    -fx-pref-width: 40px;
+    -fx-max-width: 40px;
+}
+
+.menu .btn .ico {
+    -fx-font-family: 'uiicons';
+    -fx-font-size: 24px;
+    -fx-padding: 0px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-min-width: 40px;
+    -fx-pref-width: 40px;
+    -fx-max-width: 40px;
+}
+
+.menu .btn:selected .ico {
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+
+/*DASHBOARD
+--------------------------------------------------------------------*/
+.dashboard {
+    /*-fx-background-color: rgb(161, 161, 161);*/
+}
+
+.dashboard .menuswitch-btns {
+    -fx-background-color: rgb(5, 106, 97);
+}
+
+.dashboard .menuswitch-btns:hover {
+    -fx-background-color: rgb(240, 78, 81);
+}
+
+.dashboard .vboxbg {
+    -fx-background-color: rgb(255,255,255);
+}
+
+.scrollepane {
+    /*
+    -fx-background: rgba(255,255,255,0);
+    -fx-border-color: rgba(255,255,255,0);
+    */
+}
+
+
+
+/* Project module
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.project {
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-padding: 8px 16px;
+    /*-fx-min-width: 250px;
+    -fx-pref-width: 600px;
+    -fx-max-width: 916px;
+    -fx-min-height: 96px;
+    -fx-pref-height: 96px;
+    -fx-max-height: 96px;*/
+    -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244,244,244, 1) rgba(0, 0, 0, 0);
+    -fx-border-width: 0 0 1px 0;
+}
+
+.project .projectdivider {
+    -fx-min-width: 16px;
+    -fx-pref-width: 16px;
+    -fx-max-width: 16px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+}
+
+.project .note {
+    -fx-min-width: 100px;
+    -fx-pref-width: 220px;
+    -fx-max-width: 350px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .note .cap {
+    -fx-alignment: center;
+    -fx-font-size: 18px;
+    -fx-background-color: rgba(98, 124, 140, 1);
+    -fx-background-radius: 48px;
+    -fx-text-fill: rgba(244, 244, 244, 1);
+    -fx-min-width: 48px;
+    -fx-pref-width: 48px;
+    -fx-max-width: 48px;
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-max-height: 48px;
+    -fx-padding: 0px;
+}
+
+.project .note .inputs {
+    -fx-min-width: 200px;
+    -fx-pref-width: 220px;
+    -fx-max-width: 300px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .note .input {
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-background-radius: 0px;
+    -fx-font-size: 12px;
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0px;
+}
+
+.project .note .projectname {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(98, 124, 140, 1);
+}
+
+.project .client {
+    -fx-alignment: center;
+    -fx-min-width: 50px;
+    -fx-pref-width: 160px;
+    -fx-max-width: 160px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .client .name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(0, 0, 0, 0.32);
+}
+
+.project .time {
+    -fx-alignment: center;
+    -fx-min-width: 112px;
+    -fx-pref-width: 112px;
+    -fx-max-width: 112px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .actions {
+    -fx-alignment: center;
+    -fx-min-width: 112px;
+    -fx-pref-width: 112px;
+    -fx-max-width: 112px;
+    -fx-min-height: 80px;
+    -fx-pref-height: 80px;
+    -fx-max-height: 80px;
+    -fx-padding: 0px;
+}
+
+.project .actions .btns {
+    -fx-font-family: 'uiicons';
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-size: 24px;
+    -fx-mark-color: transparent;
+}
+
+.project .actions .timer {
+    -fx-text-fill: rgba(240, 78, 81, 1);
+}
+
+.project .actions .more {
+    -fx-opacity: 0.32;
+}
+
+.project .actions .more .context-menu {
+    -fx-font-size: 15px;
+}
+
+.project .actions .menu-button > .arrow-button {
+    -fx-padding: 0px;
+}
+
+.project .actions .menu-button > .arrow-button > .arrow {
+    -fx-padding: 0px;
+}
+
+/*
+.a > .i > .i,
+.a .i
+
+<a class="a">
+    <i class="i">
+        <i class="i"></i>
+    </i>
+</a>
+*/
+
+
+
+/*----Report----------------
+---------------------------------------------------*/
+/* Project module
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.report {
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-padding: 8px 16px;
+    -fx-min-width: 250px;
+    -fx-pref-width: 600px;
+    -fx-max-width: 916px;
+    -fx-min-height: 55px;
+    -fx-pref-height: 55px;
+    -fx-max-height: 55px;
+    -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244, 244, 244, 1) rgba(0, 0, 0, 0);
+    -fx-border-width: 0 0 1px 0;
+}
+
+.report .projectdivider {
+    -fx-min-width: 16px;
+    -fx-pref-width: 16px;
+    -fx-max-width: 16px;
+    -fx-min-height: 40px;
+    -fx-pref-height: 40px;
+    -fx-max-height: 40px;
+}
+
+.report .note {
+    -fx-min-width: 60px;
+    -fx-pref-width: 120px;
+    -fx-max-width: 250px;
+    -fx-padding: 0px;
+}
+
+.report .note .cap {
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-background-color: rgba(98, 124, 140, 1);
+    -fx-background-radius: 30px;
+    -fx-text-fill: rgba(244, 244, 244, 1);
+    -fx-min-width: 30px;
+    -fx-pref-width: 30px;
+    -fx-max-width: 30px;
+    -fx-min-height: 30px;
+    -fx-pref-height: 30px;
+    -fx-max-height: 30px;
+    -fx-padding: 0px;
+}
+
+.report .note .projectname {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(98, 124, 140, 1);
+}
+
+
+.report .client .name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(0, 0, 0, 0.32);
+}
+
+.report .time {
+    -fx-alignment: center;
+    -fx-min-width: 70px;
+    -fx-pref-width: 70px;
+    -fx-max-width: 70px;
+    -fx-padding: 0px;
+}
+
+.report .actions {
+    -fx-alignment: center;
+    -fx-min-width: 50px;
+    -fx-pref-width: 50px;
+    -fx-max-width: 50px;
+    -fx-padding: 0px;
+}
+
+.report .actions .btns {
+    -fx-font-family: 'uiicons';
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-size: 24px;
+    -fx-mark-color: transparent;
+}
+
+.report .actions .more {
+    -fx-opacity: 0.32;
+}
+
+.report .actions .more .context-menu {
+    -fx-font-size: 15px;
+}
+
+.report .actions .menu-button > .arrow-button {
+    -fx-padding: 0px;
+}
+
+.report .actions .menu-button > .arrow-button > .arrow {
+    -fx-padding: 0px;
+}
+
+//----------------------------Clients-Objects-----------------------------------------------------------------
+.clientobject-btns1 {
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 0 3 3 0;
+}
+
+.clientobject-btns {
+    -fx-background-color: transparent;
+    -fx-background-radius:5px;
+    -fx-font-weight: bold;
+    -fx-margin: 5px;
+    -fx-border-color: rgba(0,0,0,0.2);
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
+.clientobject-btns:hover {
+    -fx-background-color: rgba(255,255,255, 0.2);
+    -fx-background-radius:5px;
+    -fx-font-weight: bold;
+    -fx-margin: 5px;
+    -fx-border-color: rgba(0,0,0,0.5);
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
+.clientobject-btns:active {
+	-fx-position:relative;
+	-fx-top:1px;
+}
+
+.clientobject-newclient-btns {
+    -fx-background-color: rgb(31, 82, 109);
+        /*linear-gradient(#acf0f2 0%, #1695a3 100%);*/
+    -fx-background-radius:5px;
+    -fx-font-size: 18;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    /*-fx-border-color: #BEE1E8;*/
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
+
+.clientobject-newclient-btns:hover {
+    -fx-background-color: rgb(240, 78, 81);
+        /*linear-gradient(#9BC9D9 0%, #BEE1E8 25%, #DAE8F1 75%, #FFFFFF 100%);*/
+    -fx-background-radius:5px;
+    -fx-font-size: 18;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    /*-fx-border-color: #BEE1E8;*/
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}

@@ -26,7 +26,6 @@ public class CTR_Main_Menu {
 
     public void initialize() {
         vbox_main.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
-        System.out.println(Manager.getCSSPath(CTR_Config.configObject.getCssIndex()));
         version.setText("Version: " + Main_Application.build);
     }
 

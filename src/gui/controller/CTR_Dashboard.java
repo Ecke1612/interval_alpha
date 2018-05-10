@@ -48,6 +48,7 @@ public class CTR_Dashboard implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        borderpane.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
         //setze den CTR_StartScreen als statische Variable in main ein und setze den Dashboardbutton übern den
         // inludierten Menu CTR_StartScreen auf selected
         Main_Application.setdashboardController(this);
