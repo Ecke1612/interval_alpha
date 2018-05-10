@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import main.Main_Application;
 
 import java.io.File;
@@ -55,6 +56,18 @@ public class Alert_Windows {
             return "";
         }else{
             return (selectedDirectory.getAbsolutePath());
+        }
+    }
+
+    public static String chooseFile() {
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(Main_Application.primaryStage);
+
+        if(file == null){
+            System.out.println("No Directory selected");
+            return "";
+        }else{
+            return (file.getAbsolutePath());
         }
     }
 

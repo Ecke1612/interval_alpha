@@ -79,4 +79,17 @@ public class Manager {
         return hex;
     }
 
+    public static String getCSSPath(int index) {
+        String path = "";
+        switch(index) {
+            case 0:
+                path = "/css/ui_view.css";
+                break;
+            case 1:
+                path = "/css/ui_view_green.css";
+                break;
+        }
+        return path;
+    }
+
 }

@@ -1,9 +1,11 @@
 package gui.controller;
 
+import handling.Alert_Windows;
 import handling.File_Handler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -31,6 +33,9 @@ public class CTR_Config {
     public ComboBox cbox_minTime;
     @FXML
     public ComboBox cbox_rushHour;
+    @FXML
+    public ComboBox cbox_css;
+
 
     public static ConfigObject configObject;
 
@@ -71,6 +76,12 @@ public class CTR_Config {
             }
         }
 
+        cbox_css.getSelectionModel().select(configObject.getCssIndex());
+
+        changeListener();
+    }
+
+    private void changeListener() {
         check_autostop.selectedProperty().addListener(new ChangeListener<Boolean>() {
             public void changed(ObservableValue<? extends Boolean> ov,
                                 Boolean old_val, Boolean new_val) {
@@ -118,7 +129,16 @@ public class CTR_Config {
                 save();
             }
         });
+
+        cbox_css.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                label_console.setText("Neues Farbschema gewählt. Interval bitte neustarten!");
+                save();
+            }
+        });
     }
+
 
     private void initCbox(){
         for(int i = 5; i <= 60; i += 5) {
@@ -129,8 +149,10 @@ public class CTR_Config {
         }
         for(int i = 8; i <= 24; i++) {
             cbox_rushHour.getItems().add(i);
-
         }
+
+        cbox_css.getItems().add("default");
+        cbox_css.getItems().add("green");
     }
 
     public void save() {
@@ -140,6 +162,7 @@ public class CTR_Config {
         configObject.setAutostopinterval((int) cbox_interval.getSelectionModel().getSelectedItem());
         configObject.setAutostopMinTime((int) cbox_minTime.getSelectionModel().getSelectedItem());
         configObject.setAutostopRushHour((int) cbox_rushHour.getSelectionModel().getSelectedItem());
+        configObject.setCssIndex(cbox_css.getSelectionModel().getSelectedIndex());
         File_Handler.writeObject(configObject, "ver/config.dat");
         //label_console.setText("Änderungen gespeichert!");
     }

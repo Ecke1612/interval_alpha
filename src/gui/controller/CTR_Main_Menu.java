@@ -1,5 +1,6 @@
 package gui.controller;
 
+import handling.Manager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 import main.Main_Application;
+import object.ConfigObject;
 
 import java.io.IOException;
 
@@ -16,13 +18,15 @@ import java.io.IOException;
 public class CTR_Main_Menu {
 
     @FXML
-    public VBox vbox;
+    public VBox vbox_main;
     @FXML
     public ToggleButton menu_dashboard;
     @FXML
     private Label version;
 
     public void initialize() {
+        vbox_main.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
+        System.out.println(Manager.getCSSPath(CTR_Config.configObject.getCssIndex()));
         version.setText("Version: " + Main_Application.build);
     }
 

@@ -13,6 +13,7 @@ public class ConfigObject implements Serializable {
     private int autostopinterval = 15;
     private int autostopMinTime = 1;
     private int autostopRushHour = 18;
+    private int cssIndex = 0;
 
     public boolean isDoUpdate() {
         return doUpdate;
@@ -60,5 +61,13 @@ public class ConfigObject implements Serializable {
 
     public void setAutostopRushHour(int autostopRushHour) {
         this.autostopRushHour = autostopRushHour;
+    }
+
+    public int getCssIndex() {
+        return cssIndex;
+    }
+
+    public void setCssIndex(int cssIndex) {
+        this.cssIndex = cssIndex;
     }
 }

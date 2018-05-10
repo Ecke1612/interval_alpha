@@ -32,7 +32,6 @@ public class Launcher extends Application {
         primaryStage.setTitle(appName +" laden...");
 
         primaryStage.show();
-        ctr_startScreen.updateConsole("lade Konfigurationsdatei");
 
         new Thread(() -> Platform.runLater(() -> {
             CTR_Config ctr_config = new CTR_Config();

@@ -48,6 +48,7 @@
                         <Insets top="4.0" />
                      </padding>
                   </Label>
+                  <ComboBox fx:id="cbox_css" prefWidth="120.0" promptText="Farbschema" />
                </children>
             </VBox>
             <VBox fx:id="vbox_Control" spacing="10.0">
