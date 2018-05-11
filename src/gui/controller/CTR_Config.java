@@ -146,7 +146,7 @@ public class CTR_Config {
             cbox_rushHour.getItems().add(i);
         }
 
-        cbox_css.getItems().addAll("default", "green", "soft");
+        cbox_css.getItems().addAll("default", "green", "blue","vanilla");
     }
 
     public void save() {

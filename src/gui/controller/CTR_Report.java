@@ -36,6 +36,7 @@ public class CTR_Report {
 
     public void initialize() {
         mainVBox = new VBox();
+        mainVBox.getStyleClass().add("reportHeader");
         headerHBox = new HBox();
         entryVBox = new VBox();
         label_dayTime = new Label();
