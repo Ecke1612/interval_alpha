@@ -9,3 +9,5 @@ ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner v
 - Optionsmenü um Einstellungen bezüglich der Auto-Stop-Funktion erweitert
 
 - Designupdates
+
+- Es können nun unterschiedliche Farbschemas für die Oberfläche ausgewählt werden

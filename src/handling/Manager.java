@@ -55,19 +55,29 @@ public class Manager {
         return text;
     }
 
-    public static String getCSSTextColorByBrightness(Color color) {
+    public static String getCSSTextColorByBrightness(Color color, boolean b) {
         if(color.getBrightness() < 0.81) {
-            return ("-fx-text-fill: rgb(255,255,255)");
+            if(b) {
+                return ("-fx-text-fill: rgb(255,255,255);" +
+                        "-fx-border-color: rgba(255,255,255,0.4);");
+            } else {
+                return "-fx-text-fill: rgb(255,255,255);";
+            }
         } else {
-            return ("-fx-text-fill: rgb(0,0,0)");
+            if(b) {
+                return ("-fx-text-fill: rgb(0,0,0);" +
+                        "-fx-border-color: rgba(0,0,0,0.2);");
+            }else {
+                return "-fx-text-fill: rgb(0,0,0);";
+            }
         }
     }
 
-    public static String getCSSPrompTextColorByBrightness(Color color) {
+    public static String getCSSComboBoxColorByBrightness(Color color) {
         if(color.getBrightness() < 0.81) {
-            return ("-fx-prompt-text-fill: rgb(255,255,255)");
+            return ("comboboxWhite");
         } else {
-            return ("-fx-prompt-text-fill: rgb(0,0,0)");
+            return ("comboboxBlack");
         }
     }
 

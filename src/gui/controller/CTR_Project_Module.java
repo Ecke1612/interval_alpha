@@ -89,7 +89,7 @@ public class CTR_Project_Module {
         char pUpper = Character.toUpperCase(p);
 
         label_firstChar.setText(String.valueOf(pUpper));
-        label_firstChar.setStyle("-fx-background-color: " + Manager.getHexColorString(client.getColor()) + ";" + Manager.getCSSTextColorByBrightness(client.getColor()));
+        label_firstChar.setStyle("-fx-background-color: " + Manager.getHexColorString(client.getColor()) + ";" + Manager.getCSSTextColorByBrightness(client.getColor(),false));
         initTrackingData();
         //wenn StorageObjekte vorhanden sind, errechne die gesamtzeit daraus
         if(storageObjects.size() != 0) {

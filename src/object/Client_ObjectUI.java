@@ -1,6 +1,7 @@
 package object;
 
 import gui.controller.CTR_Client;
+import gui.controller.CTR_Config;
 import gui.controller.CTR_Project_Module;
 import handling.Alert_Windows;
 import handling.CSV_ClientHandler;
@@ -37,30 +38,37 @@ public class Client_ObjectUI {
         mainVBox = new VBox();
         mainVBox.setStyle("-fx-background-color: " + Manager.getHexColorString(color) +";" +
         "-fx-padding: 20;");
+        //mainVBox.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
+        mainVBox.getStyleClass().add("clientobject");
 
         Label labelactiveProjects = new Label();
 
         Button btn_rename = new Button("umbennen");
-        btn_rename.getStyleClass().add("clientobject-btns");
-        btn_rename.setStyle(Manager.getCSSTextColorByBrightness(color));
+        btn_rename.getStyleClass().add("btns");
+        btn_rename.setStyle(Manager.getCSSTextColorByBrightness(color,true));
 
         Button btn_delete = new Button(" entfernen ");
-        btn_delete.getStyleClass().add("clientobject-btns");
-        btn_delete.setStyle(Manager.getCSSTextColorByBrightness(color));
+        btn_delete.getStyleClass().add("btns");
+        btn_delete.setStyle(Manager.getCSSTextColorByBrightness(color,true));
 
         ColorPicker colorPicker = new ColorPicker();
-        colorPicker.getStyleClass().add("clientobject-btns");
-        colorPicker.setStyle("-fx-prompt-text-fill: rgb(100,200,150);");
+        //colorPicker.getStyleClass().add(Manager.getCSSComboBoxColorByBrightness(color));
+        if(color.getBrightness() < 0.81) {
+            colorPicker.getStyleClass().add("colorpickerWhite");
+        } else {
+            colorPicker.getStyleClass().add("colorpickerBlack");
+        }
+        //colorPicker.setStyle(".arrow-button {-fx-background-color: rgb(0,0,0);}");
 
-        colorPicker.setMaxWidth(85);
+        colorPicker.setMaxWidth(100);
 
 
         labelName.setText(name);
         labelName.setStyle("-fx-font-size: 18px;" +
                 "-fx-font-weight: bold;" +
-                Manager.getCSSTextColorByBrightness(color));
+                Manager.getCSSTextColorByBrightness(color,false));
         labelactiveProjects.setText(activeProjects() + " aktive Projekte");
-        labelactiveProjects.setStyle(Manager.getCSSTextColorByBrightness(color));
+        labelactiveProjects.setStyle(Manager.getCSSTextColorByBrightness(color,false));
 
 
         btn_rename.setOnAction(event -> {

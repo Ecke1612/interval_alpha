@@ -31,8 +31,9 @@ public class CTR_Client {
     public void initialize() {
         VBox vbox = new VBox();
         HBox header = new HBox();
+        header.getStyleClass().add("clientobject");
         Button btn_newClient = new Button("Neuer Kunde");
-        btn_newClient.getStyleClass().add("clientobject-newclient-btns");
+        btn_newClient.getStyleClass().add("new");
         btn_newClient.setOnAction(event -> {
             NewClient newClient = new NewClient();
             newClient.createNewClient();

@@ -76,7 +76,7 @@ public class Report_Object {
         char p = client.getName().charAt(0);
         char pUpper = Character.toUpperCase(p);
         label_firstChar.setText(String.valueOf(pUpper));
-        label_firstChar.setStyle("-fx-background-color: " + Manager.getHexColorString(client.getColor()) + ";" + Manager.getCSSTextColorByBrightness(client.getColor()));
+        label_firstChar.setStyle("-fx-background-color: " + Manager.getHexColorString(client.getColor()) + ";" + Manager.getCSSTextColorByBrightness(client.getColor(),false));
         menu_reopen.setDisable(true);
         if(closed) {
             label_firstChar.setStyle("-fx-background-color: rgb(180,180,180);");

@@ -181,7 +181,7 @@ lightgrey:   180,180,180
 }
 
 .dashboard .vboxbg {
-    -fx-background-color: rgb(255,255,255);
+    -fx-background-color: rgb(100, 100, 100);
 }
 
 .scrollepane {
@@ -347,7 +347,59 @@ lightgrey:   180,180,180
 
 
 
-/*----Report----------------
+/*----Report-----------------------------------------*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.reportHeader {
+    
+}
+.reportHeader .btn_main {
+    -fx-background-color: rgb(77, 168, 37);
+    -fx-background-radius:5px;
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
+
+.reportHeader .btn_main:hover {
+    -fx-background-color: rgb(156,215,106);
+    -fx-background-radius:5px;
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
+
+.reportHeader .timebtn {
+    -fx-background-color: rgb(180, 180, 180);
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+}
+.reportHeader .timebtn:hover {
+    -fx-background-color: rgb(100, 100, 100);
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+}
+
+.reportHeader .datepicker {
+    -fx-background-color: rgb(51,51,51);
+    -fx-background-radius:5px;
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
+
+
 ---------------------------------------------------*/
 /* Project module
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

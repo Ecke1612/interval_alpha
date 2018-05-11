@@ -198,7 +198,7 @@ red:        240, 78, 81
 }
 
 .dashboard .menuswitch-btns {
-    -fx-background-color: rgb(5, 106, 97);
+    -fx-background-color: rgb(54,112,157);
 }
 
 .dashboard .menuswitch-btns:hover {
@@ -215,7 +215,6 @@ red:        240, 78, 81
     -fx-border-color: rgba(255,255,255,0);
     */
 }
-
 
 
 /* Project module
@@ -370,7 +369,57 @@ red:        240, 78, 81
 </a>
 */
 
+/*----Report-----------------------------------------*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.reportHeader {
+    
+}
+.reportHeader .btn_main {
+    -fx-background-color: rgb(54,112,157);
+    -fx-background-radius:5px;
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
 
+.reportHeader .btn_main:hover {
+    -fx-background-color: rgb(240, 78, 81);
+    -fx-background-radius:5px;
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
+
+.reportHeader .timebtn {
+    -fx-background-color: rgb(54,112,157);
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+}
+.reportHeader .timebtn:hover {
+    -fx-background-color: rgb(240, 78, 81);
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+}
+
+.reportHeader .datepicker {
+    -fx-background-color: rgb(240, 78, 81);
+    -fx-background-radius:5px;
+    -fx-font-size: 14;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 1;
+}
 
 /*----Report----------------
 ---------------------------------------------------*/
@@ -505,7 +554,7 @@ red:        240, 78, 81
 }
 
 .clientobject-newclient-btns {
-    -fx-background-color: rgb(31, 82, 109);
+    -fx-background-color: rgb(54,112,157);
         /*linear-gradient(#acf0f2 0%, #1695a3 100%);*/
     -fx-background-radius:5px;
     -fx-font-size: 18;
