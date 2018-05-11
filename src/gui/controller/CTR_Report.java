@@ -36,24 +36,28 @@ public class CTR_Report {
 
     public void initialize() {
         mainVBox = new VBox();
-        mainVBox.getStyleClass().add("reportHeader");
         headerHBox = new HBox();
+        headerHBox.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
+        headerHBox.getStyleClass().add("reportHeader");
         entryVBox = new VBox();
         label_dayTime = new Label();
         btn_minusDay = new Button("<");
+        btn_minusDay.getStyleClass().add("timebtn");
+
         btn_plusDay = new Button(">");
+        btn_plusDay.getStyleClass().add("timebtn");
+
         expandButton = new ToggleButton("alle ausklappen");
+        expandButton.getStyleClass().add("btn_main");
+
         label_dayTime.setStyle("-fx-font-size: 18px;" +
                 "-f-font-weight: bold;");
+
+        datePicker.getStyleClass().add("datepicker");
+
         headerHBox.setSpacing(5);
         headerHBox.getChildren().addAll(btn_minusDay, datePicker, btn_plusDay, expandButton);
         mainVBox.getChildren().addAll(headerHBox, entryVBox, label_dayTime);
-
-        btn_minusDay.setStyle(
-                "-fx-font-size: 12px;" +
-                "-fx-font-weight: bold;" +
-                "-fx-text-fill: rgba(98, 124, 140, 1);"
-        );
 
         btn_minusDay.setOnAction(event -> {
             LocalDate date = datePicker.getValue();
