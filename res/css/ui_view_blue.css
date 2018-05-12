@@ -388,14 +388,6 @@ red:        240, 78, 81
 
 .reportHeader .btn_main:hover {
     -fx-background-color: rgb(240, 78, 81);
-    -fx-background-radius:5px;
-    -fx-font-size: 14;
-    -fx-text-fill: rgb(255,255,255);
-    -fx-border-insets: 5px;
-    -fx-background-insets: 5px;
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-    -fx-background-insets: 1;
 }
 
 .reportHeader .timebtn {
@@ -405,11 +397,9 @@ red:        240, 78, 81
 }
 .reportHeader .timebtn:hover {
     -fx-background-color: rgb(240, 78, 81);
-    -fx-font-size: 14;
-    -fx-text-fill: rgb(255,255,255);
 }
 
-.reportHeader .datepicker {
+.reportHeader .datepicker {/*
     -fx-background-color: rgb(240, 78, 81);
     -fx-background-radius:5px;
     -fx-font-size: 14;
@@ -418,7 +408,21 @@ red:        240, 78, 81
     -fx-background-insets: 5px;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
-    -fx-background-insets: 1;
+    -fx-background-insets: 1;*/
+}
+
+.reportHeader .datepicker > .text-field {
+    /*-fx-background-color: rgb(77, 168, 37);*/
+}
+.reportHeader .datepicker > .arrow-button {
+    -fx-background-color: rgb(54,112,157);
+}
+.reportHeader .datepicker > .arrow-button:hover {
+    -fx-background-color: rgb(240, 78, 81);
+}
+.reportHeader .datepicker > .arrow-button .arrow {
+    -fx-background-color: rgb(255,255,255);
+    /*-fx-text-fill: rgb(77, 168, 37);*/
 }
 
 /*----Report----------------
@@ -522,13 +526,12 @@ red:        240, 78, 81
 }
 
 //----------------------------Clients-Objects-----------------------------------------------------------------
-.clientobject-btns1 {
+.clientobject {
     -fx-background-color: transparent;
-    -fx-border-color: black;
-    -fx-border-width: 0 3 3 0;
+    -fx-text-fill: rgb(255,255,255);
 }
 
-.clientobject-btns {
+.clientobject .btns {
     -fx-background-color: transparent;
     -fx-background-radius:5px;
     -fx-font-weight: bold;
@@ -538,45 +541,61 @@ red:        240, 78, 81
     -fx-border-radius: 5px;
     -fx-background-insets: 1;
 }
-.clientobject-btns:hover {
+.clientobject .btns:hover {
     -fx-background-color: rgba(255,255,255, 0.2);
-    -fx-background-radius:5px;
-    -fx-font-weight: bold;
-    -fx-margin: 5px;
-    -fx-border-color: rgba(0,0,0,0.5);
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-    -fx-background-insets: 1;
-}
-.clientobject-btns:active {
-	-fx-position:relative;
-	-fx-top:1px;
 }
 
-.clientobject-newclient-btns {
+.clientobject .new {
     -fx-background-color: rgb(54,112,157);
-        /*linear-gradient(#acf0f2 0%, #1695a3 100%);*/
+    -fx-text-fill: rgba(255,255,255);
     -fx-background-radius:5px;
-    -fx-font-size: 18;
-    -fx-text-fill: rgb(255,255,255);
-    -fx-border-insets: 5px;
-    -fx-background-insets: 5px;
-    /*-fx-border-color: #BEE1E8;*/
+    -fx-font-size: 18px;
+    -fx-margin: 5px;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
     -fx-background-insets: 1;
 }
 
-.clientobject-newclient-btns:hover {
+.clientobject .new:hover {
     -fx-background-color: rgb(240, 78, 81);
-        /*linear-gradient(#9BC9D9 0%, #BEE1E8 25%, #DAE8F1 75%, #FFFFFF 100%);*/
-    -fx-background-radius:5px;
-    -fx-font-size: 18;
+}
+
+
+.clientobject .colorpickerWhite {
+    -fx-background-color: transparent; 
+}
+ .clientobject .colorpickerWhite > .label {
     -fx-text-fill: rgb(255,255,255);
-    -fx-border-insets: 5px;
-    -fx-background-insets: 5px;
-    /*-fx-border-color: #BEE1E8;*/
+     -fx-border-color: rgba(255,255,255,0.4);
     -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-    -fx-background-insets: 1;
+    -fx-border-radius: 4px;
+}
+ .clientobject .colorpickerWhite > .label:hover {
+     -fx-background-color: rgba(255,255,255,0.2);
+     -fx-background-radius: 4px;
+}
+ .clientobject .colorpickerWhite > .arrow-button {
+    -fx-border-color: rgba(255,255,255,0);
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+}
+
+
+.clientobject .colorpickerBlack {
+    -fx-background-color: transparent; 
+}
+ .clientobject .colorpickerBlack > .label {
+    -fx-text-fill: rgb(0,0,0);
+     -fx-border-color: rgba(0,0,0,0.2);
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+}
+ .clientobject .colorpickerBlack > .label:hover {
+     -fx-background-color: rgba(0,0,0,0.2);
+     -fx-background-radius: 4px;
+}
+ .clientobject .colorpickerBlack > .arrow-button {
+    -fx-border-color: rgba(0,0,0,0);
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
 }

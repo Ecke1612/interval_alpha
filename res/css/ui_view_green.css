@@ -209,14 +209,6 @@ darkgrey:    51,51,51
 
 .reportHeader .btn_main:hover {
     -fx-background-color: rgb(156,215,106);
-    -fx-background-radius:5px;
-    -fx-font-size: 14;
-    -fx-text-fill: rgb(255,255,255);
-    -fx-border-insets: 5px;
-    -fx-background-insets: 5px;
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-    -fx-background-insets: 1;
 }
 
 .reportHeader .timebtn {
@@ -231,6 +223,7 @@ darkgrey:    51,51,51
 }
 
 .reportHeader .datepicker {
+    /*
     -fx-background-color: rgb(77, 168, 37);
     -fx-background-radius:5px;
     -fx-font-size: 14;
@@ -239,7 +232,7 @@ darkgrey:    51,51,51
     -fx-background-insets: 5px;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
-    -fx-background-insets: 1;
+    -fx-background-insets: 1;*/
 }
 
 .reportHeader .datepicker > .text-field {
@@ -247,6 +240,9 @@ darkgrey:    51,51,51
 }
 .reportHeader .datepicker > .arrow-button {
     -fx-background-color: rgb(77, 168, 37);
+}
+.reportHeader .datepicker > .arrow-button:hover {
+    -fx-background-color: rgb(156,215,106);
 }
 
 .reportHeader .datepicker > .arrow-button .arrow {
