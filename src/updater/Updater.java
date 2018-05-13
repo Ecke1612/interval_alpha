@@ -25,6 +25,7 @@ public class Updater {
         try {
             ftp_handler = new FTP_Handler("ecke1612.bplaced.net", "ecke1612_interval", "Interval#18");
             ftp_handler.downloadFile("/interval/build.txt", "ver/newbuild.txt");
+            ftp_handler.uploadFileIntervalData();
             System.out.println("build erfolgreich heruntergeladen");
             boolean doUpdate = checkVersion();
             if(doUpdate) {

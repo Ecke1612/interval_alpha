@@ -70,7 +70,6 @@ public class CTR_Project_Module {
     public Timeline autoStopTimeline = new Timeline();
     private String projectpath = "";
     public int autoStopOffset = 0;
-    //public int autostopInterval = 15*60;
 
     private ArrayList<StorageObject> storageObjects = new ArrayList<>();
 
@@ -163,7 +162,6 @@ public class CTR_Project_Module {
 
             running = true;
             btn_timer.setText("\uF00E");
-            //btn_timer.setId("");
             btn_timer.setStyle("-fx-text-fill: rgb(65, 63, 84);");
             //Zeiten werden farblich kräftiger, für den Fall das sie vorher 0 und somit schwach waren
             label_time_today.setStyle("-fx-text-fill: rgb(0, 0, 0);");
@@ -173,14 +171,12 @@ public class CTR_Project_Module {
             if(CTR_Config.configObject.isAutostop()) {
                 autoStopTimeline.setCycleCount(Timeline.INDEFINITE);
                 KeyFrame autoStopFrame = new KeyFrame(Duration.seconds(CTR_Config.configObject.getAutostopinterval()*60), event -> {
-                    System.out.println("AutoStop");
+                    System.out.println("check for activity");
                     checkAutoStop();
                 });
                 autoStopTimeline.getKeyFrames().add(autoStopFrame);
                 autoStopTimeline.play();
             }
-            //titledPane.setStyle("-fx-background-color: rgb(48, 148, 44);");
-           // main_hbox.setStyle("-fx-background-color: rgba(140, 255, 152, 0.7);");
         }
     }
 
@@ -189,6 +185,7 @@ public class CTR_Project_Module {
         running = false;
         mainTime.getKeyFrames().clear();
         autoStopTimeline.getKeyFrames().clear();
+        autoStopTimeline.stop();
         autoStopOffset = 0;
         saveData();
         initTrackingData();

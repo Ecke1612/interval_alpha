@@ -1,10 +1,8 @@
 package main;
 
+import gui.controller.CTR_Config;
 import gui.controller.CTR_Project_Module;
-import handling.Archiv_Handler;
-import handling.CSV_ProjectHandler;
-import handling.File_Handler;
-import handling.Manager;
+import handling.*;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -77,6 +75,12 @@ public class Main_Application extends Application {
         Archiv_Handler.loadArchiv();
 
         primaryStage.show();
+/*
+        if(CTR_Config.configObject.getUserName() == "") {
+            CTR_Config.configObject.setUserName(Alert_Windows.inputBox("Benutzername", "Benutzername Eingeben", "Bitte gib deinen Namen ein."));
+            CTR_Config ctr_config = new CTR_Config();
+            ctr_config.save();
+        }*/
     }
 
     public void loadDashboard() throws IOException {

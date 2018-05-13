@@ -1,6 +1,8 @@
 0.64
 
-ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner ver die Datei config.dat GELÖSCHT werden. Diese ist veraltet und wird automatisch vom Programmn neu erstellt!
+ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner "ver" die Datei config.dat GELÖSCHT werden. Diese ist veraltet und wird automatisch vom Programmn neu erstellt!
+
+VERBESSERUNGEN:
 
 - Inaktivitaet kann festgestellt werden und fuehrt zu einer Meldung
 	- Zeit kann auf beliebigen Zeitpunkt zurueckgesetzt werden
@@ -8,6 +10,10 @@ ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner v
 
 - Optionsmenü um Einstellungen bezüglich der Auto-Stop-Funktion erweitert
 
+- Updatefunktion neu implementiert und verweißt wieder auf einen aktuellen Server
+
 - Designupdates
 
 - Es können nun unterschiedliche Farbschemas für die Oberfläche ausgewählt werden
+
+- kleinere Fehlerbehebungen

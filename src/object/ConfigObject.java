@@ -14,6 +14,7 @@ public class ConfigObject implements Serializable {
     private int autostopMinTime = 1;
     private int autostopRushHour = 18;
     private int cssIndex = 0;
+   // private String userName = "";
 
     public boolean isDoUpdate() {
         return doUpdate;
@@ -70,4 +71,12 @@ public class ConfigObject implements Serializable {
     public void setCssIndex(int cssIndex) {
         this.cssIndex = cssIndex;
     }
+
+    /*public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }*/
 }
