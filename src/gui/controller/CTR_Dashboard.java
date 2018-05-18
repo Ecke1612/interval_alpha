@@ -3,6 +3,8 @@ package gui.controller;
 import handling.CSV_ClientHandler;
 import handling.CSV_ProjectHandler;
 import handling.Manager;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,10 +16,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import main.Main_Application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 /**
@@ -69,6 +73,23 @@ public class CTR_Dashboard implements Initializable {
                 e.printStackTrace();
             }
         }
+
+        //Checking Reminders
+        Timeline reminderTime = new Timeline();
+        reminderTime.setCycleCount(Timeline.INDEFINITE);
+
+        KeyFrame frame = new KeyFrame(Duration.minutes(1), event -> {
+            for(CTR_Project_Module project : Manager.projectList) {
+                if(project.getReminderObject() != null) {
+                    LocalTime localTime = LocalTime.now();
+                    if(localTime.getHour() == project.getReminderObject().getHour() && localTime.getMinute() == project.getReminderObject().getMin()) {
+                        System.out.println("ACHTUNG ACHTUNG DAS IST EIN WECKRUF!");
+                    }
+                }
+            }
+        });
+        reminderTime.getKeyFrames().add(frame);
+        reminderTime.play();
     }
 
     public CTR_Dashboard() {
@@ -124,6 +145,5 @@ public class CTR_Dashboard implements Initializable {
     public void removeProject(int index) {
         vbox_projList.getChildren().remove(index);
     }
-
 
 }

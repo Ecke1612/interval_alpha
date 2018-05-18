@@ -8,9 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -18,6 +20,7 @@ import javafx.util.Duration;
 import main.Main_Application;
 import object.ClientStorageObject;
 import object.ConfigObject;
+import object.ReminderObject;
 import object.StorageObject;
 
 import java.awt.*;
@@ -70,6 +73,7 @@ public class CTR_Project_Module {
     public Timeline autoStopTimeline = new Timeline();
     private String projectpath = "";
     public int autoStopOffset = 0;
+    private ReminderObject reminderObject;
 
     private ArrayList<StorageObject> storageObjects = new ArrayList<>();
 
@@ -333,6 +337,63 @@ public class CTR_Project_Module {
             AutoStopAlert autoStopAlert = new AutoStopAlert(newSec, this);
         }
 
+    }
+
+    public void reminderStage() {
+        Stage remindStage = new Stage();
+        remindStage.setTitle("Erinnung einfügen");
+        ReminderObject reminderObject;
+        VBox vBox = new VBox();
+        vBox.setSpacing(5);
+        Scene scene = new Scene(vBox);
+
+        HBox hbox1 = new HBox();
+        hbox1.setSpacing(5);
+
+        HBox hBox2 = new HBox();
+        hBox2.setSpacing(5);
+
+        HBox hbox3 = new HBox();
+        hBox2.setSpacing(5);
+
+        Label text = new Label("Füge eine Erinnerung für den");
+        Label text2 = new Label("heutigen Tag hinzu.");
+
+        TextField textField = new TextField();
+
+        ComboBox boxHours = new ComboBox();
+        boxHours.getItems().addAll("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24");
+        boxHours.getSelectionModel().select(7);
+
+        ComboBox boxMin = new ComboBox();
+        boxMin.getItems().addAll("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30",
+                "31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59");
+        boxMin.getSelectionModel().selectFirst();
+
+        hBox2.getChildren().addAll(textField, boxHours, boxMin);
+
+        Button btn_abort = new Button("Abbrechen");
+        btn_abort.setOnAction(event -> {
+            remindStage.close();
+        });
+
+        Button btn_save = new Button("Speichern");
+        btn_save.setOnAction(event -> {
+            createReminder(textField.getText(), boxHours.getSelectionModel().getSelectedIndex()+1, boxMin.getSelectionModel().getSelectedIndex());
+        });
+
+        vBox.getChildren().addAll(text,text2,hbox1,hBox2);
+        remindStage.setScene(scene);
+        remindStage.showAndWait();
+
+    }
+
+    private void createReminder(String text, int hour, int min) {
+        reminderObject = new ReminderObject(text, hour, min);
+    }
+
+    public ReminderObject getReminderObject() {
+        return reminderObject;
     }
 
     public String getName() { return name; }
