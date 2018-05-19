@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -59,6 +62,8 @@ public class CTR_Project_Module {
     TitledPane titledPane;
     @FXML
     public MenuItem menu_goToDir;
+    @FXML
+    ImageView image_reminder;
 
     private String name;
     private ClientStorageObject client;
@@ -118,7 +123,6 @@ public class CTR_Project_Module {
         if(projectpath.equals("")) {
             menu_goToDir.setDisable(true);
         }
-
         //autostopInterval = CTR_Config.configObject.getAutostopinterval();
     }
 
@@ -339,25 +343,34 @@ public class CTR_Project_Module {
 
     }
 
-    public void reminderStage() {
+    public void reminder() {
         Stage remindStage = new Stage();
         remindStage.setTitle("Erinnung einfügen");
-        ReminderObject reminderObject;
         VBox vBox = new VBox();
         vBox.setSpacing(5);
+        vBox.setPadding(new Insets(10));
         Scene scene = new Scene(vBox);
 
-        HBox hbox1 = new HBox();
-        hbox1.setSpacing(5);
+        HBox hbox1 = new HBox(5);
 
-        HBox hBox2 = new HBox();
-        hBox2.setSpacing(5);
+        HBox hBox2 = new HBox(5);
 
-        HBox hbox3 = new HBox();
-        hBox2.setSpacing(5);
+        HBox hbox3 = new HBox(5);
 
-        Label text = new Label("Füge eine Erinnerung für den");
-        Label text2 = new Label("heutigen Tag hinzu.");
+        Label text = new Label("Füge eine Erinnerung für den für heute hinzu.");
+        Label text3 = new Label("");
+
+        Button btn_delete = new Button("löschen");
+        btn_delete.setOnAction(event -> {
+            deleteReminder();
+            reminder();
+            remindStage.close();
+        });
+
+        if(reminderObject != null) {
+            text3 = new Label("Erinnerung bereits gesetzt: " +reminderObject.getHour() + ":" + reminderObject.getMin());
+
+        }
 
         TextField textField = new TextField();
 
@@ -380,16 +393,26 @@ public class CTR_Project_Module {
         Button btn_save = new Button("Speichern");
         btn_save.setOnAction(event -> {
             createReminder(textField.getText(), boxHours.getSelectionModel().getSelectedIndex()+1, boxMin.getSelectionModel().getSelectedIndex());
+            remindStage.close();
         });
 
-        vBox.getChildren().addAll(text,text2,hbox1,hBox2);
+        if(reminderObject == null) hbox3.getChildren().addAll(btn_abort, btn_save);
+        else hbox3.getChildren().addAll(btn_delete,btn_abort, btn_save);
+
+        vBox.getChildren().addAll(text, text3, hbox1,hBox2, hbox3);
         remindStage.setScene(scene);
         remindStage.showAndWait();
 
     }
 
     private void createReminder(String text, int hour, int min) {
+        image_reminder.setVisible(true);
         reminderObject = new ReminderObject(text, hour, min);
+    }
+
+    public void deleteReminder() {
+        image_reminder.setVisible(false);
+        reminderObject = null;
     }
 
     public ReminderObject getReminderObject() {

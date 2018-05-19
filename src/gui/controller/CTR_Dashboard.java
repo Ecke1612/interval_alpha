@@ -1,5 +1,6 @@
 package gui.controller;
 
+import handling.Alert_Windows;
 import handling.CSV_ClientHandler;
 import handling.CSV_ProjectHandler;
 import handling.Manager;
@@ -8,8 +9,11 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
@@ -18,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.Main_Application;
+import object.ReminderObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -78,12 +83,12 @@ public class CTR_Dashboard implements Initializable {
         Timeline reminderTime = new Timeline();
         reminderTime.setCycleCount(Timeline.INDEFINITE);
 
-        KeyFrame frame = new KeyFrame(Duration.minutes(1), event -> {
+        KeyFrame frame = new KeyFrame(Duration.seconds(15), event -> {
             for(CTR_Project_Module project : Manager.projectList) {
                 if(project.getReminderObject() != null) {
                     LocalTime localTime = LocalTime.now();
                     if(localTime.getHour() == project.getReminderObject().getHour() && localTime.getMinute() == project.getReminderObject().getMin()) {
-                        System.out.println("ACHTUNG ACHTUNG DAS IST EIN WECKRUF!");
+                        showRemind(project);
                     }
                 }
             }
@@ -144,6 +149,28 @@ public class CTR_Dashboard implements Initializable {
 
     public void removeProject(int index) {
         vbox_projList.getChildren().remove(index);
+    }
+
+    public void showRemind(CTR_Project_Module project) {
+        Stage reminderStage = new Stage();
+        reminderStage.setTitle("Erinnerung");
+        VBox vBox = new VBox(5);
+        vBox.setPadding(new Insets(10));
+        Scene scene = new Scene(vBox);
+        reminderStage.setScene(scene);
+
+        Label label_Header = new Label("Projekt: " + project.getName() + " erinnert an:");
+        Label label_text = new Label(project.getReminderObject().getText());
+
+        Button btn_okay = new Button("Okay");
+        btn_okay.setOnAction(event -> {
+            project.deleteReminder();
+            reminderStage.close();
+        });
+
+        vBox.getChildren().addAll(label_Header, label_text, btn_okay);
+        reminderStage.setAlwaysOnTop(true);
+        reminderStage.show();
     }
 
 }

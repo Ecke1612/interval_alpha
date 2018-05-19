@@ -5,6 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.paint.Color;
 import object.ClientStorageObject;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +20,14 @@ public class Manager {
     public static ArrayList<ClientStorageObject> clients = new ArrayList<>();
 
     public static ArrayList<String> configList = new ArrayList<>();
+    public static FileInputStream reminder_image;
+    {
+        try {
+            reminder_image = new FileInputStream("/res/images/reminder.png");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public static String printTime(int seconds) {

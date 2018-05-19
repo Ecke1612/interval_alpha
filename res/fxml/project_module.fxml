@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" expanded="false" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" expanded="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
       <HBox fx:id="main_hbox" alignment="TOP_CENTER" fillHeight="false" maxHeight="96.0" maxWidth="1280.0" minHeight="96.0" minWidth="250.0" prefHeight="96.0" prefWidth="630.0" styleClass="project" stylesheets="@../css/ui_view.css">
          <children>
@@ -50,36 +57,48 @@
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
-            <HBox alignment="CENTER_RIGHT" minWidth="102.0" prefHeight="100.0" prefWidth="102.0" styleClass="actions">
+            <VBox alignment="TOP_RIGHT" styleClass="actions">
                <children>
-                  <ToggleButton fx:id="btn_timer" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startClock" text="">
-                     <styleClass>
-                        <String fx:value="btns" />
-                        <String fx:value="timer" />
-                     </styleClass>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ToggleButton>
-                  <MenuButton id="context-menu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#showProjectEdit" text="Bearbeiten" />
-                        <MenuItem mnemonicParsing="false" onAction="#resetTime" text="Zeit auf Null setzen" />
-                        <MenuItem fx:id="menu_goToDir" mnemonicParsing="false" onAction="#goToDir" text="Öffne Projektpfad" />
-                        <MenuItem mnemonicParsing="false" onAction="#reminder" text="Erinneung setzen" />
-                        <MenuItem mnemonicParsing="false" onAction="#toArchiv" text="Projekt abschließen" />
-                        <MenuItem mnemonicParsing="false" onAction="#deleteProject" text="Projekt löschen" />
-                     </items>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <styleClass>
-                        <String fx:value="btns" />
-                        <String fx:value="more" />
-                     </styleClass>
-                  </MenuButton>
+                  <ImageView fx:id="image_reminder" fitHeight="10.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/reminder.png" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_RIGHT" minWidth="102.0" prefHeight="100.0" prefWidth="102.0" styleClass="actions">
+                     <children>
+                        <ToggleButton fx:id="btn_timer" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startClock" text="">
+                           <styleClass>
+                              <String fx:value="btns" />
+                              <String fx:value="timer" />
+                           </styleClass>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ToggleButton>
+                        <MenuButton id="context-menu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#showProjectEdit" text="Bearbeiten" />
+                              <MenuItem mnemonicParsing="false" onAction="#resetTime" text="Zeit auf Null setzen" />
+                              <MenuItem fx:id="menu_goToDir" mnemonicParsing="false" onAction="#goToDir" text="Öffne Projektpfad" />
+                              <MenuItem mnemonicParsing="false" onAction="#reminder" text="Erinneung setzen" />
+                              <MenuItem mnemonicParsing="false" onAction="#toArchiv" text="Projekt abschließen" />
+                              <MenuItem mnemonicParsing="false" onAction="#deleteProject" text="Projekt löschen" />
+                           </items>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="btns" />
+                              <String fx:value="more" />
+                           </styleClass>
+                        </MenuButton>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
+               <padding>
+                  <Insets top="-1.0" />
+               </padding>
+            </VBox>
          </children>
       </HBox>
    </graphic>
