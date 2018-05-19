@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class Main_Application extends Application {
 
-    public static final String build = "0.65";
+    public static final String build = "0.66";
 
     private final String fn = "SourceSansPro-";
     private final String[] fonts = {"uiicons.ttf", fn+"Black.tff", fn+"BlackItalic.tff", fn+"Bold.tff",
