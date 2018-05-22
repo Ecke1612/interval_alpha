@@ -4,9 +4,11 @@ import handling.Archiv_Handler;
 import handling.Manager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import main.Main_Application;
 import object.Report_Object;
 

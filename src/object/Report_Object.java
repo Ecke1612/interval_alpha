@@ -8,12 +8,12 @@ import handling.CSV_ProjectHandler;
 import handling.Manager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TitledPane;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -178,6 +178,62 @@ public class Report_Object {
         } else {
             System.out.println("Projekt ist bereits aktiv");
         }
+    }
+
+
+    public void showDetails() {
+        Stage stage = new Stage();
+        VBox vBox = new VBox(5);
+        vBox.setPadding(new Insets(10));
+        Scene scene = new Scene(vBox);
+        stage.setTitle("Übersicht " + name);
+        stage.setScene(scene);
+
+        VBox vboxData = new VBox(3);
+        ScrollPane scrollPane = new ScrollPane();
+        for(StorageObject store : storageObjects) {
+            Label label = new Label(store.getDate() + "  -  " + Manager.printTimeWithoutSec(store.getMin()) + "  -  " + store.getComment());
+            label.setStyle("" +
+                    "-fx-font-size: 14px;");
+            vboxData.getChildren().add(label);
+        }
+        scrollPane.setContent(vboxData);
+
+        VBox vbox_sum = new VBox(5);
+        ArrayList<TimeProCommentObject> timeProCommentObjects = seperateTimeWithComments();
+        for(TimeProCommentObject timepro : timeProCommentObjects) {
+            Label label = new Label(timepro.getComment() + " - " + timepro.getTime());
+            label.setStyle("" +
+                    "-fx-font-size: 14px;");
+            vbox_sum.getChildren().add(label);
+        }
+
+        Label label_sum = new Label("Zusammenfassung: ");
+
+        Button btn_okay = new Button("Okay");
+        btn_okay.setOnAction(event -> {
+            stage.close();
+        });
+
+        vBox.getChildren().addAll(scrollPane, label_sum, vbox_sum, btn_okay);
+        stage.show();
+    }
+
+    private ArrayList<TimeProCommentObject> seperateTimeWithComments() {
+        ArrayList<TimeProCommentObject> timeProCommentObjects = new ArrayList<>();
+        for(StorageObject store : storageObjects) {
+            boolean hit = false;
+            for(TimeProCommentObject timepro : timeProCommentObjects) {
+                if(store.getComment().equals(timepro.getComment())) {
+                    hit = true;
+                    timepro.addTime(store.getMin());
+                }
+            }
+            if(!hit){
+                timeProCommentObjects.add(new TimeProCommentObject(store.getComment(), store.getMin()));
+            }
+        }
+        return timeProCommentObjects;
     }
 
     public void setClosed(boolean value) {

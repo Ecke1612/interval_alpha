@@ -63,7 +63,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <items>
-                              <MenuItem fx:id="menu_tracking" mnemonicParsing="false" text="Details" />
+                              <MenuItem fx:id="menu_tracking" mnemonicParsing="false" text="Details" onAction="#showDetails"/>
                               <MenuItem fx:id="menu_reopen" mnemonicParsing="false" onAction="#reopen" text="wieder eröffnen" />
                            </items>
                            <styleClass>
