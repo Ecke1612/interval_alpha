@@ -9,6 +9,7 @@ import handling.Manager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -186,36 +187,43 @@ public class Report_Object {
         VBox vBox = new VBox(5);
         vBox.setPadding(new Insets(10));
         Scene scene = new Scene(vBox);
+        stage.setMaxWidth(600);
+        stage.setMaxHeight(700);
         stage.setTitle("Übersicht " + name);
         stage.setScene(scene);
 
-        VBox vboxData = new VBox(3);
+        VBox vboxData = new VBox(2);
+        vboxData.setPadding(new Insets(5));
         ScrollPane scrollPane = new ScrollPane();
         for(StorageObject store : storageObjects) {
-            Label label = new Label(store.getDate() + "  -  " + Manager.printTimeWithoutSec(store.getMin()) + "  -  " + store.getComment());
+            Label label = new Label(store.getDate() + "  -  " + Manager.printTimeWithoutSec(store.getMin()*60) + "  -  " + store.getComment());
             label.setStyle("" +
                     "-fx-font-size: 14px;");
             vboxData.getChildren().add(label);
         }
         scrollPane.setContent(vboxData);
 
-        VBox vbox_sum = new VBox(5);
+        VBox vbox_sum = new VBox(3);
         ArrayList<TimeProCommentObject> timeProCommentObjects = seperateTimeWithComments();
         for(TimeProCommentObject timepro : timeProCommentObjects) {
-            Label label = new Label(timepro.getComment() + " - " + timepro.getTime());
+            Label label = new Label( Manager.printTimeWithoutSec(timepro.getTime()*60) + " - " + timepro.getComment());
             label.setStyle("" +
                     "-fx-font-size: 14px;");
             vbox_sum.getChildren().add(label);
         }
 
-        Label label_sum = new Label("Zusammenfassung: ");
+        Label label_sum = new Label("Summierte Aufteilungen der Zeiten:");
 
         Button btn_okay = new Button("Okay");
+        btn_okay.setAlignment(Pos.CENTER_RIGHT);
         btn_okay.setOnAction(event -> {
             stage.close();
         });
+        VBox vbox_bottom_btn = new VBox(5);
+        vbox_bottom_btn.setAlignment(Pos.CENTER_RIGHT);
+        vbox_bottom_btn.getChildren().add(btn_okay);
 
-        vBox.getChildren().addAll(scrollPane, label_sum, vbox_sum, btn_okay);
+        vBox.getChildren().addAll(scrollPane, label_sum, vbox_sum, vbox_bottom_btn);
         stage.show();
     }
 
