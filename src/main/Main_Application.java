@@ -1,6 +1,5 @@
 package main;
 
-import gui.controller.CTR_Config;
 import gui.controller.CTR_Project_Module;
 import handling.*;
 import javafx.application.Application;
@@ -18,7 +17,7 @@ import java.io.IOException;
 
 public class Main_Application extends Application {
 
-    public static final String build = "0.66";
+    public static final String build = "0.68";
 
     private final String fn = "SourceSansPro-";
     private final String[] fonts = {"uiicons.ttf", fn+"Black.tff", fn+"BlackItalic.tff", fn+"Bold.tff",
