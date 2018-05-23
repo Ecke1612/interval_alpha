@@ -80,7 +80,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#showProjectEdit" text="Bearbeiten" />
                               <MenuItem mnemonicParsing="false" onAction="#resetTime" text="Zeit auf Null setzen" />
                               <MenuItem fx:id="menu_goToDir" mnemonicParsing="false" onAction="#goToDir" text="Öffne Projektpfad" />
-                              <MenuItem mnemonicParsing="false" onAction="#reminder" text="Erinneung setzen" />
+                              <MenuItem mnemonicParsing="false" onAction="#reminder" text="Erinnerung setzen" />
                               <MenuItem mnemonicParsing="false" onAction="#toArchiv" text="Projekt abschließen" />
                               <MenuItem mnemonicParsing="false" onAction="#deleteProject" text="Projekt löschen" />
                            </items>
