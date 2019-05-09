@@ -1,8 +1,6 @@
 package main.launcher;
 
 import gui.controller.CTR_Config;
-import gui.controller.CTR_newProject;
-import handling.Alert_Windows;
 import handling.File_Handler;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -72,8 +70,6 @@ public class Launcher extends Application {
             primaryStage.close();
         }
     }
-
-
 
     public static void main(String[] args) {
         launch(args);

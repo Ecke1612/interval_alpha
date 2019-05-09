@@ -1,6 +1,6 @@
-0.64
+0.681
 
-ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner ver die Datei config.dat GELÖSCHT werden. Diese ist veraltet und wird automatisch vom Programmn neu erstellt!
+VERBESSERUNGEN:
 
 - Inaktivitaet kann festgestellt werden und fuehrt zu einer Meldung
 	- Zeit kann auf beliebigen Zeitpunkt zurueckgesetzt werden
@@ -8,4 +8,17 @@ ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner v
 
 - Optionsmenü um Einstellungen bezüglich der Auto-Stop-Funktion erweitert
 
+- Updatefunktion neu implementiert und verweißt wieder auf einen aktuellen Server
+
 - Designupdates
+
+- Es können nun unterschiedliche Farbschemas für die Oberfläche ausgewählt werden
+
+- Es können nun für jedes Projekt eine Erinnerung hinzugefügt werden, die sich zur eingestellten Zeit meldet und zum Beispiel an ein Meeting erinnert o.ä.
+
+- Über das Berichte-Fenster kann für jedes Modul eine Übersicht aller zugehörigen Daten angezeigt werden, indem man über den 3-Punkte-Button den Reiter "Details" auswählt
+
+- kleinere Fehlerbehebungen
+
+
+ACHTUNG: Damit das Programm startet muss im Installationsverzeichnes im Ordner "ver" die Datei config.dat GELÖSCHT werden. Diese ist veraltet und wird automatisch vom Programmn neu erstellt!

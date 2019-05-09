@@ -54,9 +54,7 @@ public class Updater {
                 System.out.println("old build: " + Updater_Main.build);
                 //float newBuildFloat = Float.parseFloat(newBuild);
                 //if(!newBuild.equals(null) && !newBuild.equals(Updater_Main.build)) {
-                System.out.println("direkt vor flaoting");
                 if(Float.parseFloat(newBuild) > Float.parseFloat(Updater_Main.build) && !newBuild.equals(null)) {
-                    System.out.println("test vor alert");
                     if(alerts.confirmDialogFX("Update", "Es ist ein Update verfügbar", "Möchtest du " + Launcher.appName + " aktualisieren?")) {
                         System.out.println("True");
                         return true;

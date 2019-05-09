@@ -1,13 +1,14 @@
 package updater;
 
-
-import gui.controller.CTR_Config;
+import handling.File_Handler;
+import main.Main_Application;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.*;
+import java.util.Date;
 
 /**
  * Created by Eike on 08.06.2017.
@@ -44,7 +45,14 @@ public class FTP_Handler {
         File file1 = new File("data/archiv.csv");
         File file2 = new File("data/clients.csv");
         File file3 = new File("data/trackingData.csv");
-
+        Date date = new Date();
+        String[] userInfo = {date.toString() + "\n", "version: " + Main_Application.build};
+        try {
+            File_Handler.fileWriter("log.txt", userInfo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File file4 = new File("log.txt");
         try {
             ftp.changeWorkingDirectory("intervalRemoteData");
             ftp.makeDirectory(System.getProperty("user.name"));
@@ -56,18 +64,23 @@ public class FTP_Handler {
         System.out.println("path1: " + trackingDataFile);
         String clientsFile = "/intervalRemoteData/"+ System.getProperty("user.name") +"/clients.csv";
         String archivFile = "/intervalRemoteData/"+ System.getProperty("user.name") +"/archiv.csv";
+        String userFile = "/intervalRemoteData/" + System.getProperty("user.name") + "/log.txt";
         try {
             InputStream inputStream1 = new FileInputStream(file1);
             InputStream inputStream2 = new FileInputStream(file2);
             InputStream inputStream3 = new FileInputStream(file3);
+            InputStream inputStream4 = new FileInputStream(file4);
             System.out.println("uploading File");
 
             ftp.storeFile(clientsFile, inputStream2);
             ftp.storeFile(trackingDataFile, inputStream3);
+            ftp.storeFile(userFile, inputStream4);
             boolean done = ftp.storeFile(archivFile, inputStream1);
             inputStream1.close();
             inputStream2.close();
             inputStream3.close();
+            inputStream4.close();
+            File_Handler.deleteFile("log.txt");
             if(done) {
                 System.out.println("data uploaded");
             }
