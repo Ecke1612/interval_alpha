@@ -14,7 +14,7 @@ lightgrey:   180,180,180
 @font-face {
   font-family: "uiicons";
   src: url("../font/uiicons.ttf") format('truetype');
-  font-weight normal;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -398,7 +398,7 @@ lightgrey:   180,180,180
     /*-fx-text-fill: rgb(77, 168, 37);*/
 }
 
----------------------------------------------------*/
+---------------------------------------------------*
 /* Project module
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .report {
@@ -497,7 +497,7 @@ lightgrey:   180,180,180
     -fx-padding: 0px;
 }
 
-//----------------------------Clients-Objects-----------------------------------------------------------------
+----------------------------Clients-Objects-----------------------------------------------------------------
 .clientobject {
     -fx-background-color: transparent;
     -fx-text-fill: rgb(255,255,255);
@@ -519,7 +519,7 @@ lightgrey:   180,180,180
 
 .clientobject .new {
     -fx-background-color: rgb(77, 168, 37);
-    -fx-text-fill: rgba(255,255,255);
+    -fx-text-fill: rgb(255,255,255);
     -fx-background-radius:5px;
     -fx-font-size: 18px;
     -fx-margin: 5px;

@@ -64,6 +64,8 @@ public class CTR_Project_Module {
     public MenuItem menu_goToDir;
     @FXML
     ImageView image_reminder;
+    @FXML
+    Button btn_folder;
 
     private String name;
     private ClientStorageObject client;
@@ -93,6 +95,8 @@ public class CTR_Project_Module {
     public void initialize() {
         label_projName.setText(name);
         label_client.setText(client.getName());
+        if(projectpath.equals("")) btn_folder.setVisible(false);
+        else btn_folder.setVisible(true);
         char p = client.getName().charAt(0);
         char pUpper = Character.toUpperCase(p);
 

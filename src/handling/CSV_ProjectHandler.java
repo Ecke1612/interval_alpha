@@ -25,10 +25,11 @@ public class CSV_ProjectHandler {
     //schreibt die CSV Datei indem alle StorageOBjekte aus jedem Projekt iteriert und in eine Zeile geschrieben werden
     public static void csvWriter() throws IOException{
         CSVWriter writer = new CSVWriter(new FileWriter("data/trackingData.csv"), ';');
-
         for(CTR_Project_Module projects : Manager.projectList) {
-            String header = "1" + ";" + projects.getClient().getName() + ";" + projects.getName() + ";" + projects.getMaxTimeHours() + ";" + projects.getProjectpath();
+            String projPath = projects.getProjectpath().replace("\\", "/");
+            String header = "1" + ";" + projects.getClient().getName() + ";" + projects.getName() + ";" + projects.getMaxTimeHours() + ";" + projPath;
             String[] headerEntries = header.split(";");
+            System.out.println("path: " + projects.getProjectpath());
             writer.writeNext(headerEntries);
             for(StorageObject storage : projects.getStorageObjects()) {
                 String temp = "0" + ";" + storage.getDate() + ";" + storage.getSec() + ";" + storage.getComment();
@@ -64,6 +65,7 @@ public class CSV_ProjectHandler {
                     String projpath = "";
                     try {
                         projpath = line[4];
+                        System.out.println("l4: " + line[4]);
                     } catch (Exception e){
                         System.out.println("kein pfad vergeben");
                     }

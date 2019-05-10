@@ -40,7 +40,7 @@ red:        240, 78, 81
 @font-face {
   font-family: "uiicons";
   src: url("../font/uiicons.ttf") format('truetype');
-  font-weight normal;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -525,7 +525,7 @@ red:        240, 78, 81
     -fx-padding: 0px;
 }
 
-//----------------------------Clients-Objects-----------------------------------------------------------------
+----------------------------Clients-Objects-----------------------------------------------------------------
 .clientobject {
     -fx-background-color: transparent;
     -fx-text-fill: rgb(255,255,255);
@@ -547,7 +547,7 @@ red:        240, 78, 81
 
 .clientobject .new {
     -fx-background-color: rgb(54,112,157);
-    -fx-text-fill: rgba(255,255,255);
+    -fx-text-fill: rgb(255,255,255);
     -fx-background-radius:5px;
     -fx-font-size: 18px;
     -fx-margin: 5px;
