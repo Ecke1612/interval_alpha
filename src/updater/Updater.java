@@ -75,6 +75,7 @@ public class Updater {
 
     private void update() throws IOException {
         System.out.println("newbuild: " + newBuild);
+
         ftp_handler.downloadFile("/interval/" + Launcher.appName + "_" + newBuild + ".jar", Launcher.appName + ".jar");
         System.out.println("heruntergeladen");
     }

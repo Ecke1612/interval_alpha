@@ -35,6 +35,19 @@ public class File_Handler {
         }
     }
 
+    public static void fileWriterNewLine(String StringPath, ArrayList<String> content) throws IOException {
+        Path path = Paths.get(StringPath);
+
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+            for(String line : content) {
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void createFile(String stringPath) throws IOException {
         //Path path = Paths.get(stringPath);
         File file = new File(stringPath);
@@ -110,6 +123,7 @@ public class File_Handler {
         File f = new File(fileName);
         if(f.exists()){
             f.delete();
+            System.out.println("file deleted");
         }
     }
 

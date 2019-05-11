@@ -1,11 +1,10 @@
 package object;
 
+import gui.controller.CTR_Config;
 import gui.controller.CTR_Dashboard;
 import gui.controller.CTR_Project_Module;
 import gui.controller.CTR_Report;
-import handling.Archiv_Handler;
-import handling.CSV_ProjectHandler;
-import handling.Manager;
+import handling.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -13,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -219,11 +219,37 @@ public class Report_Object {
         btn_okay.setOnAction(event -> {
             stage.close();
         });
-        VBox vbox_bottom_btn = new VBox(5);
-        vbox_bottom_btn.setAlignment(Pos.CENTER_RIGHT);
-        vbox_bottom_btn.getChildren().add(btn_okay);
 
-        vBox.getChildren().addAll(scrollPane, label_sum, vbox_sum, vbox_bottom_btn);
+        Button btn_export = new Button("Exportieren");
+        btn_export.setAlignment(Pos.CENTER_RIGHT);
+        btn_export.setOnAction(event -> {
+            String path = Alert_Windows.saveFile();
+            ArrayList<String> content = new ArrayList<>();
+            content.add("Kunde: " + client.getName() + " - Projekt: " + name);
+            content.add("Kalkulierte Stunden: " + maxTime);
+            content.add("Bearbeitet von: " + CTR_Config.configObject.getUsername());
+            content.add("");
+            content.add("");
+            for(StorageObject store : storageObjects) {
+                content.add(store.getDate() + "  -  " + Manager.printTimeWithoutSec(store.getMin()*60) + "  -  " + store.getComment());
+            }
+            content.add("");
+            for(TimeProCommentObject timepro : timeProCommentObjects) {
+                content.add(Manager.printTimeWithoutSec(timepro.getTime()*60) + " - " + timepro.getComment());
+            }
+            try {
+                File_Handler.fileWriterNewLine(path + ".txt", content);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage.close();
+        });
+
+        HBox hbox = new HBox(5);
+        hbox.setAlignment(Pos.CENTER_RIGHT);
+        hbox.getChildren().addAll(btn_export, btn_okay);
+
+        vBox.getChildren().addAll(scrollPane, label_sum, vbox_sum, hbox);
         stage.show();
     }
 

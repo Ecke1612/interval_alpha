@@ -31,29 +31,33 @@ public class Launcher extends Application {
         primaryStage.setTitle(appName +" laden...");
 
         primaryStage.show();
+        if(!File_Handler.fileExist("temp.dat")) {
+            File_Handler.deleteFile("ver/config.dat");
+            File_Handler.fileWriter("temp.dat", new String[]{""});
+        }
 
         new Thread(() -> Platform.runLater(() -> {
             CTR_Config ctr_config = new CTR_Config();
-            if(ctr_config.getConfigObject().isDoUpdate()) {
-                try {
-                    if(!File_Handler.fileExist("ver")){
-                        File_Handler.createDir("ver");
+                if (ctr_config.getConfigObject().isDoUpdate()) {
+                    try {
+                        if (!File_Handler.fileExist("ver")) {
+                            File_Handler.createDir("ver");
+                        }
+                        if (!File_Handler.fileExist("data")) {
+                            File_Handler.createDir("data");
+                        }
+                        update(primaryStage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    if(!File_Handler.fileExist("data")){
-                        File_Handler.createDir("data");
+                } else {
+                    try {
+                        mainApp.start(new Stage());
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    update(primaryStage);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    primaryStage.close();
                 }
-            } else {
-                try {
-                    mainApp.start(new Stage());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                primaryStage.close();
-            }
         })).start();
         ctr_startScreen.updateConsole("überprüfe auf updates");
     }
@@ -65,7 +69,6 @@ public class Launcher extends Application {
             runTime.exec("java -jar " + appName + ".jar");
             primaryStage.close();
         } else {
-
             mainApp.start(new Stage());
             primaryStage.close();
         }

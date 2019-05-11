@@ -1,7 +1,5 @@
 package object;
 
-import java.util.ArrayList;
-
 public class TimeProCommentObject {
 
     private String comment;

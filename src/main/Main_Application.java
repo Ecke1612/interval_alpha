@@ -1,5 +1,6 @@
 package main;
 
+import gui.controller.CTR_Config;
 import gui.controller.CTR_Project_Module;
 import handling.*;
 import javafx.application.Application;
@@ -17,7 +18,7 @@ import java.io.IOException;
 
 public class Main_Application extends Application {
 
-    public static final String build = "0.683";
+    public static final String build = "0.684";
 
     private final String fn = "SourceSansPro-";
     private final String[] fonts = {"uiicons.ttf", fn+"Black.tff", fn+"BlackItalic.tff", fn+"Bold.tff",
@@ -33,7 +34,6 @@ public class Main_Application extends Application {
     public void start(Stage primaryStage) throws Exception{
         System.out.println("main app startet jetzt...");
         Main_Application.primaryStage = primaryStage;
-
         if(!File_Handler.fileExist("ver")){
             File_Handler.createDir("ver");
         }

@@ -76,4 +76,16 @@ public class Alert_Windows {
         }
     }
 
+    public static String saveFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save File");
+        File file = fileChooser.showSaveDialog(Main_Application.primaryStage);
+        if(file == null){
+            System.out.println("No Directory selected");
+            return "";
+        }else{
+            return (file.getAbsolutePath());
+        }
+    }
+
 }

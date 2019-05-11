@@ -21,6 +21,7 @@ public class Updater_Main {
                 return true;
             } else {
                 System.out.println("altes Programm gestartet");
+                Thread.sleep(1000);
                 return false;
             }
         }

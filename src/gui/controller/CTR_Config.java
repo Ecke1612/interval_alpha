@@ -4,9 +4,9 @@ import handling.File_Handler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import object.ConfigObject;
 
 /**
@@ -30,6 +30,10 @@ public class CTR_Config {
     public ComboBox cbox_rushHour;
     @FXML
     public ComboBox cbox_css;
+    @FXML
+    public TextField username;
+    @FXML
+    public ToggleButton btn_nameEdit;
 
 
     public static ConfigObject configObject;
@@ -51,6 +55,7 @@ public class CTR_Config {
         check_update.setSelected(configObject.isDoUpdate());
         check_multiClock.setSelected(configObject.isMultiClock());
         check_autostop.setSelected(configObject.isAutostop());
+        username.setText(configObject.getUsername());
 
         initCbox();
         for(int i=0; i < cbox_interval.getItems().size(); i++) {
@@ -149,6 +154,18 @@ public class CTR_Config {
         cbox_css.getItems().addAll("default", "green", "blue","vanilla");
     }
 
+    public void edit_name() {
+        if(btn_nameEdit.isSelected()) {
+            username.setDisable(false);
+            btn_nameEdit.setGraphic(new ImageView(("/images/accept.png")));
+        }else {
+            username.setDisable(true);
+            configObject.setUsername(username.getText());
+            save();
+            btn_nameEdit.setGraphic(new ImageView(("/images/pencil.png")));
+        }
+    }
+
     public void save() {
         configObject.setDoUpdate(check_update.isSelected());
         configObject.setMultiClock(check_multiClock.isSelected());
@@ -157,8 +174,9 @@ public class CTR_Config {
         configObject.setAutostopMinTime((int) cbox_minTime.getSelectionModel().getSelectedItem());
         configObject.setAutostopRushHour((int) cbox_rushHour.getSelectionModel().getSelectedItem());
         configObject.setCssIndex(cbox_css.getSelectionModel().getSelectedIndex());
+        configObject.setUsername(username.getText());
         File_Handler.writeObject(configObject, "ver/config.dat");
-        //label_console.setText("Änderungen gespeichert!");
+        label_console.setText("Änderungen gespeichert!");
     }
 
     public ConfigObject getConfigObject() {
