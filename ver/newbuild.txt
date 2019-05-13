@@ -1,6 +1,13 @@
-0.683
+0.685
+
+ACHTUNG!
+Da Änderungen am Einstellungsfenster vorgenommen wurden, sind alle Einstellung zunächst wieder auf default gesetzt und müssen leider neu gesetzt werden.
 
 Verbessung:
+
+  - Berichte können nun als Datei exportiert werden
+  - Dafür kann in den Einstellungen der Nutzername hinterlegt werden um den Bericht damit zu signierent
+
   - Wird ein Projektpfad festgelegt, erschein ein Button auf der GUI, über den der Ordner schnell erreicht werden kann. Der Umweg über das "drei-Punkte-Menue" entfällt demnach
 
 Bugfix

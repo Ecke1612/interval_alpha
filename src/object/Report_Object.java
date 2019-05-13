@@ -225,7 +225,8 @@ public class Report_Object {
         btn_export.setOnAction(event -> {
             String path = Alert_Windows.saveFile();
             ArrayList<String> content = new ArrayList<>();
-            content.add("Kunde: " + client.getName() + " - Projekt: " + name);
+            content.add(client.getName() + " - " + name);
+            content.add("");
             content.add("Kalkulierte Stunden: " + maxTime);
             content.add("Bearbeitet von: " + CTR_Config.configObject.getUsername());
             content.add("");

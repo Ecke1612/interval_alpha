@@ -1,5 +1,6 @@
 package updater;
 
+import gui.controller.CTR_Config;
 import handling.File_Handler;
 import main.Main_Application;
 import org.apache.commons.net.PrintCommandListener;
@@ -46,7 +47,14 @@ public class FTP_Handler {
         File file2 = new File("data/clients.csv");
         File file3 = new File("data/trackingData.csv");
         Date date = new Date();
-        String[] userInfo = {date.toString() + "\n", "version: " + Main_Application.build};
+        String[] userInfo = new String[3];
+        try {
+            userInfo[0] = date.toString() + "\n";
+            userInfo[1] = "version: " + Main_Application.build + "\n";
+            userInfo[2] = "Name: " + CTR_Config.configObject.getUsername() + "\n";
+        } catch (Exception eInfo){
+            eInfo.printStackTrace();
+        }
         try {
             File_Handler.fileWriter("log.txt", userInfo);
         } catch (IOException e) {
