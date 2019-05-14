@@ -54,6 +54,7 @@ public class Main_Application extends Application {
                         if(project.isRunning()) {
                             project.clockStop();
                         }
+                        project.saveTodos();
                     }
                     CSV_ProjectHandler.csvWriter();
                     System.out.println("Daten gespeichert");

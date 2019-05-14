@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import main.Main_Application;
 import object.ClientStorageObject;
 import object.StorageObject;
+import object.TodoStorage;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -23,18 +24,28 @@ import java.util.List;
 public class CSV_ProjectHandler {
 
     //schreibt die CSV Datei indem alle StorageOBjekte aus jedem Projekt iteriert und in eine Zeile geschrieben werden
-    public static void csvWriter() throws IOException{
+    public static void csvWriter() throws IOException {
         CSVWriter writer = new CSVWriter(new FileWriter("data/trackingData.csv"), ';');
         for(CTR_Project_Module projects : Manager.projectList) {
             String projPath = projects.getProjectpath().replace("\\", "/");
             String header = "1" + ";" + projects.getClient().getName() + ";" + projects.getName() + ";" + projects.getMaxTimeHours() + ";" + projPath;
             String[] headerEntries = header.split(";");
-            System.out.println("path: " + projects.getProjectpath());
             writer.writeNext(headerEntries);
             for(StorageObject storage : projects.getStorageObjects()) {
                 String temp = "0" + ";" + storage.getDate() + ";" + storage.getSec() + ";" + storage.getComment();
                         String[] entries = temp.split(";");
                 writer.writeNext(entries);
+            }
+            for(TodoStorage todo : projects.getTodos()) {
+                if(todo.getType().equals("note")) {
+                    String temp = "2;" + todo.getNotes() + ";" + todo.getRowCount();
+                    String[] entries = temp.split(";");
+                    writer.writeNext(entries);
+                } else if(todo.getType().equals("todo")) {
+                    String temp = "3;" + todo.getText() + ";" + Boolean.toString(todo.isCheck());
+                    String[] entries = temp.split(";");
+                    writer.writeNext(entries);
+                }
             }
         }
         writer.close();
@@ -65,7 +76,6 @@ public class CSV_ProjectHandler {
                     String projpath = "";
                     try {
                         projpath = line[4];
-                        System.out.println("l4: " + line[4]);
                     } catch (Exception e){
                         System.out.println("kein pfad vergeben");
                     }
@@ -82,7 +92,27 @@ public class CSV_ProjectHandler {
                     e.printStackTrace();
                     System.out.println("Fehler beim erstellen der StorageObjekte");
                 }
-            } else System.out.println("unbekannter Fehler beim Laden der Projekte");
+            } else if(header == 2) {
+                try {
+                    System.out.println("header: " + line[0]);
+                    System.out.println("note: " + line[1]);
+                    System.out.println("row: " + line[2]);
+                    Manager.projectList.get(Manager.projectList.size() - 1).getTodos().add(new TodoStorage("note", line[1], Integer.parseInt(line[2])));
+                }catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Fehler beim erstellen der Todos note");
+                }
+            } else if(header == 3) {
+                try {
+                    System.out.println("header TODO: " + line[0]);
+                    System.out.println("text TODO: " + line[1]);
+                    System.out.println("check TODO: " + line[2]);
+                    Manager.projectList.get(Manager.projectList.size() - 1).getTodos().add(new TodoStorage("todo", Boolean.parseBoolean(line[2]), line[1]));
+                }catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Fehler beim erstellen der Todos todo");
+                }
+            }else System.out.println("unbekannter Fehler beim Laden der Projekte");
         }
         createProjects();
     }

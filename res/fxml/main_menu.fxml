@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxWidth="549.0" minWidth="148.0" prefHeight="500.0" prefWidth="549.0" styleClass="menu" stylesheets="@../css/ui_view.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Main_Menu" fx:id="vbox_main">
+<VBox fx:id="vbox_main" alignment="TOP_CENTER" maxWidth="549.0" minWidth="148.0" prefHeight="500.0" prefWidth="549.0" styleClass="menu" stylesheets="@../css/ui_view.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Main_Menu">
    <children>
       <ImageView fitHeight="64.0" fitWidth="300.0" pickOnBounds="true" styleClass="logo">
          <cursor>
@@ -36,7 +41,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ToggleButton fx:id="menu_dashboard" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#showDashboard" styleClass="btn" text="DASHBOARD">
+      <ToggleButton fx:id="menu_dashboard" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#showDashboard" styleClass="btn" text="PROJEKTE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

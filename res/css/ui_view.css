@@ -12,10 +12,10 @@ lightgrey:   180,180,180
 /* Icons
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 @font-face {
-  font-family: "uiicons";
-  src: url("../font/uiicons.ttf") format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: "uiicons";
+    src: url("../font/uiicons.ttf") format('truetype');
+    font-weight normal;
+    font-style: normal;
 }
 
 
@@ -398,7 +398,7 @@ lightgrey:   180,180,180
     /*-fx-text-fill: rgb(77, 168, 37);*/
 }
 
----------------------------------------------------*
+/*---------------------------------------------------
 /* Project module
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .report {

@@ -3,39 +3,38 @@ package gui.controller;
 import handling.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.Main_Application;
-import object.ClientStorageObject;
-import object.ConfigObject;
-import object.ReminderObject;
-import object.StorageObject;
+import object.*;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Eike on 20.05.2017.
@@ -66,6 +65,16 @@ public class CTR_Project_Module {
     ImageView image_reminder;
     @FXML
     Button btn_folder;
+    @FXML
+    public Button btn_addTodo;
+    @FXML
+    public Button btn_addNote;
+    @FXML
+    public VBox vbox_todos;
+    @FXML
+    public Tab tab_todo;
+    @FXML
+    public TabPane tabPane;
 
     private String name;
     private ClientStorageObject client;
@@ -81,6 +90,7 @@ public class CTR_Project_Module {
     private String projectpath = "";
     public int autoStopOffset = 0;
     private ReminderObject reminderObject;
+    private ArrayList<TodoStorage> todos = new ArrayList<>();
 
     private ArrayList<StorageObject> storageObjects = new ArrayList<>();
 
@@ -108,6 +118,13 @@ public class CTR_Project_Module {
             getWholeTime();
             getTimeToday();
             textArea_comment.setText(storageObjects.get(storageObjects.size()-1).getComment());
+        }
+        for(TodoStorage todoStorage : todos) {
+            if(todoStorage.getType().equals("note")){
+                executeAddNote(todoStorage.getNotes(), todoStorage.getRowCount());
+            }else if(todoStorage.getType().equals("todo")) {
+                executeAddTodo(todoStorage.getText(), todoStorage.isCheck());
+            }
         }
         //Wenn heute noch keine Zeit getrackt wurde, dann wird die Zeit nur schwach angezeigt
         if(timeToday == 0) {
@@ -423,6 +440,134 @@ public class CTR_Project_Module {
     public void deleteReminder() {
         image_reminder.setVisible(false);
         reminderObject = null;
+    }
+
+    public void add_todo() {
+        executeAddTodo("", false);
+    }
+
+    public void executeAddTodo(String text, boolean checked) {
+        HBox hbox = new HBox(10);
+        hbox.setId("todo");
+        CheckBox checkbox = new CheckBox("");
+        checkbox.setSelected(checked);
+        TextField textField = new TextField(text);
+        textField.setId("textfield");
+        textField.setText(text);
+        HBox.setHgrow(textField, Priority.ALWAYS);
+        hbox.setAlignment(Pos.CENTER_LEFT);
+
+        checkbox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue) {
+                    hbox.setStyle("-fx-background-color: lightgreen");
+                } else {
+                    hbox.setStyle("-fx-background-color: transparent");
+                }
+                saveTodos();
+            }
+        });
+
+        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue) {
+                    saveTodos();
+                }
+            }
+        });
+
+        Image img_delete = new Image(getClass().getResourceAsStream("/images/delete.png"));
+        Button btn_delete = new Button("", new ImageView(img_delete));
+        btn_delete.setStyle("-fx-background-color: transparent");
+        btn_delete.setMaxSize(10,10);
+        btn_delete.setOnAction(event -> {
+            vbox_todos.getChildren().remove(hbox);
+            vbox_todos.requestLayout();
+            saveTodos();
+            tabPane.requestLayout();
+        });
+
+        hbox.getChildren().addAll(checkbox, textField, btn_delete);
+        vbox_todos.getChildren().add(hbox);
+        tabPane.requestLayout();
+    }
+
+    public void add_noteFXML() {
+        executeAddNote("", 1);
+    }
+
+    private void executeAddNote(String text, int rowCount) {
+        TextArea textArea = new TextArea();
+        textArea.setPrefRowCount(rowCount);
+        textArea.setWrapText(true);
+        textArea.setText(text);
+        textArea.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String text = textArea.getText();
+                String[] lineArray = text.split("\n");
+                textArea.setPrefRowCount(lineArray.length);
+                tabPane.requestLayout();
+            }
+        });
+
+        textArea.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue) {
+                    saveTodos();
+                }
+            }
+        });
+
+        HBox hBox = new HBox();
+        hBox.setId("note");
+        Image img_delete = new Image(getClass().getResourceAsStream("/images/delete.png"));
+        Button btn_delete = new Button("", new ImageView(img_delete));
+        btn_delete.setStyle("-fx-background-color: transparent");
+        btn_delete.setMaxSize(10,10);
+        btn_delete.setOnAction(event -> {
+            vbox_todos.getChildren().remove(hBox);
+            saveTodos();
+            vbox_todos.requestLayout();
+            tabPane.requestLayout();
+        });
+        HBox.setHgrow(textArea, Priority.ALWAYS);
+        hBox.getChildren().addAll(textArea, btn_delete);
+        hBox.setAlignment(Pos.CENTER_LEFT);
+
+        vbox_todos.getChildren().add(hBox);
+        tabPane.requestLayout();
+    }
+
+    public void saveTodos() {
+        todos.clear();
+        for(int i = 0; i < vbox_todos.getChildren().size(); i++) {
+            HBox hbox = (HBox) vbox_todos.getChildren().get(i);
+            if(hbox.getId() != null && hbox.getId().equals("note")) {
+                TextArea t = (TextArea) hbox.getChildren().get(0);
+                todos.add(new TodoStorage("note", t.getText(), t.getPrefRowCount()));
+            } else if(hbox.getId() != null && hbox.getId().equals("todo")) {
+                CheckBox ch = (CheckBox) hbox.getChildren().get(0);
+                TextField t = (TextField) hbox.getChildren().get(1);
+                todos.add(new TodoStorage("todo", ch.isSelected(), t.getText()));
+            }
+        }
+        System.out.println("Todo's saved");
+    }
+
+    public void tab_time() {
+        tabPane.requestLayout();
+    }
+
+    public ArrayList<TodoStorage> getTodos() {
+        return todos;
+    }
+
+    public void setTodos(ArrayList<TodoStorage> todos) {
+        this.todos = todos;
     }
 
     public ReminderObject getReminderObject() {

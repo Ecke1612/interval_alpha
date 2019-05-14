@@ -14,8 +14,8 @@ lightgrey:   180,180,180
 @font-face {
   font-family: "uiicons";
   src: url("../font/uiicons.ttf") format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-weight normal;
+    font-style: normal;
 }
 
 

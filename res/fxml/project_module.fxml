@@ -8,6 +8,8 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
@@ -115,6 +117,41 @@
       </HBox>
    </graphic>
    <content>
-      <VBox fx:id="vbox_detail" />
+      <TabPane fx:id="tabPane" prefWidth="661.0">
+         <tabs>
+            <Tab fx:id="tab_todo" closable="false" text="Todo's">
+               <content>
+                  <VBox spacing="5.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Label text="Todo hinzufügen" />
+                              <Button fx:id="btn_addTodo" mnemonicParsing="false" onAction="#add_todo" text="+" />
+                              <Separator orientation="VERTICAL" />
+                              <Label text="Notiz hinzufügen" />
+                              <Button fx:id="btn_addNote" mnemonicParsing="false" onAction="#add_noteFXML" text="+" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <VBox fx:id="vbox_todos" spacing="5.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding></VBox>
+               </content>
+            </Tab>
+            <Tab fx:id="tab_time" closable="false" onSelectionChanged="#tab_time" text="Verlauf">
+               <content>
+                  <VBox fx:id="vbox_detail" spacing="5.0">
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding></VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
    </content>
 </TitledPane>
