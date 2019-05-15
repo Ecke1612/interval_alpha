@@ -75,6 +75,8 @@ public class CTR_Project_Module {
     public Tab tab_todo;
     @FXML
     public TabPane tabPane;
+    @FXML
+    public VBox vbox_todo_parent;
 
     private String name;
     private ClientStorageObject client;
@@ -145,6 +147,9 @@ public class CTR_Project_Module {
             menu_goToDir.setDisable(true);
         }
         //autostopInterval = CTR_Config.configObject.getAutostopinterval();
+
+        //vbox_todo_parent.prefHeightProperty().bind(tabPane.prefHeightProperty());
+        tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
     }
 
 
@@ -484,13 +489,15 @@ public class CTR_Project_Module {
         btn_delete.setMaxSize(10,10);
         btn_delete.setOnAction(event -> {
             vbox_todos.getChildren().remove(hbox);
-            vbox_todos.requestLayout();
+            vbox_todos.autosize();
             saveTodos();
+            vbox_todos.requestLayout();
             tabPane.requestLayout();
         });
 
         hbox.getChildren().addAll(checkbox, textField, btn_delete);
         vbox_todos.getChildren().add(hbox);
+        vbox_todos.requestLayout();
         tabPane.requestLayout();
     }
 
@@ -509,6 +516,7 @@ public class CTR_Project_Module {
                 String text = textArea.getText();
                 String[] lineArray = text.split("\n");
                 textArea.setPrefRowCount(lineArray.length);
+                vbox_todos.requestLayout();
                 tabPane.requestLayout();
             }
         });
@@ -530,6 +538,7 @@ public class CTR_Project_Module {
         btn_delete.setMaxSize(10,10);
         btn_delete.setOnAction(event -> {
             vbox_todos.getChildren().remove(hBox);
+            vbox_todos.autosize();
             saveTodos();
             vbox_todos.requestLayout();
             tabPane.requestLayout();
@@ -539,6 +548,7 @@ public class CTR_Project_Module {
         hBox.setAlignment(Pos.CENTER_LEFT);
 
         vbox_todos.getChildren().add(hBox);
+        vbox_todos.requestLayout();
         tabPane.requestLayout();
     }
 

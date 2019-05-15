@@ -121,7 +121,7 @@
          <tabs>
             <Tab fx:id="tab_todo" closable="false" text="Todo's">
                <content>
-                  <VBox spacing="5.0">
+                  <VBox fx:id="vbox_todo_parent" spacing="5.0">
                      <children>
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
