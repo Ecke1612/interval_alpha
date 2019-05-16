@@ -149,7 +149,20 @@ public class CTR_Project_Module {
         //autostopInterval = CTR_Config.configObject.getAutostopinterval();
 
         //vbox_todo_parent.prefHeightProperty().bind(tabPane.prefHeightProperty());
+        //tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
         tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
+        tabPane.getSelectionModel().selectedItemProperty().addListener((obs,ov,nv)->{
+            System.out.println("tab: " + nv.getId());
+            if(nv.getId().equals("tab_todo")){
+                tabPane.prefHeightProperty().unbind();
+                tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
+            } else if(nv.getId().equals("tab_time")) {
+                tabPane.prefHeightProperty().unbind();
+                vbox_detail.autosize();
+                vbox_detail.requestLayout();
+                tabPane.prefHeightProperty().bind(vbox_detail.heightProperty().add(50));
+            }
+        });
     }
 
 
@@ -160,6 +173,7 @@ public class CTR_Project_Module {
                 Label label = new Label();
                 label.setText(Manager.printTime(store.getSec()) + "   -   " + store.getComment());
                 vbox_detail.getChildren().add(label);
+                tabPane.requestLayout();
             }
         }
     }
@@ -461,15 +475,13 @@ public class CTR_Project_Module {
         textField.setText(text);
         HBox.setHgrow(textField, Priority.ALWAYS);
         hbox.setAlignment(Pos.CENTER_LEFT);
+        styleChBox(hbox, checkbox, textField);
+
 
         checkbox.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(newValue) {
-                    hbox.setStyle("-fx-background-color: lightgreen");
-                } else {
-                    hbox.setStyle("-fx-background-color: transparent");
-                }
+                styleChBox(hbox, checkbox, textField);
                 saveTodos();
             }
         });
@@ -499,6 +511,21 @@ public class CTR_Project_Module {
         vbox_todos.getChildren().add(hbox);
         vbox_todos.requestLayout();
         tabPane.requestLayout();
+    }
+
+    private void styleChBox(HBox hbox, CheckBox ch, TextField tf) {
+        if(ch.isSelected()) {
+            hbox.setStyle("-fx-border-color: transparent;" +
+                    "-fx-border-radius: 5;" +
+                    "-fx-border-width: 3; " +
+                    "-fx-background-color: linear-gradient(to right, forestgreen, darkseagreen);" +
+                    "-fx-background-radius: 5");
+            tf.setDisable(true);
+        } else {
+            hbox.setStyle("-fx-background-color: transparent;" +
+                    "-fx-border-color: transparent");
+            tf.setDisable(false);
+        }
     }
 
     public void add_noteFXML() {
@@ -569,7 +596,19 @@ public class CTR_Project_Module {
     }
 
     public void tab_time() {
-        tabPane.requestLayout();
+        /*tabPane.prefHeightProperty().unbind();
+        vbox_todos.requestLayout();
+        vbox_detail.requestLayout();
+        System.out.println("selected: " + tabPane.getSelectionModel().getSelectedItem());
+        if(tabPane.getSelectionModel().isSelected(0)) {
+            System.out.println("0");
+            tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
+        } else if(tabPane.getSelectionModel().isSelected(1)) {
+            System.out.println("1");
+            tabPane.setPrefHeight(vbox_detail.getHeight());
+        }
+        System.out.println("tab");
+        tabPane.requestLayout();*/
     }
 
     public ArrayList<TodoStorage> getTodos() {
