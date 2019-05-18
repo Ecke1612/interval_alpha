@@ -20,7 +20,6 @@ import java.util.List;
  */
 
 
-
 public class CSV_ProjectHandler {
 
     //schreibt die CSV Datei indem alle StorageOBjekte aus jedem Projekt iteriert und in eine Zeile geschrieben werden

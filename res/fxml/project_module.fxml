@@ -8,8 +8,6 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
@@ -19,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" expanded="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
       <HBox fx:id="main_hbox" alignment="TOP_CENTER" fillHeight="false" maxHeight="96.0" maxWidth="1280.0" minHeight="96.0" minWidth="250.0" prefHeight="96.0" prefWidth="630.0" styleClass="project" stylesheets="@../css/ui_view.css">
          <children>
@@ -117,9 +115,18 @@
       </HBox>
    </graphic>
    <content>
-      <TabPane fx:id="tabPane" prefWidth="661.0" tabClosingPolicy="UNAVAILABLE">
-         <tabs>
-            <Tab fx:id="tab_todo" closable="false" text="Todo's">
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <TitledPane fx:id="titled_pane_verlauf" expanded="false" text="Verlauf">
+               <content>
+                  <VBox fx:id="vbox_detail" spacing="5.0">
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </TitledPane>
+            <TitledPane fx:id="titled_pane_todo" text="Todo's">
                <content>
                   <VBox fx:id="vbox_todo_parent" alignment="CENTER_LEFT" spacing="5.0">
                      <children>
@@ -132,7 +139,8 @@
                                  </font>
                                  <padding>
                                     <Insets bottom="-5.0" top="-8.0" />
-                                 </padding></Button>
+                                 </padding>
+                              </Button>
                               <Separator orientation="VERTICAL" />
                               <Label text="Notiz hinzufügen" />
                               <Button fx:id="btn_addNote" mnemonicParsing="false" onAction="#add_noteFXML" style="-fx-background-color: transparent; -fx-border-color: forestgreen; -fx-border-radius: 3; -fx-border-width: 1.5;" text="+" textFill="FORESTGREEN">
@@ -141,29 +149,23 @@
                                  </padding>
                                  <font>
                                     <Font name="System Bold" size="18.0" />
-                                 </font></Button>
+                                 </font>
+                              </Button>
                            </children>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </HBox>
                         <Separator prefWidth="200.0" />
-                        <VBox fx:id="vbox_todos" spacing="2.0" />
+                        <VBox fx:id="vbox_todos" spacing="2.0" VBox.vgrow="ALWAYS" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding></VBox>
+                     </padding>
+                  </VBox>
                </content>
-            </Tab>
-            <Tab fx:id="tab_time" closable="false" onSelectionChanged="#tab_time" text="Verlauf">
-               <content>
-                  <VBox fx:id="vbox_detail" spacing="5.0">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding></VBox>
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
+            </TitledPane>
+         </children>
+      </VBox>
    </content>
 </TitledPane>

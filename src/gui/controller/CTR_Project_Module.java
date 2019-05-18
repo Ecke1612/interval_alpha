@@ -72,10 +72,6 @@ public class CTR_Project_Module {
     @FXML
     public VBox vbox_todos;
     @FXML
-    public Tab tab_todo;
-    @FXML
-    public TabPane tabPane;
-    @FXML
     public VBox vbox_todo_parent;
 
     private String name;
@@ -146,25 +142,7 @@ public class CTR_Project_Module {
         if(projectpath.equals("")) {
             menu_goToDir.setDisable(true);
         }
-        //autostopInterval = CTR_Config.configObject.getAutostopinterval();
 
-        //vbox_todo_parent.prefHeightProperty().bind(tabPane.prefHeightProperty());
-        //tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
-        vbox_todos.requestLayout();
-        vbox_todos.autosize();
-        tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
-        tabPane.getSelectionModel().selectedItemProperty().addListener((obs,ov,nv)->{
-            System.out.println("tab: " + nv.getId());
-            if(nv.getId().equals("tab_todo")){
-                tabPane.prefHeightProperty().unbind();
-                tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
-            } else if(nv.getId().equals("tab_time")) {
-                tabPane.prefHeightProperty().unbind();
-                vbox_detail.autosize();
-                vbox_detail.requestLayout();
-                tabPane.prefHeightProperty().bind(vbox_detail.heightProperty().add(50));
-            }
-        });
     }
 
 
@@ -174,8 +152,7 @@ public class CTR_Project_Module {
             if(LocalDate.now().equals(store.getDate())){
                 Label label = new Label();
                 label.setText(Manager.printTime(store.getSec()) + "   -   " + store.getComment());
-                vbox_detail.getChildren().add(label);
-                tabPane.requestLayout();
+                vbox_detail.getChildren().add(label);;
             }
         }
     }
@@ -504,16 +481,11 @@ public class CTR_Project_Module {
         btn_delete.setMaxSize(10,10);
         btn_delete.setOnAction(event -> {
             vbox_todos.getChildren().remove(hbox);
-            vbox_todos.autosize();
             saveTodos();
-            vbox_todos.requestLayout();
-            tabPane.requestLayout();
         });
 
         hbox.getChildren().addAll(checkbox, textField, btn_delete);
         vbox_todos.getChildren().add(hbox);
-        vbox_todos.requestLayout();
-        tabPane.requestLayout();
     }
 
     private void styleChBox(HBox hbox, CheckBox ch, TextField tf) {
@@ -546,8 +518,6 @@ public class CTR_Project_Module {
                 String text = textArea.getText();
                 String[] lineArray = text.split("\n");
                 textArea.setPrefRowCount(lineArray.length);
-                vbox_todos.requestLayout();
-                tabPane.requestLayout();
             }
         });
 
@@ -571,19 +541,13 @@ public class CTR_Project_Module {
         btn_delete.setMaxSize(10,10);
         btn_delete.setOnAction(event -> {
             vbox_todos.getChildren().remove(hBox);
-            vbox_todos.autosize();
             saveTodos();
-            vbox_todos.requestLayout();
-            tabPane.requestLayout();
         });
 
         HBox.setHgrow(textArea, Priority.ALWAYS);
         hBox.getChildren().addAll(textArea, btn_delete);
         hBox.setAlignment(Pos.CENTER_LEFT);
-
         vbox_todos.getChildren().add(hBox);
-        vbox_todos.requestLayout();
-        tabPane.requestLayout();
     }
 
     public void saveTodos() {
@@ -602,21 +566,6 @@ public class CTR_Project_Module {
         System.out.println("Todo's saved");
     }
 
-    public void tab_time() {
-        /*tabPane.prefHeightProperty().unbind();
-        vbox_todos.requestLayout();
-        vbox_detail.requestLayout();
-        System.out.println("selected: " + tabPane.getSelectionModel().getSelectedItem());
-        if(tabPane.getSelectionModel().isSelected(0)) {
-            System.out.println("0");
-            tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
-        } else if(tabPane.getSelectionModel().isSelected(1)) {
-            System.out.println("1");
-            tabPane.setPrefHeight(vbox_detail.getHeight());
-        }
-        System.out.println("tab");
-        tabPane.requestLayout();*/
-    }
 
     public ArrayList<TodoStorage> getTodos() {
         return todos;
