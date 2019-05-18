@@ -157,7 +157,7 @@
                            </VBox.margin>
                         </HBox>
                         <Separator prefWidth="200.0" />
-                        <VBox fx:id="vbox_todos" spacing="2.0" VBox.vgrow="ALWAYS" />
+                        <VBox fx:id="vbox_todos" spacing="2.0" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
