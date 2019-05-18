@@ -1,5 +1,6 @@
 package gui.controller;
 
+import gui.controller.project_module_objects.Project_Todos;
 import handling.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -72,10 +73,6 @@ public class CTR_Project_Module {
     @FXML
     public VBox vbox_todos;
     @FXML
-    public Tab tab_todo;
-    @FXML
-    public TabPane tabPane;
-    @FXML
     public VBox vbox_todo_parent;
 
     private String name;
@@ -93,6 +90,7 @@ public class CTR_Project_Module {
     public int autoStopOffset = 0;
     private ReminderObject reminderObject;
     private ArrayList<TodoStorage> todos = new ArrayList<>();
+    private Project_Todos project_todos;
 
     private ArrayList<StorageObject> storageObjects = new ArrayList<>();
 
@@ -121,6 +119,7 @@ public class CTR_Project_Module {
             getTimeToday();
             textArea_comment.setText(storageObjects.get(storageObjects.size()-1).getComment());
         }
+        project_todos = new Project_Todos(vbox_todos, this);
         for(TodoStorage todoStorage : todos) {
             if(todoStorage.getType().equals("note")){
                 executeAddNote(todoStorage.getNotes(), todoStorage.getRowCount());
@@ -146,25 +145,7 @@ public class CTR_Project_Module {
         if(projectpath.equals("")) {
             menu_goToDir.setDisable(true);
         }
-        //autostopInterval = CTR_Config.configObject.getAutostopinterval();
 
-        //vbox_todo_parent.prefHeightProperty().bind(tabPane.prefHeightProperty());
-        //tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
-        vbox_todos.requestLayout();
-        vbox_todos.autosize();
-        tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
-        tabPane.getSelectionModel().selectedItemProperty().addListener((obs,ov,nv)->{
-            System.out.println("tab: " + nv.getId());
-            if(nv.getId().equals("tab_todo")){
-                tabPane.prefHeightProperty().unbind();
-                tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
-            } else if(nv.getId().equals("tab_time")) {
-                tabPane.prefHeightProperty().unbind();
-                vbox_detail.autosize();
-                vbox_detail.requestLayout();
-                tabPane.prefHeightProperty().bind(vbox_detail.heightProperty().add(50));
-            }
-        });
     }
 
 
@@ -174,8 +155,7 @@ public class CTR_Project_Module {
             if(LocalDate.now().equals(store.getDate())){
                 Label label = new Label();
                 label.setText(Manager.printTime(store.getSec()) + "   -   " + store.getComment());
-                vbox_detail.getChildren().add(label);
-                tabPane.requestLayout();
+                vbox_detail.getChildren().add(label);;
             }
         }
     }
@@ -188,7 +168,6 @@ public class CTR_Project_Module {
         }
         //Uhr wird gestartet
         else {
-            System.out.println("index: " + index);
             //überprüfen ob andere Uhre noch laufen und diese stoppen
             if(!CTR_Config.configObject.isMultiClock()) {
                 for (CTR_Project_Module projects : Manager.projectList) {
@@ -298,7 +277,6 @@ public class CTR_Project_Module {
 
     public void deleteProject() throws IOException {
         if(Alert_Windows.confirmDialog("Projekt löschen", "Das Projekt wird gelöscht", "Möchtest du das Projekt wirklich löschen?")) {
-            System.out.println("index: " + index);
             Manager.projectList.remove(index);
             Manager.projectUIList.remove(index);
             Main_Application.ctr_dashboard.removeProject(index);
@@ -468,67 +446,7 @@ public class CTR_Project_Module {
     }
 
     public void executeAddTodo(String text, boolean checked) {
-        HBox hbox = new HBox(10);
-        hbox.setPadding(new Insets(-4,0,-3,-0));
-        hbox.setId("todo");
-        CheckBox checkbox = new CheckBox("");
-        checkbox.setSelected(checked);
-        TextField textField = new TextField(text);
-        textField.setId("textfield");
-        textField.setText(text);
-        HBox.setHgrow(textField, Priority.ALWAYS);
-        hbox.setAlignment(Pos.CENTER_LEFT);
-        styleChBox(hbox, checkbox, textField);
-
-
-        checkbox.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                styleChBox(hbox, checkbox, textField);
-                saveTodos();
-            }
-        });
-
-        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue) {
-                    saveTodos();
-                }
-            }
-        });
-
-        Image img_delete = new Image(getClass().getResourceAsStream("/images/delete.png"));
-        Button btn_delete = new Button("", new ImageView(img_delete));
-        btn_delete.setStyle("-fx-background-color: transparent");
-        btn_delete.setMaxSize(10,10);
-        btn_delete.setOnAction(event -> {
-            vbox_todos.getChildren().remove(hbox);
-            vbox_todos.autosize();
-            saveTodos();
-            vbox_todos.requestLayout();
-            tabPane.requestLayout();
-        });
-
-        hbox.getChildren().addAll(checkbox, textField, btn_delete);
-        vbox_todos.getChildren().add(hbox);
-        vbox_todos.requestLayout();
-        tabPane.requestLayout();
-    }
-
-    private void styleChBox(HBox hbox, CheckBox ch, TextField tf) {
-        if(ch.isSelected()) {
-            hbox.setStyle("-fx-border-color: transparent;" +
-                    "-fx-border-radius: 5;" +
-                    "-fx-border-width: 3; " +
-                    "-fx-background-color: linear-gradient(to right, forestgreen, darkseagreen);" +
-                    "-fx-background-radius: 5");
-            tf.setDisable(true);
-        } else {
-            hbox.setStyle("-fx-background-color: transparent;" +
-                    "-fx-border-color: transparent");
-            tf.setDisable(false);
-        }
+        project_todos.executeAddTodo(text, checked);
     }
 
     public void add_noteFXML() {
@@ -536,87 +454,13 @@ public class CTR_Project_Module {
     }
 
     private void executeAddNote(String text, int rowCount) {
-        TextArea textArea = new TextArea();
-        textArea.setPrefRowCount(rowCount);
-        textArea.setWrapText(true);
-        textArea.setText(text);
-        textArea.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                String text = textArea.getText();
-                String[] lineArray = text.split("\n");
-                textArea.setPrefRowCount(lineArray.length);
-                vbox_todos.requestLayout();
-                tabPane.requestLayout();
-            }
-        });
-
-        textArea.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue) {
-                    saveTodos();
-                }
-            }
-        });
-
-        textArea.setPrefRowCount(rowCount);
-        System.out.println("rowcoaunt: " + rowCount);
-
-        HBox hBox = new HBox();
-        hBox.setId("note");
-        Image img_delete = new Image(getClass().getResourceAsStream("/images/delete.png"));
-        Button btn_delete = new Button("", new ImageView(img_delete));
-        btn_delete.setStyle("-fx-background-color: transparent");
-        btn_delete.setMaxSize(10,10);
-        btn_delete.setOnAction(event -> {
-            vbox_todos.getChildren().remove(hBox);
-            vbox_todos.autosize();
-            saveTodos();
-            vbox_todos.requestLayout();
-            tabPane.requestLayout();
-        });
-
-        HBox.setHgrow(textArea, Priority.ALWAYS);
-        hBox.getChildren().addAll(textArea, btn_delete);
-        hBox.setAlignment(Pos.CENTER_LEFT);
-
-        vbox_todos.getChildren().add(hBox);
-        vbox_todos.requestLayout();
-        tabPane.requestLayout();
+        project_todos.executeAddNote(text, rowCount);
     }
 
     public void saveTodos() {
-        todos.clear();
-        for(int i = 0; i < vbox_todos.getChildren().size(); i++) {
-            HBox hbox = (HBox) vbox_todos.getChildren().get(i);
-            if(hbox.getId() != null && hbox.getId().equals("note")) {
-                TextArea t = (TextArea) hbox.getChildren().get(0);
-                todos.add(new TodoStorage("note", t.getText(), t.getPrefRowCount()));
-            } else if(hbox.getId() != null && hbox.getId().equals("todo")) {
-                CheckBox ch = (CheckBox) hbox.getChildren().get(0);
-                TextField t = (TextField) hbox.getChildren().get(1);
-                todos.add(new TodoStorage("todo", ch.isSelected(), t.getText()));
-            }
-        }
-        System.out.println("Todo's saved");
+        project_todos.saveTodos();
     }
 
-    public void tab_time() {
-        /*tabPane.prefHeightProperty().unbind();
-        vbox_todos.requestLayout();
-        vbox_detail.requestLayout();
-        System.out.println("selected: " + tabPane.getSelectionModel().getSelectedItem());
-        if(tabPane.getSelectionModel().isSelected(0)) {
-            System.out.println("0");
-            tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
-        } else if(tabPane.getSelectionModel().isSelected(1)) {
-            System.out.println("1");
-            tabPane.setPrefHeight(vbox_detail.getHeight());
-        }
-        System.out.println("tab");
-        tabPane.requestLayout();*/
-    }
 
     public ArrayList<TodoStorage> getTodos() {
         return todos;

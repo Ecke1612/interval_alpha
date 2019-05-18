@@ -20,7 +20,6 @@ import java.util.List;
  */
 
 
-
 public class CSV_ProjectHandler {
 
     //schreibt die CSV Datei indem alle StorageOBjekte aus jedem Projekt iteriert und in eine Zeile geschrieben werden
@@ -94,9 +93,6 @@ public class CSV_ProjectHandler {
                 }
             } else if(header == 2) {
                 try {
-                    System.out.println("header: " + line[0]);
-                    System.out.println("note: " + line[1]);
-                    System.out.println("row: " + line[2]);
                     Manager.projectList.get(Manager.projectList.size() - 1).getTodos().add(new TodoStorage("note", line[1], Integer.parseInt(line[2])));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -104,9 +100,6 @@ public class CSV_ProjectHandler {
                 }
             } else if(header == 3) {
                 try {
-                    System.out.println("header TODO: " + line[0]);
-                    System.out.println("text TODO: " + line[1]);
-                    System.out.println("check TODO: " + line[2]);
                     Manager.projectList.get(Manager.projectList.size() - 1).getTodos().add(new TodoStorage("todo", Boolean.parseBoolean(line[2]), line[1]));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -117,54 +110,6 @@ public class CSV_ProjectHandler {
         createProjects();
     }
 
-    /*
-    //Schritt 1: Die CSV Datei von der Festplatte in eine umfassende StorageObektliste überführen
-    public void csvLoader1() throws IOException {
-        ArrayList<StorageObject> storageObjects = new ArrayList<>();
-        CSVReader reader = new CSVReader(new FileReader("data/trackingData.csv"), ';');
-
-        List<String[]> data = reader.readAll();
-
-        for(String[] row : data) {
-            String name = row[2];
-            int sec = Integer.parseInt(row[3]);
-            LocalDate date = LocalDate.parse(row[0]);
-            String client = row[1];
-            int maxTime = Integer.parseInt(row[4]);
-            String comment = row[5];
-            storageObjects.add(new StorageObject(name, sec, date, client, maxTime, comment));
-        }
-        createProjectsFromData(storageObjects);
-    }
-
-    //Schritt 2: Die StorageObjekte werden iteriert und bezüglich des Namens entschieden ob ein Projekt erstellt
-    // werden muss, oder ob nur das StorageObjekt in ein bestehendes Projekt hinzugefügt wird
-    private void createProjectsFromData(ArrayList<StorageObject> storageObjects) throws IOException {
-        Manager.projectList.clear();
-        for(StorageObject store : storageObjects) {
-            //Wenn noch kein Projekt existiert, lege eines an
-            if (Manager.projectList.size() == 0) {
-                Manager.projectList.add(new CTR_Project_Module(store.getName(), store.getClient(), store.getMaxTime(), Manager.projectList.size()));
-                Manager.projectList.get(Manager.projectList.size()-1).addStorageObject(store);
-                System.out.println("Erstes Projekt erstellt");
-
-            //Wenn der Name des erstellen Projektes ungleich dem des StorageObjektes ist, lege ein Neues Projekt an
-            } else if(!Manager.projectList.get(Manager.projectList.size()-1).getName().equals(store.getName())) {
-                Manager.projectList.add(new CTR_Project_Module(store.getName(), store.getClient(), store.getMaxTime(), Manager.projectList.size()));
-                Manager.projectList.get(Manager.projectList.size()-1).addStorageObject(store);
-                System.out.println("Neues PRojekt erstellt, weil Name ungleich");
-            }
-
-            //Wenn das alles nicht der Fall ist, dann füge das StorageObjekt dem letzten Projekt hinzu
-            else {
-                Manager.projectList.get(Manager.projectList.size()-1).addStorageObject(store);
-                System.out.println("StorageObjekt zu aktuellem Projekt hinzugefügt");
-            }
-        }
-
-        createProjects();
-    }
-    */
 
     //Schritt 3: Die erstellten Projekte als FXML Element im Dashboard platzieren und mit dem enstprechenden CTR_StartScreen
     // aus der Projektliste verbinden
