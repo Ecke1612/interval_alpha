@@ -150,6 +150,8 @@ public class CTR_Project_Module {
 
         //vbox_todo_parent.prefHeightProperty().bind(tabPane.prefHeightProperty());
         //tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
+        vbox_todos.requestLayout();
+        vbox_todos.autosize();
         tabPane.prefHeightProperty().bind(vbox_todos.heightProperty().add(125));
         tabPane.getSelectionModel().selectedItemProperty().addListener((obs,ov,nv)->{
             System.out.println("tab: " + nv.getId());
@@ -467,6 +469,7 @@ public class CTR_Project_Module {
 
     public void executeAddTodo(String text, boolean checked) {
         HBox hbox = new HBox(10);
+        hbox.setPadding(new Insets(-4,0,-3,-0));
         hbox.setId("todo");
         CheckBox checkbox = new CheckBox("");
         checkbox.setSelected(checked);
@@ -557,6 +560,9 @@ public class CTR_Project_Module {
             }
         });
 
+        textArea.setPrefRowCount(rowCount);
+        System.out.println("rowcoaunt: " + rowCount);
+
         HBox hBox = new HBox();
         hBox.setId("note");
         Image img_delete = new Image(getClass().getResourceAsStream("/images/delete.png"));
@@ -570,6 +576,7 @@ public class CTR_Project_Module {
             vbox_todos.requestLayout();
             tabPane.requestLayout();
         });
+
         HBox.setHgrow(textArea, Priority.ALWAYS);
         hBox.getChildren().addAll(textArea, btn_delete);
         hBox.setAlignment(Pos.CENTER_LEFT);

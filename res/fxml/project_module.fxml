@@ -117,26 +117,38 @@
       </HBox>
    </graphic>
    <content>
-      <TabPane fx:id="tabPane" prefWidth="661.0">
+      <TabPane fx:id="tabPane" prefWidth="661.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab fx:id="tab_todo" closable="false" text="Todo's">
                <content>
-                  <VBox fx:id="vbox_todo_parent" spacing="5.0">
+                  <VBox fx:id="vbox_todo_parent" alignment="CENTER_LEFT" spacing="5.0">
                      <children>
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
                               <Label text="Todo hinzufügen" />
-                              <Button fx:id="btn_addTodo" mnemonicParsing="false" onAction="#add_todo" text="+" />
+                              <Button fx:id="btn_addTodo" mnemonicParsing="false" onAction="#add_todo" style="-fx-background-color: transparent; -fx-border-color: forestgreen; -fx-border-radius: 2; -fx-border-width: 1.5;" text="+" textFill="FORESTGREEN">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-8.0" />
+                                 </padding></Button>
                               <Separator orientation="VERTICAL" />
                               <Label text="Notiz hinzufügen" />
-                              <Button fx:id="btn_addNote" mnemonicParsing="false" onAction="#add_noteFXML" text="+" />
+                              <Button fx:id="btn_addNote" mnemonicParsing="false" onAction="#add_noteFXML" style="-fx-background-color: transparent; -fx-border-color: forestgreen; -fx-border-radius: 3; -fx-border-width: 1.5;" text="+" textFill="FORESTGREEN">
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-8.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font></Button>
                            </children>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </HBox>
                         <Separator prefWidth="200.0" />
-                        <VBox fx:id="vbox_todos" spacing="5.0" />
+                        <VBox fx:id="vbox_todos" spacing="2.0" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
