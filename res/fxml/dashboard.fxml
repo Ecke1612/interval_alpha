@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ScrollPane?>
@@ -15,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="app" fx:id="borderpane" styleClass="dashboard" stylesheets="@../css/ui_view.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Dashboard">
+<BorderPane id="app" fx:id="borderpane" styleClass="dashboard" stylesheets="@../css/ui_view.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Dashboard">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
@@ -23,7 +17,7 @@
       <HBox fx:id="left_menu_hbox" alignment="CENTER_RIGHT" styleClass="vboxbg" BorderPane.alignment="CENTER">
          <children>
             <fx:include fx:id="em_Menu" source="main_menu.fxml" />
-            <ToggleButton fx:id="btn_switchMenu" mnemonicParsing="false" onAction="#switchMenu" styleClass="menuswitch-btns" text="&lt;" textFill="WHITE">
+            <ToggleButton fx:id="btn_switchMenu" mnemonicParsing="false" onAction="#switchMenu" text="&lt;" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

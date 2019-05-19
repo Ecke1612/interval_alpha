@@ -50,42 +50,17 @@ red:        240, 78, 81
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .menu {
     -fx-background-color: linear-gradient(to bottom right, rgba(54,112,157, 1) 8%, rgba(31, 82, 109, 1) 100%);
-    -fx-min-height: 640px;
-    -fx-pref-height: 640px;
-    -fx-padding: 0px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
 }
 
 .menu .menudivider {
-    -fx-min-height: 32px;
-    -fx-pref-height: 32px;
-    -fx-max-height: 32px;
-    -fx-padding: 0px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
+
 }
 
 .menu .menudividerbig {
-    -fx-min-height: 174px;
-    -fx-pref-height: 174px;
-    -fx-max-height: 174px;
-    -fx-padding: 0px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
+
 }
 
 .menu .info {
-    -fx-min-height: 32px;
-    -fx-pref-height: 32px;
-    -fx-max-height: 32px;
-    -fx-padding: 0px 16px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
     -fx-background-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -116,13 +91,6 @@ red:        240, 78, 81
     -fx-background-color: rgba(0, 0, 0, 0);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-padding: 0px 16px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
 }
 
 .menu .action {
@@ -130,26 +98,12 @@ red:        240, 78, 81
     -fx-background-color: rgba(240, 78, 81, 1);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-padding: 0px 16px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
 }
 
 .menu .action:selected {
     -fx-background-color: rgba(255, 255, 255, 1);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-padding: 0px 16px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
 }
 
 .menu .btn:selected {
@@ -222,69 +176,32 @@ red:        240, 78, 81
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .project {
     -fx-background-color: rgba(255, 255, 255, 1);
-    -fx-padding: 8px 16px;
-    /*-fx-min-width: 250px;
-    -fx-pref-width: 600px;
-    -fx-max-width: 916px;
-    -fx-min-height: 96px;
-    -fx-pref-height: 96px;
-    -fx-max-height: 96px;*/
     -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244,244,244, 1) rgba(0, 0, 0, 0);
     -fx-border-width: 0 0 1px 0;
 }
 
 .project .projectdivider {
-    -fx-min-width: 16px;
-    -fx-pref-width: 16px;
-    -fx-max-width: 16px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
+
 }
 
 .project .note {
-    -fx-min-width: 100px;
-    -fx-pref-width: 220px;
-    -fx-max-width: 350px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .note .cap {
-    -fx-alignment: center;
     -fx-font-size: 18px;
     -fx-background-color: rgba(98, 124, 140, 1);
     -fx-background-radius: 48px;
     -fx-text-fill: rgba(244, 244, 244, 1);
-    -fx-min-width: 48px;
-    -fx-pref-width: 48px;
-    -fx-max-width: 48px;
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-padding: 0px;
 }
 
 .project .note .inputs {
-    -fx-min-width: 200px;
-    -fx-pref-width: 220px;
-    -fx-max-width: 300px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .note .input {
     -fx-background-color: rgba(255, 255, 255, 0);
     -fx-background-radius: 0px;
-    -fx-font-size: 12px;
-    -fx-min-height: 32px;
-    -fx-pref-height: 32px;
-    -fx-max-height: 32px;
-    -fx-padding: 0px;
 }
 
 .project .note .projectname {
@@ -294,14 +211,6 @@ red:        240, 78, 81
 }
 
 .project .client {
-    -fx-alignment: center;
-    -fx-min-width: 50px;
-    -fx-pref-width: 160px;
-    -fx-max-width: 160px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
 }
 
 .project .client .name {
@@ -311,25 +220,11 @@ red:        240, 78, 81
 }
 
 .project .time {
-    -fx-alignment: center;
-    -fx-min-width: 112px;
-    -fx-pref-width: 112px;
-    -fx-max-width: 112px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .actions {
-    -fx-alignment: center;
-    -fx-min-width: 112px;
-    -fx-pref-width: 112px;
-    -fx-max-width: 112px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .actions .btns {
@@ -378,46 +273,23 @@ red:        240, 78, 81
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .report {
     -fx-background-color: rgba(255, 255, 255, 1);
-    -fx-padding: 8px 16px;
-    -fx-min-width: 250px;
-    -fx-pref-width: 600px;
-    -fx-max-width: 916px;
-    -fx-min-height: 55px;
-    -fx-pref-height: 55px;
-    -fx-max-height: 55px;
     -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244, 244, 244, 1) rgba(0, 0, 0, 0);
     -fx-border-width: 0 0 1px 0;
 }
 
 .report .projectdivider {
-    -fx-min-width: 16px;
-    -fx-pref-width: 16px;
-    -fx-max-width: 16px;
-    -fx-min-height: 40px;
-    -fx-pref-height: 40px;
-    -fx-max-height: 40px;
+
 }
 
 .report .note {
-    -fx-min-width: 60px;
-    -fx-pref-width: 120px;
-    -fx-max-width: 250px;
-    -fx-padding: 0px;
+
 }
 
 .report .note .cap {
-    -fx-alignment: center;
     -fx-font-size: 16px;
     -fx-background-color: rgba(98, 124, 140, 1);
     -fx-background-radius: 30px;
     -fx-text-fill: rgba(244, 244, 244, 1);
-    -fx-min-width: 30px;
-    -fx-pref-width: 30px;
-    -fx-max-width: 30px;
-    -fx-min-height: 30px;
-    -fx-pref-height: 30px;
-    -fx-max-height: 30px;
-    -fx-padding: 0px;
 }
 
 .report .note .projectname {
@@ -434,19 +306,11 @@ red:        240, 78, 81
 }
 
 .report .time {
-    -fx-alignment: center;
-    -fx-min-width: 70px;
-    -fx-pref-width: 70px;
-    -fx-max-width: 70px;
-    -fx-padding: 0px;
+
 }
 
 .report .actions {
-    -fx-alignment: center;
-    -fx-min-width: 50px;
-    -fx-pref-width: 50px;
-    -fx-max-width: 50px;
-    -fx-padding: 0px;
+
 }
 
 .report .actions .btns {

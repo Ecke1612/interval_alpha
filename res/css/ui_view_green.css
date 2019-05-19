@@ -23,42 +23,17 @@ darkgrey:    51,51,51
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .menu {
     -fx-background-color: linear-gradient(to bottom right, rgba(156,215,106, 1) 8%, rgba(77, 168, 37, 1) 100%);
-    -fx-min-height: 640px;
-    -fx-pref-height: 640px;
-    -fx-padding: 0px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
 }
 
 .menu .menudivider {
-    -fx-min-height: 32px;
-    -fx-pref-height: 32px;
-    -fx-max-height: 32px;
-    -fx-padding: 0px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
+
 }
 
 .menu .menudividerbig {
-    -fx-min-height: 174px;
-    -fx-pref-height: 174px;
-    -fx-max-height: 174px;
-    -fx-padding: 0px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
+
 }
 
 .menu .info {
-    -fx-min-height: 32px;
-    -fx-pref-height: 32px;
-    -fx-max-height: 32px;
-    -fx-padding: 0px 16px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
     -fx-background-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -89,13 +64,6 @@ darkgrey:    51,51,51
     -fx-background-color: rgba(0, 0, 0, 0);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-padding: 0px 16px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
 }
 
 .menu .action {
@@ -103,33 +71,18 @@ darkgrey:    51,51,51
     -fx-background-color: rgb(0, 186, 219);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-padding: 0px 16px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
 }
 
 .menu .action:selected {
     -fx-background-color: rgba(255, 255, 255, 1);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-padding: 0px 16px;
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
 }
 
 .menu .btn:selected {
     -fx-text-fill: rgba(255,255,255, 1);
     -fx-border-color: rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(255, 255, 255, 1);
     -fx-border-width: 0 0 0 4px;
-    -fx-padding: 0 0 0 12px;
     -fx-background-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -261,22 +214,11 @@ darkgrey:    51,51,51
 }
 
 .project .projectdivider {
-    -fx-min-width: 16px;
-    -fx-pref-width: 16px;
-    -fx-max-width: 16px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
+
 }
 
 .project .note {
-    -fx-min-width: 100px;
-    -fx-pref-width: 220px;
-    -fx-max-width: 350px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .note .cap {
@@ -285,33 +227,15 @@ darkgrey:    51,51,51
     -fx-background-color: rgba(98, 124, 140, 1);
     -fx-background-radius: 48px;
     -fx-text-fill: rgba(244, 244, 244, 1);
-    -fx-min-width: 48px;
-    -fx-pref-width: 48px;
-    -fx-max-width: 48px;
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-padding: 0px;
 }
 
 .project .note .inputs {
-    -fx-min-width: 200px;
-    -fx-pref-width: 220px;
-    -fx-max-width: 300px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .note .input {
     -fx-background-color: rgba(255, 255, 255, 0);
     -fx-background-radius: 0px;
-    -fx-font-size: 12px;
-    -fx-min-height: 32px;
-    -fx-pref-height: 32px;
-    -fx-max-height: 32px;
-    -fx-padding: 0px;
 }
 
 .project .note .projectname {
@@ -321,14 +245,7 @@ darkgrey:    51,51,51
 }
 
 .project .client {
-    -fx-alignment: center;
-    -fx-min-width: 50px;
-    -fx-pref-width: 160px;
-    -fx-max-width: 160px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .client .name {
@@ -338,25 +255,11 @@ darkgrey:    51,51,51
 }
 
 .project .time {
-    -fx-alignment: center;
-    -fx-min-width: 112px;
-    -fx-pref-width: 112px;
-    -fx-max-width: 112px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .actions {
-    -fx-alignment: center;
-    -fx-min-width: 112px;
-    -fx-pref-width: 112px;
-    -fx-max-width: 112px;
-    -fx-min-height: 80px;
-    -fx-pref-height: 80px;
-    -fx-max-height: 80px;
-    -fx-padding: 0px;
+
 }
 
 .project .actions .btns {

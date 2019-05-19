@@ -38,7 +38,7 @@ public class Client_ObjectUI {
         mainVBox = new VBox();
         mainVBox.setStyle("-fx-background-color: " + Manager.getHexColorString(color) +";" +
         "-fx-padding: 20;");
-        //mainVBox.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
+        //mainVBox.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssName())).toExternalForm());
         mainVBox.getStyleClass().add("clientobject");
 
         Label labelactiveProjects = new Label();

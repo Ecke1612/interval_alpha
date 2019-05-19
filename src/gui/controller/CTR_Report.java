@@ -39,7 +39,7 @@ public class CTR_Report {
     public void initialize() {
         mainVBox = new VBox();
         headerHBox = new HBox();
-        headerHBox.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
+        //headerHBox.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssName())).toExternalForm());
         headerHBox.getStyleClass().add("reportHeader");
         entryVBox = new VBox();
         label_dayTime = new Label();

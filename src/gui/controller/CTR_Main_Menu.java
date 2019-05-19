@@ -25,7 +25,7 @@ public class CTR_Main_Menu {
     private Label version;
 
     public void initialize() {
-        vbox_main.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
+        //vbox_main.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssName())).toExternalForm());
         version.setText("Version: " + Main_Application.build);
     }
 
