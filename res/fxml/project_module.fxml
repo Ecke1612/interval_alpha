@@ -17,15 +17,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
-      <HBox fx:id="main_hbox" alignment="TOP_CENTER" fillHeight="false" maxHeight="96.0" maxWidth="1280.0" minHeight="96.0" minWidth="250.0" prefHeight="96.0" prefWidth="630.0" styleClass="project" stylesheets="@../css/ui_view.css">
+      <HBox fx:id="main_hbox" alignment="CENTER" fillHeight="false" styleClass="project" stylesheets="@../css/ui_view.css">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="note">
+            <HBox alignment="CENTER_LEFT" styleClass="note">
                <children>
                   <Label fx:id="label_firstChar" styleClass="cap" text="P" />
-                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
-                  <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="416.0" styleClass="inputs">
+                  <Separator orientation="VERTICAL" styleClass="projectdivider" visible="false" />
+                  <VBox alignment="CENTER_LEFT" prefWidth="200.0" styleClass="inputs">
                      <children>
                         <Label fx:id="label_projName" styleClass="projectname" text="PROJEKTNAME" />
                         <TextField fx:id="textArea_comment" promptText="Tätigkeit hier eintragen ..." styleClass="input" />
@@ -33,13 +33,13 @@
                   </VBox>
                </children>
             </HBox>
-            <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="client">
+            <Separator orientation="VERTICAL" styleClass="projectdivider" visible="false" HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER" prefWidth="125.0" styleClass="client">
                <children>
                   <Label fx:id="label_client" styleClass="name" text="Name des Kunden" textFill="#413f54" />
                </children>
             </VBox>
-            <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
+            <Separator orientation="VERTICAL" styleClass="projectdivider" visible="false" HBox.hgrow="ALWAYS" />
             <VBox alignment="CENTER" prefHeight="79.0" prefWidth="149.0" spacing="5.0">
                <children>
                   <Label fx:id="label_time_today" text="00:00:00">
@@ -53,15 +53,15 @@
                   </Label>
                </children>
             </VBox>
-            <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
-            <VBox alignment="TOP_RIGHT" styleClass="actions">
+            <Separator orientation="VERTICAL" styleClass="projectdivider" visible="false" HBox.hgrow="ALWAYS" />
+            <VBox alignment="TOP_RIGHT" styleClass="actions" HBox.hgrow="ALWAYS">
                <children>
                   <ImageView fx:id="image_reminder" fitHeight="10.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/reminder.png" />
                      </image>
                   </ImageView>
-                  <HBox alignment="CENTER_RIGHT" minWidth="102.0" prefHeight="100.0" prefWidth="102.0" styleClass="actions">
+                  <HBox alignment="CENTER_RIGHT" styleClass="actions">
                      <children>
                         <ToggleButton fx:id="btn_timer" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startClock" text="">
                            <styleClass>
@@ -115,7 +115,7 @@
       </HBox>
    </graphic>
    <content>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox>
          <children>
             <TitledPane fx:id="titled_pane_verlauf" expanded="false" text="Verlauf">
                <content>

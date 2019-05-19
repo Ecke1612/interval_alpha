@@ -94,7 +94,7 @@ public class Manager {
         return hex;
     }
 
-    public static String getCSSPath(int index) {
+    public static String getCSSPath1(int index) {
         String path = "";
         switch(index) {
             case 0:
@@ -110,7 +110,6 @@ public class Manager {
                 path = "/css/ui_view_vanilla.css";
                 break;
         }
-
         return path;
     }
 

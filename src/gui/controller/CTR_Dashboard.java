@@ -1,9 +1,6 @@
 package gui.controller;
 
-import handling.Alert_Windows;
-import handling.CSV_ClientHandler;
-import handling.CSV_ProjectHandler;
-import handling.Manager;
+import handling.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -54,14 +51,19 @@ public class CTR_Dashboard implements Initializable {
     public static Stage stageNewProject;
     private CSV_ProjectHandler csv_projectHandler = new CSV_ProjectHandler();
     private CSV_ClientHandler csv_clientHandler = new CSV_ClientHandler();
+    private Designer designer = new Designer();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        borderpane.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssIndex())).toExternalForm());
+        //borderpane.getStylesheets().add(getClass().getResource(Manager.getCSSPath(CTR_Config.configObject.getCssName())).toExternalForm());
         //setze den CTR_StartScreen als statische Variable in main ein und setze den Dashboardbutton übern den
         // inludierten Menu CTR_StartScreen auf selected
         Main_Application.setdashboardController(this);
         em_MenuController.menu_dashboard.setSelected(true);
+        //btn_switchMenu.getStyleClass().add(".green");
+        btn_switchMenu.setStyle(designer.returner("background", CTR_Config.configObject.getCssName()));
+        System.out.println(btn_switchMenu.getStyleClass().toString());
+        //getBtn_switchMenu.getStyleClass().add(".dashboard .menuswitch-btns");
         //Clients laden
         if(csv_clientHandler.fileExist("data/clients.csv")) {
             try {

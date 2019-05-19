@@ -5,7 +5,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import object.ConfigObject;
 
@@ -76,7 +75,7 @@ public class CTR_Config {
             }
         }
 
-        cbox_css.getSelectionModel().select(configObject.getCssIndex());
+        cbox_css.getSelectionModel().select(configObject.getCssName());
 
         changeListener();
     }
@@ -173,7 +172,8 @@ public class CTR_Config {
         configObject.setAutostopinterval((int) cbox_interval.getSelectionModel().getSelectedItem());
         configObject.setAutostopMinTime((int) cbox_minTime.getSelectionModel().getSelectedItem());
         configObject.setAutostopRushHour((int) cbox_rushHour.getSelectionModel().getSelectedItem());
-        configObject.setCssIndex(cbox_css.getSelectionModel().getSelectedIndex());
+        configObject.setCssName(cbox_css.getSelectionModel().getSelectedItem().toString());
+        System.out.println("item: " + cbox_css.getSelectionModel().getSelectedItem().toString());
         configObject.setUsername(username.getText());
         File_Handler.writeObject(configObject, "ver/config.dat");
         label_console.setText("Änderungen gespeichert!");
