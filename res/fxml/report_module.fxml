@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<TitledPane fx:id="titlepane" expanded="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane fx:id="titlepane" expanded="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
-      <VBox>
+      <VBox id="main_vbox" fx:id="main_vbox" alignment="CENTER_LEFT" stylesheets="@../css/ui_view_green.css">
          <children>
-            <HBox fx:id="main_hbox" fillHeight="false" maxWidth="1115.0" minWidth="332.0" prefHeight="80.0" prefWidth="1115.0" styleClass="report">
+            <HBox fx:id="main_hbox" alignment="CENTER_LEFT" fillHeight="false" spacing="20.0" styleClass="report" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="130.0" styleClass="note">
+                  <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="note" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label fx:id="label_firstChar" styleClass="cap" text="P" />
-                        <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
+                        <Label fx:id="label_firstChar" prefHeight="30.0" prefWidth="30.0" styleClass="cap" text="P" />
                         <VBox alignment="CENTER_LEFT" styleClass="inputs">
                            <children>
                               <Label fx:id="label_projName" styleClass="projectname" text="PROJEKTNAME" />
@@ -26,14 +27,12 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="120.0" styleClass="client">
+                  <VBox alignment="CENTER_LEFT" styleClass="client" HBox.hgrow="ALWAYS">
                      <children>
                         <Label fx:id="label_client" styleClass="name" text="Name des Kunden" textFill="#413f54" />
                      </children>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="70.0" styleClass="time">
+                  <VBox alignment="CENTER_LEFT" styleClass="time">
                      <children>
                         <Label text="heute" />
                         <Label fx:id="label_time" styleClass="time" text="00:00">
@@ -43,8 +42,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="120.0" styleClass="time">
+                  <VBox alignment="CENTER_LEFT" styleClass="time" HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="insgesamt" />
                         <Label fx:id="label_wholeTime" styleClass="time" text="00:00 / 00 Std">
@@ -54,16 +52,15 @@
                         </Label>
                      </children>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" styleClass="projectdivider" visible="false" />
-                  <ProgressIndicator fx:id="progress" prefHeight="57.0" prefWidth="44.0" progress="0.0" />
-                  <HBox alignment="CENTER_RIGHT" minWidth="102.0" prefHeight="100.0" prefWidth="102.0" styleClass="actions">
+                  <ProgressIndicator fx:id="progress" progress="0.0" />
+                  <HBox alignment="CENTER_LEFT" styleClass="actions">
                      <children>
                         <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <items>
-                              <MenuItem fx:id="menu_tracking" mnemonicParsing="false" text="Details" onAction="#showDetails"/>
+                              <MenuItem fx:id="menu_tracking" mnemonicParsing="false" onAction="#showDetails" text="Details" />
                               <MenuItem fx:id="menu_reopen" mnemonicParsing="false" onAction="#reopen" text="wieder eröffnen" />
                            </items>
                            <styleClass>

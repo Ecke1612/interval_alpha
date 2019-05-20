@@ -9,20 +9,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -74,6 +69,8 @@ public class CTR_Project_Module {
     public VBox vbox_todos;
     @FXML
     public VBox vbox_todo_parent;
+    @FXML
+    public HBox main_hbox;
 
     private String name;
     private ClientStorageObject client;
@@ -146,6 +143,20 @@ public class CTR_Project_Module {
             menu_goToDir.setDisable(true);
         }
 
+        setTitlePaneWidth(Main_Application.primaryStage.getWidth());
+
+        Main_Application.primaryStage.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                setTitlePaneWidth((double) newValue);
+            }
+        });
+    }
+
+    private void setTitlePaneWidth(double value) {
+        VBox vbox_center = (VBox) Main_Application.ctr_dashboard.borderpane.getChildren().get(1);
+        double menu = (double)value - vbox_center.getWidth() + 50;
+        main_hbox.setPrefWidth((double)value - menu);
     }
 
 

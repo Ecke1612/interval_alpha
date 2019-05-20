@@ -5,6 +5,8 @@ import gui.controller.CTR_Dashboard;
 import gui.controller.CTR_Project_Module;
 import gui.controller.CTR_Report;
 import handling.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -15,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import main.Main_Application;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -44,6 +47,8 @@ public class Report_Object {
     public TitledPane titlepane;
     @FXML
     public MenuItem menu_reopen;
+    @FXML
+    public VBox main_vbox;
 
     private String name;
     private ClientStorageObject client;
@@ -95,7 +100,23 @@ public class Report_Object {
             progress.setProgress(percent);
 
         }
+
+        setTitlePaneWidth(Main_Application.primaryStage.getWidth());
+
+        Main_Application.primaryStage.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                setTitlePaneWidth((double) newValue);
+            }
+        });
+
         setTitlepane();
+    }
+
+    private void setTitlePaneWidth(double value) {
+        VBox vbox_center = (VBox) Main_Application.ctr_dashboard.borderpane.getChildren().get(1);
+        double menu = (double)value - vbox_center.getWidth() + 50;
+        main_vbox.setPrefWidth((double)value - menu);
     }
 
     private void setTitlepane() {

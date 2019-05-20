@@ -17,30 +17,33 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" stylesheets="@../css/ui_view_green.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
-      <HBox fx:id="main_hbox" alignment="CENTER" fillHeight="false" styleClass="project" stylesheets="@../css/ui_view.css">
+      <HBox fx:id="main_hbox" alignment="CENTER" spacing="20.0" styleClass="project" stylesheets="@../css/ui_view_green.css">
          <children>
-            <HBox alignment="CENTER_LEFT" styleClass="note">
+            <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="note" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="label_firstChar" styleClass="cap" text="P" />
-                  <Separator orientation="VERTICAL" styleClass="projectdivider" visible="false" />
-                  <VBox alignment="CENTER_LEFT" prefWidth="200.0" styleClass="inputs">
+                  <Label fx:id="label_firstChar" prefHeight="48.0" prefWidth="48.0" styleClass="cap" text="P" />
+                  <VBox alignment="CENTER_LEFT" styleClass="inputs">
                      <children>
-                        <Label fx:id="label_projName" styleClass="projectname" text="PROJEKTNAME" />
+                        <Label fx:id="label_projName" styleClass="projectname" text="PROJEKTNAME">
+                           <VBox.margin>
+                              <Insets left="8.0" />
+                           </VBox.margin></Label>
                         <TextField fx:id="textArea_comment" promptText="Tätigkeit hier eintragen ..." styleClass="input" />
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </VBox>
                </children>
             </HBox>
-            <Separator orientation="VERTICAL" styleClass="projectdivider" visible="false" HBox.hgrow="ALWAYS" />
-            <VBox alignment="CENTER" prefWidth="125.0" styleClass="client">
+            <VBox alignment="CENTER" styleClass="client" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="label_client" styleClass="name" text="Name des Kunden" textFill="#413f54" />
+                  <Label fx:id="label_client" styleClass="name" text="Name des Kunden" textFill="#413f54" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
-            <Separator orientation="VERTICAL" styleClass="projectdivider" visible="false" HBox.hgrow="ALWAYS" />
-            <VBox alignment="CENTER" prefHeight="79.0" prefWidth="149.0" spacing="5.0">
+            <VBox alignment="CENTER" spacing="5.0">
                <children>
                   <Label fx:id="label_time_today" text="00:00:00">
                      <font>
@@ -53,7 +56,6 @@
                   </Label>
                </children>
             </VBox>
-            <Separator orientation="VERTICAL" styleClass="projectdivider" visible="false" HBox.hgrow="ALWAYS" />
             <VBox alignment="TOP_RIGHT" styleClass="actions" HBox.hgrow="ALWAYS">
                <children>
                   <ImageView fx:id="image_reminder" fitHeight="10.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -115,20 +117,20 @@
       </HBox>
    </graphic>
    <content>
-      <VBox>
+      <VBox spacing="5.0">
          <children>
-            <TitledPane fx:id="titled_pane_verlauf" expanded="false" text="Verlauf">
+            <TitledPane fx:id="titled_pane_verlauf" expanded="false" styleClass="titled-pane_sub" text="Verlauf">
                <content>
-                  <VBox fx:id="vbox_detail" spacing="5.0">
+                  <VBox fx:id="vbox_detail" spacing="5.0" styleClass="subtext">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
                   </VBox>
                </content>
             </TitledPane>
-            <TitledPane fx:id="titled_pane_todo" text="Todo's">
+            <TitledPane fx:id="titled_pane_todo" styleClass="titled-pane_sub" text="Todo's">
                <content>
-                  <VBox fx:id="vbox_todo_parent" alignment="CENTER_LEFT" spacing="5.0">
+                  <VBox fx:id="vbox_todo_parent" alignment="CENTER_LEFT" styleClass="subtext">
                      <children>
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>

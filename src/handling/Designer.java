@@ -8,6 +8,7 @@ public class Designer {
     private String green = "77, 168, 37";
     private String greenGradient = "-fx-background-color: linear-gradient(to bottom right, rgba(156,215,106, 1) 8%, rgba(77, 168, 37, 1) 100%);";
     private String lightblue = "0, 168, 219";
+    private String lightGreen = "156,215,106";
 
     public String returner(String scene, String style) {
         switch(scene) {
@@ -50,6 +51,8 @@ public class Designer {
                 return "-fx-background-color: rgb(" + green + ");";
             case "green":
                 return "-fx-background-color: rgb(" + lightblue + ");";
+            default:
+                return null;
         }
     }
 

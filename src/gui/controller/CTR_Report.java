@@ -23,7 +23,7 @@ public class CTR_Report {
 
     private DatePicker datePicker = new DatePicker(LocalDate.now());
     private ArrayList<Report_Object> reports;
-    private ScrollPane scrollPane = new ScrollPane();
+    //private ScrollPane scrollPane = new ScrollPane();
     private VBox mainVBox;
     private HBox headerHBox;
     private VBox entryVBox;
@@ -85,8 +85,8 @@ public class CTR_Report {
 
         updateView(datePicker.getValue());
 
-        scrollPane.setContent(mainVBox);
-        Main_Application.ctr_dashboard.borderpane.setCenter(scrollPane);
+        //scrollPane.setContent(mainVBox);
+        Main_Application.ctr_dashboard.borderpane.setCenter(mainVBox);
     }
 
     private void updateView(LocalDate date) {

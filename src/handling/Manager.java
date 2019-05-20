@@ -20,15 +20,20 @@ public class Manager {
     public static ArrayList<ClientStorageObject> clients = new ArrayList<>();
 
     public static ArrayList<String> configList = new ArrayList<>();
-    public static FileInputStream reminder_image;
-    {
+    public static FileInputStream reminder_image; { loadImage("/res/images/reminder.png"); }
+    public static FileInputStream logoSingle_image; { loadImage("/res/images/logo_single.png"); }
+    public static FileInputStream logoFull_image; { loadImage("/res/images/logo.png"); }
+    public static FileInputStream pencil_image; { loadImage("/res/images/pencil.png"); }
+
+
+
+    private void loadImage(String path) {
         try {
-            reminder_image = new FileInputStream("/res/images/reminder.png");
+            reminder_image = new FileInputStream(path);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-
 
     public static String printTime(int seconds) {
         int sec = seconds%60;

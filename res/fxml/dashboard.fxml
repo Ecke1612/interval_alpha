@@ -3,37 +3,28 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane id="app" fx:id="borderpane" styleClass="dashboard" stylesheets="@../css/ui_view.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Dashboard">
+<BorderPane id="app" fx:id="borderpane" styleClass="dashboard" stylesheets="@../css/ui_view_green.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CTR_Dashboard">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <left>
-      <HBox fx:id="left_menu_hbox" alignment="CENTER_RIGHT" styleClass="vboxbg" BorderPane.alignment="CENTER">
+      <HBox id="hbox_menu" fx:id="hbox_menu" alignment="CENTER_RIGHT" styleClass="vboxbg" BorderPane.alignment="CENTER">
          <children>
             <fx:include fx:id="em_Menu" source="main_menu.fxml" />
-            <ToggleButton fx:id="btn_switchMenu" mnemonicParsing="false" onAction="#switchMenu" text="&lt;" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <padding>
-                  <Insets bottom="-5.0" left="-2.0" right="-2.0" top="-8.0" />
-               </padding></ToggleButton>
 
          </children>
       </HBox>
    </left>
    <center>
-      <VBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
+      <VBox id="vbox_center" fx:id="vbox_center" alignment="TOP_RIGHT" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane fx:id="scrollPane" styleClass="scrollepane">
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" pannable="true" styleClass="scrollepane">
                <content>
-                  <VBox fx:id="vbox_projList" />
+                  <VBox fx:id="vbox_projList" spacing="1.0" />
                </content>
             </ScrollPane>
             <HBox>

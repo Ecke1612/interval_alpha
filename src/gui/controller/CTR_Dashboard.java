@@ -36,8 +36,6 @@ public class CTR_Dashboard implements Initializable {
     @FXML
     public BorderPane borderpane;
     @FXML
-    public ToggleButton btn_switchMenu;
-    @FXML
     public ScrollPane scrollPane;
     @FXML
     HBox left_menu_hbox;
@@ -47,11 +45,12 @@ public class CTR_Dashboard implements Initializable {
     private CTR_Main_Menu em_MenuController;
     @FXML
     ToggleButton getBtn_switchMenu;
+    @FXML
+    public VBox vbox_center;
 
     public static Stage stageNewProject;
     private CSV_ProjectHandler csv_projectHandler = new CSV_ProjectHandler();
     private CSV_ClientHandler csv_clientHandler = new CSV_ClientHandler();
-    private Designer designer = new Designer();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,11 +58,7 @@ public class CTR_Dashboard implements Initializable {
         //setze den CTR_StartScreen als statische Variable in main ein und setze den Dashboardbutton übern den
         // inludierten Menu CTR_StartScreen auf selected
         Main_Application.setdashboardController(this);
-        em_MenuController.menu_dashboard.setSelected(true);
-        //btn_switchMenu.getStyleClass().add(".green");
-        btn_switchMenu.setStyle(designer.returner("background", CTR_Config.configObject.getCssName()));
-        System.out.println(btn_switchMenu.getStyleClass().toString());
-        //getBtn_switchMenu.getStyleClass().add(".dashboard .menuswitch-btns");
+        //em_MenuController.menu_dashboard.setSelected(true);
         //Clients laden
         if(csv_clientHandler.fileExist("data/clients.csv")) {
             try {
@@ -124,29 +119,14 @@ public class CTR_Dashboard implements Initializable {
 
     public void showDashboardAtRuntime() throws IOException {
         vbox_projList.getChildren().clear();
+        vbox_center.getChildren().clear();
         for(Parent projectUI : Manager.projectUIList) {
             vbox_projList.getChildren().add(projectUI);
         }
         scrollPane.setContent(vbox_projList);
-        borderpane.setCenter(scrollPane);
-    }
+        vbox_center.getChildren().add(vbox_projList);
+        borderpane.setCenter(vbox_center);
 
-    public void switchMenu() {
-        int menuSize = 324;
-
-        if(btn_switchMenu.isSelected()) {
-            left_menu_hbox.setMinWidth(30);
-            left_menu_hbox.setPrefWidth(30);
-            left_menu_hbox.setMaxWidth(30);
-            btn_switchMenu.setText(">");
-            Main_Application.primaryStage.setWidth(Main_Application.primaryStage.getWidth() - menuSize);
-        } else {
-            left_menu_hbox.setMinWidth(menuSize);
-            left_menu_hbox.setPrefWidth(menuSize);
-            left_menu_hbox.setMaxWidth(menuSize);
-            btn_switchMenu.setText("<");
-            Main_Application.primaryStage.setWidth(Main_Application.primaryStage.getWidth() + menuSize);
-        }
     }
 
     public void removeProject(int index) {

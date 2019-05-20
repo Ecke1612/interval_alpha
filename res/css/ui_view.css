@@ -79,14 +79,12 @@ lightgrey:   180,180,180
     -fx-background-color: rgba(255, 255, 255, 1);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-padding: 0px 16px;
 }
 
 .menu .btn:selected {
     -fx-text-fill: rgba(255,255,255, 1);
     -fx-border-color: rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(120, 243, 130, 0) rgba(255, 255, 255, 1);
     -fx-border-width: 0 0 0 4px;
-    -fx-padding: 0 0 0 12px;
     -fx-background-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -133,7 +131,6 @@ lightgrey:   180,180,180
 
 .dashboard .menuswitch-btns .green {
     -fx-background-color: rgb(77, 168, 37);
-    -fx-border-color: rgb(255,0,0);
 }
 
 .dashboard .menuswitch-btns:hover {

@@ -17,64 +17,22 @@ darkgrey:    51,51,51
   font-style: normal;
 }
 
-
-
 /* Main menu
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .menu {
     -fx-background-color: linear-gradient(to bottom right, rgba(156,215,106, 1) 8%, rgba(77, 168, 37, 1) 100%);
 }
 
-.menu .menudivider {
-
-}
-
-.menu .menudividerbig {
-
-}
-
-.menu .info {
-    -fx-background-color: rgba(0, 0, 0, 0.08);
-}
-
-.menu .info .version {
-    -fx-text-fill: rgba(0, 0, 0, 0.64);;
-    -fx-font-size: 12px;
-}
-
-.menu .logo {
-    -fx-background-color: rgba(255, 255, 255, 1);
-    -fx-fill: rgba(255, 255, 255, 1);
-    -fx-image: url('../images/logo.png');
-    -fx-min-width: 300px;
-    -fx-pref-width: 300px;
-    -fx-max-width: 300px;
-}
 
 .menu .settings {
     -fx-background-color: rgba(0, 0, 0, 0);
     -fx-font-size: 12px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-padding: 0px;
 }
 
 .menu .btn {
-    -fx-alignment: baseline-left;
     -fx-background-radius: 0px;
     -fx-background-color: rgba(0, 0, 0, 0);
-    -fx-font-size: 16px;
-    -fx-text-fill: rgba(0, 0, 0, 0.64);
-}
-
-.menu .action {
-    -fx-alignment: baseline-left;
-    -fx-background-color: rgb(0, 186, 219);
-    -fx-font-size: 16px;
-    -fx-text-fill: rgba(0, 0, 0, 0.64);
-}
-
-.menu .action:selected {
-    -fx-background-color: rgba(255, 255, 255, 1);
     -fx-font-size: 16px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
 }
@@ -86,30 +44,36 @@ darkgrey:    51,51,51
     -fx-background-color: rgba(0, 0, 0, 0.08);
 }
 
+.menu .action {
+    -fx-background-color: rgb(0, 186, 219);
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+}
+
+.menu .action:selected {
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.64);
+}
+
+.menu .menuswitch-btns {
+    -fx-background-color: rgb(77, 168, 37);
+}
+
+.menu .menuswitch-btns:hover {
+    -fx-background-color: rgb(156, 215, 106);
+}
+
 .menu .action .ico {
     -fx-font-family: 'uiicons';
     -fx-font-size: 24px;
-    -fx-padding: 0px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-min-width: 40px;
-    -fx-pref-width: 40px;
-    -fx-max-width: 40px;
 }
 
 .menu .btn .ico {
     -fx-font-family: 'uiicons';
     -fx-font-size: 24px;
-    -fx-padding: 0px;
     -fx-text-fill: rgba(0, 0, 0, 0.64);
-    -fx-min-height: 48px;
-    -fx-pref-height: 48px;
-    -fx-max-height: 48px;
-    -fx-min-width: 40px;
-    -fx-pref-width: 40px;
-    -fx-max-width: 40px;
 }
 
 .menu .btn:selected .ico {
@@ -121,25 +85,6 @@ darkgrey:    51,51,51
 --------------------------------------------------------------------*/
 .dashboard {
     /*-fx-background-color: rgb(161, 161, 161);*/
-}
-
-.dashboard .menuswitch-btns {
-    -fx-background-color: rgb(77, 168, 37);
-}
-
-.dashboard .menuswitch-btns:hover {
-    -fx-background-color: rgb(156,215,106);
-}
-
-.dashboard .vboxbg {
-    -fx-background-color: rgb(255,255,255);
-}
-
-.scrollepane {
-    /*
-    -fx-background: rgba(255,255,255,0);
-    -fx-border-color: rgba(255,255,255,0);
-    */
 }
 
 
@@ -203,6 +148,86 @@ darkgrey:    51,51,51
     /*-fx-text-fill: rgb(77, 168, 37);*/
 }
 
+.titled-pane
+{
+    -fx-skin: "com.sun.javafx.scene.control.skin.TitledPaneSkin";
+    -fx-text-fill: white;
+}
+
+.titled-pane:focused
+{
+    -fx-text-fill: white;
+}
+
+.titled-pane > .title   {
+    -fx-background-color: rgb(156,215,106), rgb(156,215,106), linear-gradient(rgba(156,215,106, 1) 8%, rgba(77, 168, 37, 1) 100%);
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em;
+}
+.titled-pane:focused > .title
+{
+    -fx-color: -fx-focus-color;
+}
+
+.titled-pane > .title > .arrow-button
+{
+    -fx-background-color: null;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0.0em 0.25em 0.0em 0.0em; /* 0 3 0 0 */
+}
+
+.titled-pane > .title > .arrow-button .arrow
+{
+    -fx-background-color: rgb(57, 148, 17);
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.25em 0.3125em 0.25em 0.3125em; /* 3 3.75 3 3.75 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+
+.titled-pane:collapsed > .title > .arrow-button .arrow
+{
+    -fx-rotate: -90;
+}
+
+.titled-pane:focused > .title > .arrow-button .arrow
+{
+    -fx-background-color: white;
+}
+
+
+
+.titled-pane_sub
+{
+    -fx-skin: "com.sun.javafx.scene.control.skin.TitledPaneSkin";
+    -fx-text-fill: rgb(0, 129, 159);
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.titled-pane_sub .subtext{
+    -fx-font-size: 12px;
+    -fx-font-weight: normal;
+}
+
+.titled-pane_sub > .title {
+    -fx-background-color: transparent;
+    -fx-border-color: rgb(0, 129, 159);
+    -fx-border-radius: 5;
+    -fx-border-width: 0.75;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em;
+}
+
+.titled-pane_sub > .title > .arrow-button .arrow
+{
+    -fx-background-color: rgb(0, 129, 159);
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.25em 0.3125em 0.25em 0.3125em; /* 3 3.75 3 3.75 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
 
 /* Project module
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -213,24 +238,12 @@ darkgrey:    51,51,51
     -fx-border-width: 0 0 1px 0;
 }
 
-.project .projectdivider {
-
-}
-
-.project .note {
-
-}
-
 .project .note .cap {
     -fx-alignment: center;
     -fx-font-size: 18px;
     -fx-background-color: rgba(98, 124, 140, 1);
     -fx-background-radius: 48px;
     -fx-text-fill: rgba(244, 244, 244, 1);
-}
-
-.project .note .inputs {
-
 }
 
 .project .note .input {
@@ -244,9 +257,6 @@ darkgrey:    51,51,51
     -fx-text-fill: rgba(98, 124, 140, 1);
 }
 
-.project .client {
-
-}
 
 .project .client .name {
     -fx-font-size: 12px;
@@ -254,13 +264,6 @@ darkgrey:    51,51,51
     -fx-text-fill: rgba(0, 0, 0, 0.32);
 }
 
-.project .time {
-
-}
-
-.project .actions {
-
-}
 
 .project .actions .btns {
     -fx-font-family: 'uiicons';
@@ -289,18 +292,6 @@ darkgrey:    51,51,51
     -fx-padding: 0px;
 }
 
-/*
-.a > .i > .i,
-.a .i
-
-<a class="a">
-    <i class="i">
-        <i class="i"></i>
-    </i>
-</a>
-*/
-
-
 
 /*----Report----------------
 ---------------------------------------------------*/
@@ -308,32 +299,10 @@ darkgrey:    51,51,51
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .report {
     -fx-background-color: rgba(255, 255, 255, 1);
-    -fx-padding: 8px 16px;
-    -fx-min-width: 250px;
-    -fx-pref-width: 600px;
-    -fx-max-width: 916px;
-    -fx-min-height: 55px;
-    -fx-pref-height: 55px;
-    -fx-max-height: 55px;
     -fx-border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(244, 244, 244, 1) rgba(0, 0, 0, 0);
     -fx-border-width: 0 0 1px 0;
 }
 
-.report .projectdivider {
-    -fx-min-width: 16px;
-    -fx-pref-width: 16px;
-    -fx-max-width: 16px;
-    -fx-min-height: 40px;
-    -fx-pref-height: 40px;
-    -fx-max-height: 40px;
-}
-
-.report .note {
-    -fx-min-width: 60px;
-    -fx-pref-width: 120px;
-    -fx-max-width: 250px;
-    -fx-padding: 0px;
-}
 
 .report .note .cap {
     -fx-alignment: center;
@@ -341,13 +310,6 @@ darkgrey:    51,51,51
     -fx-background-color: rgba(98, 124, 140, 1);
     -fx-background-radius: 30px;
     -fx-text-fill: rgba(244, 244, 244, 1);
-    -fx-min-width: 30px;
-    -fx-pref-width: 30px;
-    -fx-max-width: 30px;
-    -fx-min-height: 30px;
-    -fx-pref-height: 30px;
-    -fx-max-height: 30px;
-    -fx-padding: 0px;
 }
 
 .report .note .projectname {
@@ -356,27 +318,10 @@ darkgrey:    51,51,51
     -fx-text-fill: rgba(98, 124, 140, 1);
 }
 
-
 .report .client .name {
     -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-text-fill: rgba(0, 0, 0, 0.32);
-}
-
-.report .time {
-    -fx-alignment: center;
-    -fx-min-width: 70px;
-    -fx-pref-width: 70px;
-    -fx-max-width: 70px;
-    -fx-padding: 0px;
-}
-
-.report .actions {
-    -fx-alignment: center;
-    -fx-min-width: 50px;
-    -fx-pref-width: 50px;
-    -fx-max-width: 50px;
-    -fx-padding: 0px;
 }
 
 .report .actions .btns {
@@ -436,7 +381,6 @@ darkgrey:    51,51,51
 .clientobject .new:hover {
     -fx-background-color: rgb(156,215,106);
 }
-
 
 .clientobject .colorpickerWhite {
     -fx-background-color: transparent; 
