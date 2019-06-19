@@ -119,7 +119,7 @@ public class CTR_Project_Module {
         project_todos = new Project_Todos(vbox_todos, this);
         for(TodoStorage todoStorage : todos) {
             if(todoStorage.getType().equals("note")){
-                executeAddNote(todoStorage.getNotes(), todoStorage.getRowCount());
+                executeAddNote(todoStorage.getNotes(), true);
             }else if(todoStorage.getType().equals("todo")) {
                 executeAddTodo(todoStorage.getText(), todoStorage.isCheck());
             }
@@ -461,11 +461,11 @@ public class CTR_Project_Module {
     }
 
     public void add_noteFXML() {
-        executeAddNote("", 1);
+        executeAddNote("", false);
     }
 
-    private void executeAddNote(String text, int rowCount) {
-        project_todos.executeAddNote(text, rowCount);
+    private void executeAddNote(String text, boolean loading) {
+        project_todos.executeAddNote(text, loading);
     }
 
     public void saveTodos() {

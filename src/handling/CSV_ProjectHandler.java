@@ -37,7 +37,7 @@ public class CSV_ProjectHandler {
             }
             for(TodoStorage todo : projects.getTodos()) {
                 if(todo.getType().equals("note")) {
-                    String temp = "2;" + todo.getNotes() + ";" + todo.getRowCount();
+                    String temp = "2;" + todo.getNotes();
                     String[] entries = temp.split(";");
                     writer.writeNext(entries);
                 } else if(todo.getType().equals("todo")) {
@@ -93,7 +93,7 @@ public class CSV_ProjectHandler {
                 }
             } else if(header == 2) {
                 try {
-                    Manager.projectList.get(Manager.projectList.size() - 1).getTodos().add(new TodoStorage("note", line[1], Integer.parseInt(line[2])));
+                    Manager.projectList.get(Manager.projectList.size() - 1).getTodos().add(new TodoStorage("note", line[1]));
                 }catch (Exception e) {
                     e.printStackTrace();
                     System.out.println("Fehler beim erstellen der Todos note");

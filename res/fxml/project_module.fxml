@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" stylesheets="@../css/ui_view_green.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" expanded="false" stylesheets="@../css/ui_view_green.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
       <HBox fx:id="main_hbox" alignment="CENTER" spacing="20.0" styleClass="project" stylesheets="@../css/ui_view_green.css">
          <children>
@@ -128,7 +128,7 @@
                   </VBox>
                </content>
             </TitledPane>
-            <TitledPane fx:id="titled_pane_todo" styleClass="titled-pane_sub" text="Todo's">
+            <TitledPane fx:id="titled_pane_todo" expanded="false" styleClass="titled-pane_sub" text="Todo's">
                <content>
                   <VBox fx:id="vbox_todo_parent" alignment="CENTER_LEFT" styleClass="subtext">
                      <children>
@@ -155,10 +155,13 @@
                               </Button>
                            </children>
                            <VBox.margin>
-                              <Insets />
+                              <Insets bottom="5.0" />
                            </VBox.margin>
                         </HBox>
-                        <Separator prefWidth="200.0" />
+                        <Separator prefWidth="200.0">
+                           <padding>
+                              <Insets bottom="4.0" />
+                           </padding></Separator>
                         <VBox fx:id="vbox_todos" spacing="2.0" />
                      </children>
                      <padding>

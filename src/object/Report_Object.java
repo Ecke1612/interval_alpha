@@ -259,6 +259,10 @@ public class Report_Object {
             for(TimeProCommentObject timepro : timeProCommentObjects) {
                 content.add(Manager.printTimeWithoutSec(timepro.getTime()*60) + " - " + timepro.getComment());
             }
+            content.add("");
+            String zero = "";
+            if(maxTime < 10) zero = "0";
+            content.add("Gesamt: " + Manager.printTimeWithoutSec(getWholeTime()) + " / " + zero + maxTime);
             try {
                 File_Handler.fileWriterNewLine(path + ".txt", content);
             } catch (IOException e) {

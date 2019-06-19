@@ -3,8 +3,11 @@ package gui.controller.project_module_objects;
 import gui.controller.CTR_Project_Module;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
@@ -14,6 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.scene.web.HTMLEditor;
+import javafx.stage.Stage;
 import object.TodoStorage;
 
 
@@ -21,6 +28,8 @@ public class Project_Todos {
 
     private VBox vbox_todos;
     private CTR_Project_Module project;
+    //private double oldHeight;
+    //private String nodetext = "";
 
     public Project_Todos(VBox vbox_todos, CTR_Project_Module project) {
         this.vbox_todos = vbox_todos;
@@ -62,10 +71,14 @@ public class Project_Todos {
             }
         });
 
-        Image img_delete = new Image(getClass().getResourceAsStream("/images/delete.png"));
-        Button btn_delete = new Button("", new ImageView(img_delete));
-        btn_delete.setStyle("-fx-background-color: transparent");
-        btn_delete.setMaxSize(10,10);
+        Button btn_delete = new Button("\uE107");
+        btn_delete.setStyle(
+                "-fx-font-family: 'Segoe MDL2 Assets';" +
+                        "-fx-background-color: transparent;" +
+                        "-fx-text-fill: darkred;" +
+                        "-fx-font-size: 18;" +
+                        "-fx-padding: -4"
+        );
         btn_delete.setOnAction(event -> {
             vbox_todos.getChildren().remove(hbox);
             saveTodos();
@@ -90,22 +103,45 @@ public class Project_Todos {
         }
     }
 
-    public void add_noteFXML() {
-        executeAddNote("", 1);
-    }
 
-    public void executeAddNote(String text, int rowCount) {
-        TextArea textArea = new TextArea();
-        textArea.setPrefRowCount(rowCount);
-        textArea.setWrapText(true);
+    public void executeAddNote(String nodetext, boolean loading) {
+        if(!loading) {
+            nodetext = nodeStage(nodetext);
+        }
+        //TextArea textArea = new TextArea();
+        //textArea.setPrefRowCount(oldH);
+        //textArea.setWrapText(true);
+        //textArea.setPrefRowCount(2);
+        /*
         textArea.setText(text);
-        textArea.setMinHeight(textArea.getMaxHeight() + (rowCount * textArea.getFont().getSize()*1.5));
+        Text textHolder = new Text();
+
+       //textArea.setMinHeight(textArea.getMaxHeight() + (rowCount * textArea.getFont().getSize()*1.5));
         textArea.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 String text = textArea.getText();
                 String[] lineArray = text.split("\n");
                 textArea.setMinHeight(textArea.getMaxHeight() + (lineArray.length * textArea.getFont().getSize()*1.5));
+            }
+        });
+
+        //oldHeight = oldHeightlocal;
+
+        textHolder.textProperty().bind(textArea.textProperty());
+        System.out.println("old height: " + oldHeightlocal);
+        textArea.setPrefHeight(textHolder.getLayoutBounds().getHeight() + 20);
+
+
+        textHolder.layoutBoundsProperty().addListener(new ChangeListener<Bounds>() {
+            @Override
+            public void changed(ObservableValue<? extends Bounds> observable, Bounds oldValue, Bounds newValue) {
+                //if (oldHeightlocal != newValue.getHeight()) {
+                  //  oldHeightlocal = newValue.getHeight();
+                    textArea.setPrefHeight(textHolder.getLayoutBounds().getHeight() + 20);
+                    System.out.println("holder: " + textHolder.getLayoutBounds().getHeight());
+                    System.out.println("textA: "+ textArea.getLayoutBounds().getHeight());
+                //}
             }
         });
 
@@ -118,24 +154,79 @@ public class Project_Todos {
             }
         });
 
-        textArea.setPrefRowCount(rowCount);
-        System.out.println("rowcoaunt: " + rowCount);
+        //textArea.setPrefRowCount(rowCount);
+        //System.out.println("rowcoaunt: " + rowCount);
+
+   */
+
+        TextFlow textFlow = new TextFlow();
+        Text textNodes = new Text(nodetext);
 
         HBox hBox = new HBox();
         hBox.setId("note");
-        Image img_delete = new Image(getClass().getResourceAsStream("/images/delete.png"));
-        Button btn_delete = new Button("", new ImageView(img_delete));
-        btn_delete.setStyle("-fx-background-color: transparent");
-        btn_delete.setMaxSize(10,10);
+
+        Button btn_edit = new Button("\uE104");
+        btn_edit.setStyle(
+                "-fx-font-family: 'Segoe MDL2 Assets';" +
+                "-fx-background-color: transparent;" +
+                "-fx-font-size: 16"
+        );
+        btn_edit.setOnAction(event -> {
+            textNodes.setText(nodeStage(textFlowToString(textFlow)));
+        });
+
+        Button btn_delete = new Button("\uE107");
+        btn_delete.setStyle(
+                "-fx-font-family: 'Segoe MDL2 Assets';" +
+                "-fx-background-color: transparent;" +
+                "-fx-text-fill: darkred;" +
+                "-fx-font-size: 18;" +
+                "-fx-padding: -4"
+        );
         btn_delete.setOnAction(event -> {
             vbox_todos.getChildren().remove(hBox);
             saveTodos();
         });
 
-        HBox.setHgrow(textArea, Priority.ALWAYS);
-        hBox.getChildren().addAll(textArea, btn_delete);
+
+        //textNodes.textProperty().bind(textArea.textProperty());
+
+        HBox.setHgrow(textFlow, Priority.ALWAYS);
+        hBox.getChildren().addAll(textFlow, btn_edit, btn_delete);
         hBox.setAlignment(Pos.CENTER_LEFT);
+
+        textFlow.getChildren().clear();
+        textFlow.getChildren().add(textNodes);
+
         vbox_todos.getChildren().add(hBox);
+    }
+
+    private String nodeStage(String initText) {
+        Stage nodestage = new Stage();
+        VBox main_vbox = new VBox(5);
+        Scene scene = new Scene(main_vbox);
+        nodestage.setScene(scene);
+
+        TextArea textArea = new TextArea(initText);
+        textArea.setWrapText(true);
+
+        Button btn_abort = new Button("Abbrechen");
+        btn_abort.setOnAction(event -> {
+            nodestage.close();
+        });
+
+        Button btn_ok = new Button("Okay");
+        btn_ok.setOnAction(event -> {
+            nodestage.close();
+        });
+
+        HBox hbox_buttons = new HBox(5);
+        hbox_buttons.getChildren().addAll(btn_abort, btn_ok);
+
+        main_vbox.getChildren().addAll(textArea, hbox_buttons);
+
+        nodestage.showAndWait();
+        return textArea.getText();
     }
 
     public void saveTodos() {
@@ -143,8 +234,8 @@ public class Project_Todos {
         for(int i = 0; i < vbox_todos.getChildren().size(); i++) {
             HBox hbox = (HBox) vbox_todos.getChildren().get(i);
             if(hbox.getId() != null && hbox.getId().equals("note")) {
-                TextArea t = (TextArea) hbox.getChildren().get(0);
-                project.getTodos().add(new TodoStorage("note", t.getText(), t.getPrefRowCount()));
+                TextFlow t = (TextFlow) hbox.getChildren().get(0);
+                project.getTodos().add(new TodoStorage("note", textFlowToString(t)));
             } else if(hbox.getId() != null && hbox.getId().equals("todo")) {
                 CheckBox ch = (CheckBox) hbox.getChildren().get(0);
                 TextField t = (TextField) hbox.getChildren().get(1);
@@ -152,6 +243,17 @@ public class Project_Todos {
             }
         }
         System.out.println("Todo's saved");
+    }
+
+    private String textFlowToString(TextFlow t) {
+        StringBuilder sb = new StringBuilder();
+        for (Node node : t.getChildren()) {
+            if (node instanceof Text) {
+                sb.append(((Text) node).getText());
+            }
+        }
+        String fullText = sb.toString();
+        return fullText;
     }
 
 }

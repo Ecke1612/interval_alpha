@@ -6,12 +6,10 @@ public class TodoStorage {
     private String notes;
     private boolean check;
     private String text = "";
-    private String rowCount;
 
-    public TodoStorage(String type, String notes, int rowCount) {
+    public TodoStorage(String type, String notes) {
         this.type = type;
         this.notes = notes;
-        this.rowCount = Integer.toString(rowCount);
     }
 
     public TodoStorage(String type, boolean check, String text){
@@ -21,7 +19,6 @@ public class TodoStorage {
         if(text.equals("")) {
             System.out.println("nix drin");
         }
-        System.out.println("text: " + text);
     }
 
     public String getNotes() {
@@ -54,13 +51,5 @@ public class TodoStorage {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public int getRowCount() {
-        return Integer.parseInt(rowCount);
-    }
-
-    public void setRowCount(String rowCount) {
-        this.rowCount = rowCount;
     }
 }
