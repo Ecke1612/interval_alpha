@@ -71,6 +71,8 @@ public class CTR_Project_Module {
     public VBox vbox_todo_parent;
     @FXML
     public HBox main_hbox;
+    @FXML
+    public ChoiceBox chb_suggest;
 
     private String name;
     private ClientStorageObject client;
@@ -90,6 +92,7 @@ public class CTR_Project_Module {
     private Project_Todos project_todos;
 
     private ArrayList<StorageObject> storageObjects = new ArrayList<>();
+    private ArrayList<String> suggestedComments = new ArrayList<>();
 
     public CTR_Project_Module(ClientStorageObject client, String name, int maxTimeHours, int index, String projectpath) {
         this.name = name;
@@ -110,6 +113,7 @@ public class CTR_Project_Module {
         label_firstChar.setText(String.valueOf(pUpper));
         label_firstChar.setStyle("-fx-background-color: " + Manager.getHexColorString(client.getColor()) + ";" + Manager.getCSSTextColorByBrightness(client.getColor(),false));
         initTrackingData();
+        initChb_suggestList();
         //wenn StorageObjekte vorhanden sind, errechne die gesamtzeit daraus
         if(storageObjects.size() != 0) {
             getWholeTime();
@@ -151,6 +155,17 @@ public class CTR_Project_Module {
                 setTitlePaneWidth((double) newValue);
             }
         });
+
+
+        chb_suggest.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                System.out.println("change");
+                if(newValue != null) {
+                    textArea_comment.setText(newValue.toString());
+                }
+            }
+        });
     }
 
     private void setTitlePaneWidth(double value) {
@@ -166,8 +181,18 @@ public class CTR_Project_Module {
             if(LocalDate.now().equals(store.getDate())){
                 Label label = new Label();
                 label.setText(Manager.printTime(store.getSec()) + "   -   " + store.getComment());
-                vbox_detail.getChildren().add(label);;
+                vbox_detail.getChildren().add(label);
             }
+        }
+    }
+
+    private void initChb_suggestList() {
+        chb_suggest.getItems().clear();
+        for(StorageObject store : storageObjects) {
+            if(!suggestedComments.contains(store.getComment()) && !store.getComment().equals("Projekt angelegt")) suggestedComments.add(store.getComment());
+        }
+        for(String s : suggestedComments) {
+            chb_suggest.getItems().add(s);
         }
     }
 
@@ -229,6 +254,7 @@ public class CTR_Project_Module {
         autoStopOffset = 0;
         saveData();
         initTrackingData();
+        initChb_suggestList();
 
         CSV_ProjectHandler.csvWriter();
         btn_timer.setText("\uF00F");
@@ -450,6 +476,10 @@ public class CTR_Project_Module {
     public void deleteReminder() {
         image_reminder.setVisible(false);
         reminderObject = null;
+    }
+
+    public void chb_suggest() {
+
     }
 
     public void add_todo() {

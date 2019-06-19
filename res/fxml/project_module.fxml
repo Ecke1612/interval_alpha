@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -19,7 +20,7 @@
 
 <TitledPane fx:id="titledPane" alignment="CENTER" contentDisplay="CENTER" expanded="false" stylesheets="@../css/ui_view_green.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
-      <HBox fx:id="main_hbox" alignment="CENTER" spacing="20.0" styleClass="project" stylesheets="@../css/ui_view_green.css">
+      <HBox fx:id="main_hbox" alignment="CENTER" spacing="20.0" styleClass="project">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="note" HBox.hgrow="ALWAYS">
                <children>
@@ -30,7 +31,23 @@
                            <VBox.margin>
                               <Insets left="8.0" />
                            </VBox.margin></Label>
-                        <TextField fx:id="textArea_comment" promptText="Tätigkeit hier eintragen ..." styleClass="input" />
+                        <HBox>
+                           <children>
+                              <ChoiceBox fx:id="chb_suggest" prefWidth="0.0" style="-fx-background-color: transparent;">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <styleClass>
+                                    <String fx:value="choice-box" />
+                                    <String fx:value="label" />
+                                 </styleClass>
+                                 <padding>
+                                    <Insets left="-8.0" right="-8.0" />
+                                 </padding>
+                              </ChoiceBox>
+                              <TextField fx:id="textArea_comment" promptText="Tätigkeit hier eintragen ..." styleClass="input" />
+                           </children>
+                        </HBox>
                      </children>
                      <HBox.margin>
                         <Insets />

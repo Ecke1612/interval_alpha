@@ -1,0 +1,7 @@
+.choice-box {
+
+}
+
+.choice-box > .label {
+    visibility: hidden;
+}
