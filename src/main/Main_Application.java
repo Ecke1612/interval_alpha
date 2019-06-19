@@ -1,6 +1,5 @@
 package main;
 
-import gui.controller.CTR_Config;
 import gui.controller.CTR_Project_Module;
 import handling.*;
 import javafx.application.Application;

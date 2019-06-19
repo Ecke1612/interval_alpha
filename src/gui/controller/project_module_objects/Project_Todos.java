@@ -42,7 +42,7 @@ public class Project_Todos {
 
     public void executeAddTodo(String text, boolean checked) {
         HBox hbox = new HBox(10);
-        hbox.setPadding(new Insets(-4,0,-3,-0));
+        //hbox.setPadding(new Insets(-4,0,-3,-0));
         hbox.setId("todo");
         CheckBox checkbox = new CheckBox("");
         checkbox.setSelected(checked);
@@ -93,7 +93,7 @@ public class Project_Todos {
             hbox.setStyle("-fx-border-color: transparent;" +
                     "-fx-border-radius: 5;" +
                     "-fx-border-width: 3; " +
-                    "-fx-background-color: linear-gradient(to right, forestgreen, darkseagreen);" +
+                    "-fx-background-color: linear-gradient(to right, rgba(45,208,45,0.62), #c8e8c4);" +
                     "-fx-background-radius: 5");
             tf.setDisable(true);
         } else {
@@ -108,59 +108,16 @@ public class Project_Todos {
         if(!loading) {
             nodetext = nodeStage(nodetext);
         }
-        //TextArea textArea = new TextArea();
-        //textArea.setPrefRowCount(oldH);
-        //textArea.setWrapText(true);
-        //textArea.setPrefRowCount(2);
-        /*
-        textArea.setText(text);
-        Text textHolder = new Text();
-
-       //textArea.setMinHeight(textArea.getMaxHeight() + (rowCount * textArea.getFont().getSize()*1.5));
-        textArea.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                String text = textArea.getText();
-                String[] lineArray = text.split("\n");
-                textArea.setMinHeight(textArea.getMaxHeight() + (lineArray.length * textArea.getFont().getSize()*1.5));
-            }
-        });
-
-        //oldHeight = oldHeightlocal;
-
-        textHolder.textProperty().bind(textArea.textProperty());
-        System.out.println("old height: " + oldHeightlocal);
-        textArea.setPrefHeight(textHolder.getLayoutBounds().getHeight() + 20);
-
-
-        textHolder.layoutBoundsProperty().addListener(new ChangeListener<Bounds>() {
-            @Override
-            public void changed(ObservableValue<? extends Bounds> observable, Bounds oldValue, Bounds newValue) {
-                //if (oldHeightlocal != newValue.getHeight()) {
-                  //  oldHeightlocal = newValue.getHeight();
-                    textArea.setPrefHeight(textHolder.getLayoutBounds().getHeight() + 20);
-                    System.out.println("holder: " + textHolder.getLayoutBounds().getHeight());
-                    System.out.println("textA: "+ textArea.getLayoutBounds().getHeight());
-                //}
-            }
-        });
-
-        textArea.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue) {
-                    saveTodos();
-                }
-            }
-        });
-
-        //textArea.setPrefRowCount(rowCount);
-        //System.out.println("rowcoaunt: " + rowCount);
-
-   */
 
         TextFlow textFlow = new TextFlow();
+        textFlow.setStyle(
+                "-fx-background-color: white;"
+        );
+
         Text textNodes = new Text(nodetext);
+        textNodes.setStyle(
+                "-fx-font-size: 12;"
+        );
 
         HBox hBox = new HBox();
         hBox.setId("note");
@@ -188,7 +145,6 @@ public class Project_Todos {
             saveTodos();
         });
 
-
         //textNodes.textProperty().bind(textArea.textProperty());
 
         HBox.setHgrow(textFlow, Priority.ALWAYS);
@@ -212,6 +168,7 @@ public class Project_Todos {
 
         Button btn_abort = new Button("Abbrechen");
         btn_abort.setOnAction(event -> {
+            textArea.setText("");
             nodestage.close();
         });
 
