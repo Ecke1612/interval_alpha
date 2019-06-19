@@ -108,53 +108,54 @@ public class Project_Todos {
         if(!loading) {
             nodetext = nodeStage(nodetext);
         }
+        if(!nodetext.equals("")) {
+            TextFlow textFlow = new TextFlow();
+            textFlow.setStyle(
+                    "-fx-background-color: white;"
+            );
 
-        TextFlow textFlow = new TextFlow();
-        textFlow.setStyle(
-                "-fx-background-color: white;"
-        );
+            Text textNodes = new Text(nodetext);
+            textNodes.setStyle(
+                    "-fx-font-size: 12;"
+            );
 
-        Text textNodes = new Text(nodetext);
-        textNodes.setStyle(
-                "-fx-font-size: 12;"
-        );
+            HBox hBox = new HBox();
+            hBox.setId("note");
 
-        HBox hBox = new HBox();
-        hBox.setId("note");
+            Button btn_edit = new Button("\uE104");
+            btn_edit.setStyle(
+                    "-fx-font-family: 'Segoe MDL2 Assets';" +
+                            "-fx-background-color: transparent;" +
+                            "-fx-font-size: 16"
+            );
+            btn_edit.setOnAction(event -> {
+                textNodes.setText(nodeStage(textFlowToString(textFlow)));
+            });
 
-        Button btn_edit = new Button("\uE104");
-        btn_edit.setStyle(
-                "-fx-font-family: 'Segoe MDL2 Assets';" +
-                "-fx-background-color: transparent;" +
-                "-fx-font-size: 16"
-        );
-        btn_edit.setOnAction(event -> {
-            textNodes.setText(nodeStage(textFlowToString(textFlow)));
-        });
+            Button btn_delete = new Button("\uE107");
+            btn_delete.setStyle(
+                    "-fx-font-family: 'Segoe MDL2 Assets';" +
+                            "-fx-background-color: transparent;" +
+                            "-fx-text-fill: darkred;" +
+                            "-fx-font-size: 18;" +
+                            "-fx-padding: -4"
+            );
+            btn_delete.setOnAction(event -> {
+                vbox_todos.getChildren().remove(hBox);
+                saveTodos();
+            });
 
-        Button btn_delete = new Button("\uE107");
-        btn_delete.setStyle(
-                "-fx-font-family: 'Segoe MDL2 Assets';" +
-                "-fx-background-color: transparent;" +
-                "-fx-text-fill: darkred;" +
-                "-fx-font-size: 18;" +
-                "-fx-padding: -4"
-        );
-        btn_delete.setOnAction(event -> {
-            vbox_todos.getChildren().remove(hBox);
-            saveTodos();
-        });
+            //textNodes.textProperty().bind(textArea.textProperty());
 
-        //textNodes.textProperty().bind(textArea.textProperty());
+            HBox.setHgrow(textFlow, Priority.ALWAYS);
+            hBox.getChildren().addAll(textFlow, btn_edit, btn_delete);
+            hBox.setAlignment(Pos.CENTER_LEFT);
 
-        HBox.setHgrow(textFlow, Priority.ALWAYS);
-        hBox.getChildren().addAll(textFlow, btn_edit, btn_delete);
-        hBox.setAlignment(Pos.CENTER_LEFT);
+            textFlow.getChildren().clear();
+            textFlow.getChildren().add(textNodes);
 
-        textFlow.getChildren().clear();
-        textFlow.getChildren().add(textNodes);
-
-        vbox_todos.getChildren().add(hBox);
+            vbox_todos.getChildren().add(hBox);
+        }
     }
 
     private String nodeStage(String initText) {
@@ -168,7 +169,7 @@ public class Project_Todos {
 
         Button btn_abort = new Button("Abbrechen");
         btn_abort.setOnAction(event -> {
-            textArea.setText("");
+            textArea.setText(initText);
             nodestage.close();
         });
 
