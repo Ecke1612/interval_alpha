@@ -16,9 +16,6 @@ public class TodoStorage {
         this.check = check;
         this.text = text;
         this.type = type;
-        if(text.equals("")) {
-            System.out.println("nix drin");
-        }
     }
 
     public String getNotes() {

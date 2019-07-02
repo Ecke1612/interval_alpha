@@ -6,6 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import main.Main_Application;
 import object.ConfigObject;
 
 /**
@@ -40,9 +41,9 @@ public class CTR_Config {
     public CTR_Config() {
         configObject = new ConfigObject();
         System.out.println(configObject.isDoUpdate());
-        if(File_Handler.fileExist("ver/config.dat")) {
+        if(File_Handler.fileExist(Main_Application.parentPath  + "ver/config.dat")) {
             try {
-                configObject = (ConfigObject) File_Handler.loadObjects("ver/config.dat");
+                configObject = (ConfigObject) File_Handler.loadObjects(Main_Application.parentPath  + "ver/config.dat");
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("objekteloading fehlgeschlagen");
@@ -175,7 +176,7 @@ public class CTR_Config {
         configObject.setCssName(cbox_css.getSelectionModel().getSelectedItem().toString());
         System.out.println("item: " + cbox_css.getSelectionModel().getSelectedItem().toString());
         configObject.setUsername(username.getText());
-        File_Handler.writeObject(configObject, "ver/config.dat");
+        File_Handler.writeObject(configObject, Main_Application.parentPath + "ver/config.dat");
         label_console.setText("Änderungen gespeichert!");
     }
 

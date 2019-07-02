@@ -19,6 +19,6 @@
     <jar href="lib\commons-net-3.6\commons-net-examples-3.6.jar" size="84913" download="eager" />
     <jar href="lib\opencsv-3.9.jar" size="80720" download="eager" />
   </resources>
-  <jfx:javafx-desc  width="1005" height="720" main-class="main.launcher.Launcher"  name="Interval2" />
+  <jfx:javafx-desc width="1005" height="720" main-class="main.launcher.Launcher_deprecated" name="Interval2" />
   <update check="background"/>
 </jnlp>

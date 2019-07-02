@@ -19,11 +19,7 @@ public class Manager {
 
     public static ArrayList<ClientStorageObject> clients = new ArrayList<>();
 
-    public static ArrayList<String> configList = new ArrayList<>();
     public static FileInputStream reminder_image; { loadImage("/res/images/reminder.png"); }
-    public static FileInputStream logoSingle_image; { loadImage("/res/images/logo_single.png"); }
-    public static FileInputStream logoFull_image; { loadImage("/res/images/logo.png"); }
-    public static FileInputStream pencil_image; { loadImage("/res/images/pencil.png"); }
 
 
 

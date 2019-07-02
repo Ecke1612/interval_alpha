@@ -3,8 +3,8 @@ package handling;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import gui.controller.CTR_Project_Module;
-import gui.controller.CTR_Report;
 import javafx.scene.paint.Color;
+import main.Main_Application;
 import object.ClientStorageObject;
 import object.Report_Object;
 import object.StorageObject;
@@ -25,7 +25,7 @@ public class Archiv_Handler {
 
 
     public static void writeToArchiv(CTR_Project_Module project) throws IOException {
-        FileWriter pw = new FileWriter("data/archiv.csv", true);
+        FileWriter pw = new FileWriter(Main_Application.parentPath + "data/archiv.csv", true);
         CSVWriter writer = new CSVWriter(pw, ';');
 
         String header = "1" + ";" + project.getClient().getName() + ";" + project.getName() + ";" + project.getMaxTimeHours();
@@ -40,7 +40,7 @@ public class Archiv_Handler {
     }
 
     public static void writeWholeArchiv() throws IOException {
-        FileWriter pw = new FileWriter("data/archiv.csv");
+        FileWriter pw = new FileWriter(Main_Application.parentPath + "data/archiv.csv");
         CSVWriter writer = new CSVWriter(pw, ';');
 
         for(Report_Object report : archivObjects) {
@@ -58,7 +58,7 @@ public class Archiv_Handler {
 
     public static void loadArchiv() throws IOException {
         archivObjects.clear();
-        CSVReader reader = new CSVReader(new FileReader("data/archiv.csv"), ';');
+        CSVReader reader = new CSVReader(new FileReader(Main_Application.parentPath + "data/archiv.csv"), ';');
         List<String[]> data = reader.readAll();
 
         for(String[] line : data) {

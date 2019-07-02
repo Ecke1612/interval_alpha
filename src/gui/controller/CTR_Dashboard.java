@@ -19,7 +19,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.Main_Application;
-import object.ReminderObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,7 +59,7 @@ public class CTR_Dashboard implements Initializable {
         Main_Application.setdashboardController(this);
         //em_MenuController.menu_dashboard.setSelected(true);
         //Clients laden
-        if(csv_clientHandler.fileExist("data/clients.csv")) {
+        if(csv_clientHandler.fileExist(Main_Application.parentPath + "data/clients.csv")) {
             try {
                 csv_clientHandler.csvLoader();
             } catch (IOException e) {
@@ -68,7 +67,7 @@ public class CTR_Dashboard implements Initializable {
             }
         }
         //Wenn die csv Datei existiert, dann lade sie ins Programm
-        if(csv_projectHandler.fileExist("data/trackingData.csv")) {
+        if(csv_projectHandler.fileExist(Main_Application.parentPath + "data/trackingData.csv")) {
             try {
                 csv_projectHandler.csvLoader();
             } catch (IOException e) {

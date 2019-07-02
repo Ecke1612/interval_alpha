@@ -24,7 +24,7 @@ public class CSV_ProjectHandler {
 
     //schreibt die CSV Datei indem alle StorageOBjekte aus jedem Projekt iteriert und in eine Zeile geschrieben werden
     public static void csvWriter() throws IOException {
-        CSVWriter writer = new CSVWriter(new FileWriter("data/trackingData.csv"), ';');
+        CSVWriter writer = new CSVWriter(new FileWriter(Main_Application.parentPath + "data/trackingData.csv"), ';');
         for(CTR_Project_Module projects : Manager.projectList) {
             String projPath = projects.getProjectpath().replace("\\", "/");
             String header = "1" + ";" + projects.getClient().getName() + ";" + projects.getName() + ";" + projects.getMaxTimeHours() + ";" + projPath;
@@ -52,7 +52,7 @@ public class CSV_ProjectHandler {
 
     public void csvLoader() throws IOException {
         Manager.projectList.clear();
-        CSVReader reader = new CSVReader(new FileReader("data/trackingData.csv"), ';');
+        CSVReader reader = new CSVReader(new FileReader(Main_Application.parentPath + "data/trackingData.csv"), ';');
         List<String[]> data = reader.readAll();
 
         for(String[] line : data) {

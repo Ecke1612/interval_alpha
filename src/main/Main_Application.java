@@ -1,5 +1,6 @@
 package main;
 
+import gui.controller.CTR_Config;
 import gui.controller.CTR_Project_Module;
 import handling.*;
 import javafx.application.Application;
@@ -11,13 +12,14 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import gui.controller.CTR_Dashboard;
 import javafx.stage.WindowEvent;
-import main.launcher.Launcher;
 
 import java.io.IOException;
 
 public class Main_Application extends Application {
 
-    public static final String build = "0.698";
+    public static final String build = "0.7";
+    public static final String appName = "Interval";
+    public static final String parentPath = "bin/app/" + appName + "/";
 
     private final String fn = "SourceSansPro-";
     private final String[] fonts = {"uiicons.ttf", fn+"Black.tff", fn+"BlackItalic.tff", fn+"Bold.tff",
@@ -33,13 +35,13 @@ public class Main_Application extends Application {
     public void start(Stage primaryStage) throws Exception{
         System.out.println("main app startet jetzt...");
         Main_Application.primaryStage = primaryStage;
-        if(!File_Handler.fileExist("ver")){
-            File_Handler.createDir("ver");
+        if(!File_Handler.fileExist(parentPath + "ver")){
+           createFolderStructure("ver");
         }
-        if(!File_Handler.fileExist("data")){
-            File_Handler.createDir("data");
+        if(!File_Handler.fileExist(parentPath + "data")){
+            createFolderStructure("data");
         }
-
+        CTR_Config ctr_config = new CTR_Config();
         loadDashboard();
 
         //primaryStage.setMinWidth(200);
@@ -68,8 +70,8 @@ public class Main_Application extends Application {
         }
 
         //loadArchiv----------------------------------------------------------------------------------------------------
-        if(!File_Handler.fileExist("data/archiv.csv")) {
-            File_Handler.createFile("data/archiv.csv");
+        if(!File_Handler.fileExist(parentPath + "data/archiv.csv")) {
+            File_Handler.createFile(parentPath + "data/archiv.csv");
         }
         Archiv_Handler.loadArchiv();
 
@@ -84,7 +86,7 @@ public class Main_Application extends Application {
 
     public void loadDashboard() throws IOException {
         dashboard = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
-        primaryStage.setTitle(Launcher.appName);
+        primaryStage.setTitle(appName);
         Scene dashboardScene = new Scene(dashboard);
         //dashboardScene.getStylesheets().add(getClass().getResource("/css/ui_view.css").toExternalForm());
         primaryStage.setScene(dashboardScene);
@@ -104,5 +106,12 @@ public class Main_Application extends Application {
 
     public String getBuild() {
         return build;
+    }
+
+    private void createFolderStructure(String foldername) {
+        File_Handler.createDir("bin");
+        File_Handler.createDir("bin/app");
+        File_Handler.createDir("bin/app/" + appName);
+        File_Handler.createDir("bin/app/" + appName +"/" + foldername);
     }
 }

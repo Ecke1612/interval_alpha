@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: main.launcher.Launcher
+Main-Class: main.launcher.Launcher_deprecated
 

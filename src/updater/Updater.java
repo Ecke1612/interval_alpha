@@ -2,8 +2,7 @@ package updater;
 
 import handling.File_Handler;
 import javafx.scene.control.Alert;
-import main.launcher.CTR_StartScreen;
-import main.launcher.Launcher;
+import main.Main_Application;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -55,7 +54,7 @@ public class Updater {
                 //float newBuildFloat = Float.parseFloat(newBuild);
                 //if(!newBuild.equals(null) && !newBuild.equals(Updater_Main.build)) {
                 if(Float.parseFloat(newBuild) > Float.parseFloat(Updater_Main.build) && !newBuild.equals(null)) {
-                    if(alerts.confirmDialogFX("Update", "Es ist ein Update verfügbar", "Möchtest du " + Launcher.appName + " aktualisieren?")) {
+                    if(alerts.confirmDialogFX("Update", "Es ist ein Update verfügbar", "Möchtest du " + Main_Application.appName + " aktualisieren?")) {
                         System.out.println("True");
                         return true;
                     } else {
@@ -76,7 +75,7 @@ public class Updater {
     private void update() throws IOException {
         System.out.println("newbuild: " + newBuild);
 
-        ftp_handler.downloadFile("/interval/" + Launcher.appName + "_" + newBuild + ".jar", Launcher.appName + ".jar");
+        ftp_handler.downloadFile("/interval/" + Main_Application.appName + "_" + newBuild + ".jar", Main_Application.appName + ".jar");
         System.out.println("heruntergeladen");
     }
 

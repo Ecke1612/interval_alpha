@@ -1,7 +1,0 @@
-0.693
-
-Verbesserungen:
- - ES können Todo's und Notizen abgespeichert werden. Dazu wurde das ausklappbare Detaill-Fenster eines Projektes um ein Todo-Fenster erweitert.
- 
- Bugfixes:
- - kleinere Layout-Fehler behoben 

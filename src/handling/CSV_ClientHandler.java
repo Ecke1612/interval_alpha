@@ -3,6 +3,7 @@ package handling;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import javafx.scene.paint.Color;
+import main.Main_Application;
 import object.ClientStorageObject;
 
 import java.io.*;
@@ -14,7 +15,7 @@ import java.util.List;
 public class CSV_ClientHandler {
 
     public static void csvWriter() throws IOException {
-        CSVWriter writer = new CSVWriter(new FileWriter("data/clients.csv"));
+        CSVWriter writer = new CSVWriter(new FileWriter(Main_Application.parentPath + "data/clients.csv"));
 
         for(ClientStorageObject client : Manager.clients) {
             String[] entries = {client.getName(), client.getColor().toString()};
@@ -26,7 +27,7 @@ public class CSV_ClientHandler {
     public void csvLoader() throws IOException{
         Manager.clients.clear();
 
-        CSVReader reader = new CSVReader(new FileReader("data/clients.csv"));
+        CSVReader reader = new CSVReader(new FileReader(Main_Application.parentPath + "data/clients.csv"));
         List<String[]> data = reader.readAll();
         for(String[] client : data) {
             if(client.length == 1) {
